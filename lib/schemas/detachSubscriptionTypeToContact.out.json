@@ -1,0 +1,96 @@
+{
+    "title": "Subscription Types",
+    "type": "object",
+    "description": "A subscription type lets customers easily opt out of non-essential communications without missing what's important to them.",
+    "properties": {
+        "type": {
+            "type": "string",
+            "description": "The type of the object - subscription",
+            "example": "subscription"
+        },
+        "id": {
+            "type": "string",
+            "description": "The unique identifier representing the subscription type.",
+            "example": "123456"
+        },
+        "state": {
+            "type": "string",
+            "description": "The state of the subscription type.",
+            "enum": [
+                "live",
+                "draft",
+                "archived"
+            ],
+            "example": "live"
+        },
+        "default_translation": {
+            "title": "Translation",
+            "type": "object",
+            "description": "A translation object contains the localised details of a subscription type.",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The localised name of the subscription type.",
+                    "example": "Announcements"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The localised description of the subscription type.",
+                    "example": "Offers, product and feature announcements"
+                },
+                "locale": {
+                    "type": "string",
+                    "description": "The two character identifier for the language of the translation object.",
+                    "example": "en"
+                }
+            }
+        },
+        "translations": {
+            "type": "array",
+            "description": "An array of translations objects with the localised version of the subscription type in each available locale within your translation settings.",
+            "items": {
+                "title": "Translation",
+                "type": "object",
+                "description": "A translation object contains the localised details of a subscription type.",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The localised name of the subscription type.",
+                        "example": "Announcements"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The localised description of the subscription type.",
+                        "example": "Offers, product and feature announcements"
+                    },
+                    "locale": {
+                        "type": "string",
+                        "description": "The two character identifier for the language of the translation object.",
+                        "example": "en"
+                    }
+                }
+            }
+        },
+        "consent_type": {
+            "type": "string",
+            "description": "Describes the type of consent.",
+            "enum": [
+                "opt_out",
+                "opt_in"
+            ],
+            "example": "opt_in"
+        },
+        "content_types": {
+            "type": "array",
+            "description": "The message types that this subscription supports - can contain `email` or `sms_message`.",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "email",
+                    "sms_message"
+                ],
+                "example": "email"
+            }
+        }
+    }
+}

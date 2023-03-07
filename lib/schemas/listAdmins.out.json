@@ -1,0 +1,111 @@
+{
+    "title": "Admins",
+    "type": "object",
+    "description": "A list of admins associated with a given workspace.",
+    "properties": {
+        "type": {
+            "type": "string",
+            "description": "String representing the object's type. Always has the value `admin.list`.",
+            "example": "admin.list"
+        },
+        "admins": {
+            "type": "array",
+            "description": "A list of admins associated with a given workspace.",
+            "items": {
+                "title": "Admin",
+                "type": "object",
+                "description": "Admins are teammate accounts that have access to a workspace.",
+                "nullable": true,
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "description": "String representing the object's type. Always has the value `admin`.",
+                        "example": "admin"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The id representing the admin.",
+                        "example": "1295"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the admin.",
+                        "example": "Hoban Washburne"
+                    },
+                    "email": {
+                        "type": "string",
+                        "description": "The email of the admin.",
+                        "example": "wash@serenity.io"
+                    },
+                    "job_title": {
+                        "type": "string",
+                        "description": "The job title of the admin.",
+                        "example": "Philosopher"
+                    },
+                    "away_mode_enabled": {
+                        "type": "boolean",
+                        "description": "Identifies if this admin is currently set in away mode.",
+                        "example": false
+                    },
+                    "away_mode_reassign": {
+                        "type": "boolean",
+                        "description": "Identifies if this admin is set to automatically reassign new conversations to the apps default inbox.",
+                        "example": false
+                    },
+                    "has_inbox_seat": {
+                        "type": "boolean",
+                        "description": "Identifies if this admin has a paid inbox seat to restrict/allow features that require them.",
+                        "example": true
+                    },
+                    "team_ids": {
+                        "type": "array",
+                        "description": "This object represents the avatar associated with the admin.",
+                        "example": [
+                            814865
+                        ],
+                        "items": {
+                            "type": "integer"
+                        }
+                    },
+                    "avatar": {
+                        "type": "string",
+                        "format": "uri",
+                        "nullable": true,
+                        "description": "Image for the associated team or teammate",
+                        "example": "https://picsum.photos/200/300"
+                    },
+                    "team_priority_level": {
+                        "title": "Team Priority Level",
+                        "type": "object",
+                        "nullable": true,
+                        "description": "Admin priority levels for teams",
+                        "properties": {
+                            "primary_team_ids": {
+                                "type": "array",
+                                "description": "The primary team ids for the team",
+                                "nullable": true,
+                                "example": [
+                                    814865
+                                ],
+                                "items": {
+                                    "type": "integer"
+                                }
+                            },
+                            "secondary_team_ids": {
+                                "type": "array",
+                                "description": "The secondary team ids for the team",
+                                "nullable": true,
+                                "example": [
+                                    493881
+                                ],
+                                "items": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

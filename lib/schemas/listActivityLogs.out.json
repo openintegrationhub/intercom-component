@@ -1,0 +1,188 @@
+{
+    "title": "Paginated Response",
+    "type": "object",
+    "description": "A paginated list of activity logs.",
+    "properties": {
+        "type": {
+            "type": "string",
+            "description": "String representing the object's type. Always has the value `activity_log.list`.",
+            "example": "activity_log.list"
+        },
+        "pages": {
+            "title": "Cursor based pages",
+            "type": "object",
+            "description": "Cursor-based pagination is a technique used in the Intercom API to navigate through large amounts of data.\nA \"cursor\" or pointer is used to keep track of the current position in the result set, allowing the API to return the data in small chunks or \"pages\" as needed.\n",
+            "nullable": true,
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "the type of object `pages`.",
+                    "example": "pages",
+                    "enum": [
+                        "pages"
+                    ]
+                },
+                "page": {
+                    "type": "integer",
+                    "description": "The current page",
+                    "example": 1
+                },
+                "next": {
+                    "title": "StartingAfterPaging",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "page": {
+                            "type": "integer",
+                            "example": 2
+                        },
+                        "starting_after": {
+                            "type": "string",
+                            "example": "1HaSB+xrOyyMXAkS/c1RteCL7BzOzTvYjmjakgTergIH31eoe2v4/sbLsJWP\\nIncfQLD3ouPkZlCwJ86F\\n"
+                        }
+                    }
+                },
+                "per_page": {
+                    "type": "integer",
+                    "description": "Number of results per page",
+                    "example": 2
+                },
+                "total_pages": {
+                    "type": "integer",
+                    "description": "Total number of pages",
+                    "example": 13
+                }
+            }
+        },
+        "activity_logs": {
+            "type": "array",
+            "description": "An array of activity logs",
+            "items": {
+                "title": "Activity Log",
+                "type": "object",
+                "description": "Activities performed by admins.",
+                "nullable": true,
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The id representing the activity.",
+                        "example": "6"
+                    },
+                    "performed_by": {
+                        "type": "object",
+                        "description": "An object representing the admin who performed the activity.",
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "description": "String representing the object's type. Always has the value `admin`.",
+                                "example": "admin"
+                            },
+                            "id": {
+                                "type": "string",
+                                "description": "The id representing the admin.",
+                                "example": "1295"
+                            },
+                            "email": {
+                                "type": "string",
+                                "description": "The email of the admin.",
+                                "example": "john@example.com"
+                            },
+                            "ip": {
+                                "type": "string",
+                                "description": "The IP address of the admin.",
+                                "example": "198.51.100.255"
+                            }
+                        }
+                    },
+                    "metadata": {
+                        "type": "object"
+                    },
+                    "created_at": {
+                        "type": "integer",
+                        "format": "date-time",
+                        "description": "The time the activity was created.",
+                        "example": 1671028894
+                    },
+                    "activity_type": {
+                        "type": "string",
+                        "enum": [
+                            "admin_assignment_limit_change",
+                            "admin_away_mode_change",
+                            "admin_deletion",
+                            "admin_deprovisioned",
+                            "admin_impersonation_end",
+                            "admin_impersonation_start",
+                            "admin_invite_change",
+                            "admin_invite_creation",
+                            "admin_invite_deletion",
+                            "admin_login_failure",
+                            "admin_login_success",
+                            "admin_logout",
+                            "admin_password_reset_request",
+                            "admin_password_reset_success",
+                            "admin_permission_change",
+                            "admin_provisioned",
+                            "admin_two_factor_auth_change",
+                            "admin_unauthorized_sign_in_method",
+                            "app_admin_join",
+                            "app_authentication_method_change",
+                            "app_data_deletion",
+                            "app_data_export",
+                            "app_google_sso_domain_change",
+                            "app_identity_verification_change",
+                            "app_name_change",
+                            "app_outbound_address_change",
+                            "app_package_installation",
+                            "app_package_token_regeneration",
+                            "app_package_uninstallation",
+                            "app_team_creation",
+                            "app_team_deletion",
+                            "app_team_membership_modification",
+                            "app_timezone_change",
+                            "app_webhook_creation",
+                            "app_webhook_deletion",
+                            "articles_in_messenger_enabled_change",
+                            "bulk_delete",
+                            "bulk_export",
+                            "campaign_deletion",
+                            "campaign_state_change",
+                            "conversation_part_deletion",
+                            "conversation_topic_change",
+                            "conversation_topic_creation",
+                            "conversation_topic_deletion",
+                            "help_center_settings_change",
+                            "inbound_conversations_change",
+                            "inbox_access_change",
+                            "message_deletion",
+                            "message_state_change",
+                            "messenger_look_and_feel_change",
+                            "messenger_search_required_change",
+                            "messenger_spaces_change",
+                            "office_hours_change",
+                            "role_change",
+                            "role_creation",
+                            "role_deletion",
+                            "ruleset_activation_title_preview",
+                            "ruleset_creation",
+                            "ruleset_deletion",
+                            "search_browse_enabled_change",
+                            "search_browse_required_change",
+                            "seat_change",
+                            "seat_revoke",
+                            "security_settings_change",
+                            "temporary_expectation_change",
+                            "upfront_email_collection_change",
+                            "welcome_message_change"
+                        ],
+                        "example": "app_name_change"
+                    },
+                    "activity_description": {
+                        "type": "string",
+                        "description": "A sentence or two describing the activity.",
+                        "example": "Admin updated the app's name to \"My App\"."
+                    }
+                }
+            }
+        }
+    }
+}

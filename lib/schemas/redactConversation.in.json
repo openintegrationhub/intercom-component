@@ -1,0 +1,92 @@
+{
+    "type": "object",
+    "properties": {
+        "Intercom-Version": {
+            "description": "Intercom API version.</br>By default, it's equal to the version set in the app package.",
+            "type": "string",
+            "example": "Unstable",
+            "default": "2.8",
+            "enum": [
+                "1.0",
+                "1.1",
+                "1.2",
+                "1.3",
+                "1.4",
+                "2.0",
+                "2.1",
+                "2.2",
+                "2.3",
+                "2.4",
+                "2.5",
+                "2.6",
+                "2.7",
+                "2.8",
+                "Unstable"
+            ]
+        },
+        "requestBody": {
+            "oneOf": [
+                {
+                    "title": "Redact Conversation Part Request",
+                    "type": "object",
+                    "description": "Payload of the request to redact a conversation part",
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "enum": [
+                                "conversation_part"
+                            ],
+                            "description": "The type of resource being redacted.",
+                            "example": "conversation_part"
+                        },
+                        "conversation_id": {
+                            "type": "string",
+                            "description": "The id of the conversation.",
+                            "example": "19894788788"
+                        },
+                        "conversation_part_id": {
+                            "type": "string",
+                            "description": "The id of the conversation_part.",
+                            "example": "19381789428"
+                        }
+                    },
+                    "required": [
+                        "type",
+                        "conversation_id",
+                        "conversation_part_id"
+                    ]
+                },
+                {
+                    "title": "Redact Conversation Source Request",
+                    "type": "object",
+                    "description": "Payload of the request to redact a conversation source",
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "enum": [
+                                "source"
+                            ],
+                            "description": "The type of resource being redacted.",
+                            "example": "source"
+                        },
+                        "conversation_id": {
+                            "type": "string",
+                            "description": "The id of the conversation.",
+                            "example": "19894788788"
+                        },
+                        "source_id": {
+                            "type": "string",
+                            "description": "The id of the source.",
+                            "example": "19894781231"
+                        }
+                    },
+                    "required": [
+                        "type",
+                        "conversation_id",
+                        "source_id"
+                    ]
+                }
+            ]
+        }
+    }
+}

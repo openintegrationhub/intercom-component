@@ -1,0 +1,153 @@
+{
+    "type": "object",
+    "properties": {
+        "Intercom-Version": {
+            "description": "Intercom API version.</br>By default, it's equal to the version set in the app package.",
+            "type": "string",
+            "example": "Unstable",
+            "default": "2.8",
+            "enum": [
+                "1.0",
+                "1.1",
+                "1.2",
+                "1.3",
+                "1.4",
+                "2.0",
+                "2.1",
+                "2.2",
+                "2.3",
+                "2.4",
+                "2.5",
+                "2.6",
+                "2.7",
+                "2.8",
+                "Unstable"
+            ]
+        },
+        "requestBody": {
+            "oneOf": [
+                {
+                    "description": "You can create or update an existing tag.",
+                    "type": "object",
+                    "title": "Create or Update Tag Request Payload",
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the tag, which will be created if not found, or the new name for the tag if this is an update request. Names are case insensitive.",
+                            "example": "Independent"
+                        },
+                        "id": {
+                            "type": "string",
+                            "description": "The id of tag to updates.",
+                            "example": "656452352"
+                        }
+                    },
+                    "required": [
+                        "name"
+                    ]
+                },
+                {
+                    "description": "You can tag a single company or a list of companies.",
+                    "type": "object",
+                    "title": "Tag Company Request Payload",
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the tag, which will be created if not found.",
+                            "example": "Independent"
+                        },
+                        "companies": {
+                            "type": "array",
+                            "items": {
+                                "properties": {
+                                    "id": {
+                                        "type": "string",
+                                        "description": "The Intercom defined id representing the company.",
+                                        "example": "531ee472cce572a6ec000006"
+                                    },
+                                    "company_id": {
+                                        "type": "string",
+                                        "description": "The company id you have defined for the company.",
+                                        "example": "6"
+                                    }
+                                }
+                            },
+                            "description": "The id or company_id of the company can be passed as input parameters."
+                        }
+                    },
+                    "required": [
+                        "name",
+                        "companies"
+                    ]
+                },
+                {
+                    "description": "You can tag a single company or a list of companies.",
+                    "type": "object",
+                    "title": "Untag Company Request Payload",
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the tag which will be untagged from the company",
+                            "example": "Independent"
+                        },
+                        "companies": {
+                            "type": "array",
+                            "items": {
+                                "properties": {
+                                    "id": {
+                                        "type": "string",
+                                        "description": "The Intercom defined id representing the company.",
+                                        "example": "531ee472cce572a6ec000006"
+                                    },
+                                    "company_id": {
+                                        "type": "string",
+                                        "description": "The company id you have defined for the company.",
+                                        "example": "6"
+                                    },
+                                    "untag": {
+                                        "type": "boolean",
+                                        "description": "Always set to true",
+                                        "example": "true"
+                                    }
+                                }
+                            },
+                            "description": "The id or company_id of the company can be passed as input parameters."
+                        }
+                    },
+                    "required": [
+                        "name",
+                        "companies"
+                    ]
+                },
+                {
+                    "description": "You can tag a list of users.",
+                    "type": "object",
+                    "title": "Tag Users Request Payload",
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the tag, which will be created if not found.",
+                            "example": "Independent"
+                        },
+                        "users": {
+                            "type": "array",
+                            "items": {
+                                "properties": {
+                                    "id": {
+                                        "type": "string",
+                                        "description": "The Intercom defined id representing the user.",
+                                        "example": "5f7f0d217289f8d2f4262080"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "required": [
+                        "name",
+                        "users"
+                    ]
+                }
+            ]
+        }
+    }
+}

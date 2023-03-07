@@ -1,0 +1,84 @@
+{
+    "type": "object",
+    "properties": {
+        "Intercom-Version": {
+            "description": "Intercom API version.</br>By default, it's equal to the version set in the app package.",
+            "type": "string",
+            "example": "Unstable",
+            "default": "2.8",
+            "enum": [
+                "1.0",
+                "1.1",
+                "1.2",
+                "1.3",
+                "1.4",
+                "2.0",
+                "2.1",
+                "2.2",
+                "2.3",
+                "2.4",
+                "2.5",
+                "2.6",
+                "2.7",
+                "2.8",
+                "Unstable"
+            ]
+        },
+        "requestBody": {
+            "description": "",
+            "type": "object",
+            "title": "Create Data Attribute Request",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the data attribute.",
+                    "example": "My Data Attribute"
+                },
+                "model": {
+                    "type": "string",
+                    "description": "The model that the data attribute belongs to.",
+                    "enum": [
+                        "contact",
+                        "company",
+                        "conversation"
+                    ],
+                    "example": "contact"
+                },
+                "data_type": {
+                    "type": "string",
+                    "description": "The type of data stored for this attribute.",
+                    "enum": [
+                        "string",
+                        "integer",
+                        "float",
+                        "boolean",
+                        "datetime",
+                        "date"
+                    ],
+                    "example": "string"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The readable description you see in the UI for the attribute.",
+                    "example": "My Data Attribute Description"
+                },
+                "options": {
+                    "type": "array",
+                    "description": "To create list attributes. Provide a set of hashes with `value` as the key of the options you want to make. `data_type` must be `string`.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "option1",
+                        "option2"
+                    ]
+                }
+            },
+            "required": [
+                "name",
+                "model",
+                "data_type"
+            ]
+        }
+    }
+}

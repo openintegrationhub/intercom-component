@@ -1,0 +1,56 @@
+{
+    "type": "object",
+    "title": "Message",
+    "description": "Message are how you reach out to contacts in Intercom. They are created when an admin sends an outbound message to a contact.",
+    "properties": {
+        "type": {
+            "type": "string",
+            "description": "The type of the message",
+            "example": "user_message"
+        },
+        "id": {
+            "type": "string",
+            "description": "The id representing the message.",
+            "example": "1488971108"
+        },
+        "created_at": {
+            "type": "integer",
+            "format": "date-time",
+            "description": "The time the conversation was created.",
+            "example": 1667560812
+        },
+        "subject": {
+            "type": "string",
+            "description": "The subject of the message. Only present if message_type: email.",
+            "example": "Greetings"
+        },
+        "body": {
+            "type": "string",
+            "description": "The message body, which may contain HTML.",
+            "example": "Hello"
+        },
+        "message_type": {
+            "type": "string",
+            "enum": [
+                "email",
+                "inapp",
+                "facebook",
+                "twitter"
+            ],
+            "description": "The type of message that was sent. Can be email, inapp, facebook or twitter.",
+            "example": "inapp"
+        },
+        "conversation_id": {
+            "type": "string",
+            "description": "The associated conversation_id",
+            "example": "64619700005570"
+        }
+    },
+    "required": [
+        "type",
+        "id",
+        "created_at",
+        "body",
+        "message_type"
+    ]
+}

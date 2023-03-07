@@ -1,0 +1,121 @@
+{
+    "type": "object",
+    "properties": {
+        "Intercom-Version": {
+            "description": "Intercom API version.</br>By default, it's equal to the version set in the app package.",
+            "type": "string",
+            "example": "Unstable",
+            "default": "2.8",
+            "enum": [
+                "1.0",
+                "1.1",
+                "1.2",
+                "1.3",
+                "1.4",
+                "2.0",
+                "2.1",
+                "2.2",
+                "2.3",
+                "2.4",
+                "2.5",
+                "2.6",
+                "2.7",
+                "2.8",
+                "Unstable"
+            ]
+        },
+        "requestBody": {
+            "oneOf": [
+                {
+                    "description": "Conversations are how you can communicate with users in Intercom. They are created when a contact replies to an outbound message, or when one admin directly sends a message to a single contact.",
+                    "type": "object",
+                    "title": "Create Conversation Request Payload",
+                    "properties": {
+                        "role": {
+                            "type": "string",
+                            "description": "The role of the contact."
+                        },
+                        "external_id": {
+                            "type": "string",
+                            "description": "A unique identifier for the contact which is given to Intercom"
+                        },
+                        "email": {
+                            "type": "string",
+                            "description": "The contacts email",
+                            "example": "jdoe@example.com"
+                        },
+                        "phone": {
+                            "type": "string",
+                            "nullable": true,
+                            "description": "The contacts phone",
+                            "example": "+353871234567"
+                        },
+                        "name": {
+                            "type": "string",
+                            "nullable": true,
+                            "description": "The contacts name",
+                            "example": "John Doe"
+                        },
+                        "avatar": {
+                            "type": "string",
+                            "nullable": true,
+                            "description": "An image URL containing the avatar of a contact",
+                            "example": "https://www.example.com/avatar_image.jpg"
+                        },
+                        "signed_up_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "nullable": true,
+                            "description": "The time specified for when a contact signed up",
+                            "example": 1571672154
+                        },
+                        "last_seen_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "nullable": true,
+                            "description": "The time when the contact was last seen (either where the Intercom Messenger was installed or when specified manually)",
+                            "example": 1571672154
+                        },
+                        "owner_id": {
+                            "type": "integer",
+                            "nullable": true,
+                            "description": "The id of an admin that has been assigned account ownership of the contact",
+                            "example": 123
+                        },
+                        "unsubscribed_from_emails": {
+                            "type": "boolean",
+                            "nullable": true,
+                            "description": "Whether the contact is unsubscribed from emails",
+                            "example": true
+                        },
+                        "custom_attributes": {
+                            "type": "object",
+                            "nullable": true,
+                            "description": "The custom attributes which are set for the contact"
+                        }
+                    },
+                    "anyOf": [
+                        {
+                            "required": [
+                                "email"
+                            ],
+                            "title": "Create contact with email"
+                        },
+                        {
+                            "required": [
+                                "external_id"
+                            ],
+                            "title": "Create contact with external_id"
+                        },
+                        {
+                            "required": [
+                                "role"
+                            ],
+                            "title": "Create contact with role"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

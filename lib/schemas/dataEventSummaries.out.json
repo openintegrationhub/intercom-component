@@ -1,0 +1,67 @@
+{
+    "title": "Data Event Summary",
+    "type": "object",
+    "description": "This will return a summary of data events for the App.",
+    "properties": {
+        "type": {
+            "type": "string",
+            "description": "The type of the object",
+            "enum": [
+                "event.summary"
+            ],
+            "example": "event.summary"
+        },
+        "email": {
+            "type": "string",
+            "description": "The email address of the user",
+            "example": "Sam.Sung@example.com"
+        },
+        "intercom_user_id": {
+            "type": "string",
+            "description": "The Intercom user ID of the user",
+            "example": "63a0979a5eeebeaf28dd56ba"
+        },
+        "user_id": {
+            "type": "string",
+            "description": "The user ID of the user",
+            "example": "62b997f288e14803c5006932"
+        },
+        "events": {
+            "type": "array",
+            "description": "A summary of data events",
+            "items": {
+                "title": "Data Event Summary Item",
+                "type": "object",
+                "description": "This will return a summary of a data event for the App.",
+                "nullable": true,
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the event",
+                        "example": "placed-order"
+                    },
+                    "first": {
+                        "type": "string",
+                        "description": "The first time the event was sent",
+                        "example": "2014-01-16T23:12:21.000+00:00"
+                    },
+                    "last": {
+                        "type": "string",
+                        "description": "The last time the event was sent",
+                        "example": "2014-01-16T23:12:21.000+00:00 "
+                    },
+                    "count": {
+                        "type": "integer",
+                        "description": "The number of times the event was sent",
+                        "example": 1
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the event",
+                        "example": "A user placed an order"
+                    }
+                }
+            }
+        }
+    }
+}

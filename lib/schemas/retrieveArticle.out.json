@@ -1,0 +1,2488 @@
+{
+    "title": "Article",
+    "type": "object",
+    "description": "The Articles API is a central place to gather all information and take actions on your articles. Articles can live within collections and sections, or alternatively they can stand alone.",
+    "properties": {
+        "type": {
+            "type": "string",
+            "description": "The type of object - `article`.",
+            "enum": [
+                "article"
+            ],
+            "default": "article",
+            "example": "article"
+        },
+        "id": {
+            "type": "string",
+            "description": "The unique identifier for the article which is given by Intercom.",
+            "example": "6871119"
+        },
+        "workspace_id": {
+            "type": "string",
+            "description": "The id of the workspace which the article belongs to.",
+            "example": "hfi1bx4l"
+        },
+        "title": {
+            "type": "string",
+            "description": "The title of the article. For multilingual articles, this will be the title of the default language's content.",
+            "example": "Default language title"
+        },
+        "description": {
+            "type": "string",
+            "nullable": true,
+            "description": "The description of the article. For multilingual articles, this will be the description of the default language's content.",
+            "example": "Default language description"
+        },
+        "body": {
+            "type": "string",
+            "nullable": true,
+            "description": "The body of the article in HTML. For multilingual articles, this will be the body of the default language's content.",
+            "example": "Default language body in html"
+        },
+        "author_id": {
+            "type": "integer",
+            "description": "The id of the author of the article. For multilingual articles, this will be the id of the author of the default language's content. Must be a teammate on the help center's workspace.",
+            "example": "5017691"
+        },
+        "state": {
+            "type": "string",
+            "description": "Whether the article is `published` or is a `draft`. For multilingual articles, this will be the state of the default language's content.",
+            "enum": [
+                "published",
+                "draft"
+            ],
+            "default": "draft",
+            "example": "published"
+        },
+        "created_at": {
+            "type": "integer",
+            "format": "date-time",
+            "description": "The time when the article was created. For multilingual articles, this will be the timestamp of creation of the default language's content.",
+            "example": 1672928359
+        },
+        "updated_at": {
+            "type": "integer",
+            "format": "date-time",
+            "description": "The time when the article was last updated. For multilingual articles, this will be the timestamp of last update of the default language's content.",
+            "example": 1672928610
+        },
+        "url": {
+            "type": "string",
+            "nullable": true,
+            "description": "The URL of the article. For multilingual articles, this will be the URL of the default language's content.",
+            "example": "http://intercom.test/help/en/articles/3-default-language"
+        },
+        "parent_id": {
+            "type": "integer",
+            "nullable": true,
+            "description": "The id of the article's parent collection or section. An article without this field stands alone.",
+            "example": "125685"
+        },
+        "parent_type": {
+            "type": "string",
+            "nullable": true,
+            "description": "The type of parent, which can either be a `collection` or `section`.",
+            "example": "collection"
+        },
+        "default_locale": {
+            "type": "string",
+            "description": "The default locale of the help center. This field is only returned for multilingual help centers.",
+            "example": "en"
+        },
+        "translated_content": {
+            "nullable": true,
+            "title": "Article Translated Content",
+            "type": "object",
+            "description": "The Translated Content of an Article. The keys are the locale codes and the values are the translated content of the article.",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "The type of object - article_translated_content.",
+                    "enum": [
+                        null,
+                        "article_translated_content"
+                    ],
+                    "example": "article_translated_content"
+                },
+                "ar": {
+                    "description": "The content of the article in Arabic",
+                    "title": "Article Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `article_content` .",
+                            "enum": [
+                                null,
+                                "article_content"
+                            ],
+                            "example": "article_content"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "The title of the article.",
+                            "example": "How to create a new article"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the article.",
+                            "example": "This article will show you how to create a new article."
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The body of the article.",
+                            "example": "This is the body of the article."
+                        },
+                        "author_id": {
+                            "type": "integer",
+                            "description": "The ID of the author of the article.",
+                            "example": "5017691"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "Whether the article is `published` or is a `draft` .",
+                            "enum": [
+                                "published",
+                                "draft"
+                            ],
+                            "example": "draft"
+                        },
+                        "created_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was created.",
+                            "example": 1663597223
+                        },
+                        "updated_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was last updated.",
+                            "example": 1663597260
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL of the article.",
+                            "example": "http://intercom.test/help/en/articles/3-default-language"
+                        }
+                    }
+                },
+                "bg": {
+                    "description": "The content of the article in Bulgarian",
+                    "title": "Article Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `article_content` .",
+                            "enum": [
+                                null,
+                                "article_content"
+                            ],
+                            "example": "article_content"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "The title of the article.",
+                            "example": "How to create a new article"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the article.",
+                            "example": "This article will show you how to create a new article."
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The body of the article.",
+                            "example": "This is the body of the article."
+                        },
+                        "author_id": {
+                            "type": "integer",
+                            "description": "The ID of the author of the article.",
+                            "example": "5017691"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "Whether the article is `published` or is a `draft` .",
+                            "enum": [
+                                "published",
+                                "draft"
+                            ],
+                            "example": "draft"
+                        },
+                        "created_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was created.",
+                            "example": 1663597223
+                        },
+                        "updated_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was last updated.",
+                            "example": 1663597260
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL of the article.",
+                            "example": "http://intercom.test/help/en/articles/3-default-language"
+                        }
+                    }
+                },
+                "bs": {
+                    "description": "The content of the article in Bosnian",
+                    "title": "Article Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `article_content` .",
+                            "enum": [
+                                null,
+                                "article_content"
+                            ],
+                            "example": "article_content"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "The title of the article.",
+                            "example": "How to create a new article"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the article.",
+                            "example": "This article will show you how to create a new article."
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The body of the article.",
+                            "example": "This is the body of the article."
+                        },
+                        "author_id": {
+                            "type": "integer",
+                            "description": "The ID of the author of the article.",
+                            "example": "5017691"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "Whether the article is `published` or is a `draft` .",
+                            "enum": [
+                                "published",
+                                "draft"
+                            ],
+                            "example": "draft"
+                        },
+                        "created_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was created.",
+                            "example": 1663597223
+                        },
+                        "updated_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was last updated.",
+                            "example": 1663597260
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL of the article.",
+                            "example": "http://intercom.test/help/en/articles/3-default-language"
+                        }
+                    }
+                },
+                "ca": {
+                    "description": "The content of the article in Catalan",
+                    "title": "Article Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `article_content` .",
+                            "enum": [
+                                null,
+                                "article_content"
+                            ],
+                            "example": "article_content"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "The title of the article.",
+                            "example": "How to create a new article"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the article.",
+                            "example": "This article will show you how to create a new article."
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The body of the article.",
+                            "example": "This is the body of the article."
+                        },
+                        "author_id": {
+                            "type": "integer",
+                            "description": "The ID of the author of the article.",
+                            "example": "5017691"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "Whether the article is `published` or is a `draft` .",
+                            "enum": [
+                                "published",
+                                "draft"
+                            ],
+                            "example": "draft"
+                        },
+                        "created_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was created.",
+                            "example": 1663597223
+                        },
+                        "updated_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was last updated.",
+                            "example": 1663597260
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL of the article.",
+                            "example": "http://intercom.test/help/en/articles/3-default-language"
+                        }
+                    }
+                },
+                "cs": {
+                    "description": "The content of the article in Czech",
+                    "title": "Article Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `article_content` .",
+                            "enum": [
+                                null,
+                                "article_content"
+                            ],
+                            "example": "article_content"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "The title of the article.",
+                            "example": "How to create a new article"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the article.",
+                            "example": "This article will show you how to create a new article."
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The body of the article.",
+                            "example": "This is the body of the article."
+                        },
+                        "author_id": {
+                            "type": "integer",
+                            "description": "The ID of the author of the article.",
+                            "example": "5017691"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "Whether the article is `published` or is a `draft` .",
+                            "enum": [
+                                "published",
+                                "draft"
+                            ],
+                            "example": "draft"
+                        },
+                        "created_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was created.",
+                            "example": 1663597223
+                        },
+                        "updated_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was last updated.",
+                            "example": 1663597260
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL of the article.",
+                            "example": "http://intercom.test/help/en/articles/3-default-language"
+                        }
+                    }
+                },
+                "da": {
+                    "description": "The content of the article in Danish",
+                    "title": "Article Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `article_content` .",
+                            "enum": [
+                                null,
+                                "article_content"
+                            ],
+                            "example": "article_content"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "The title of the article.",
+                            "example": "How to create a new article"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the article.",
+                            "example": "This article will show you how to create a new article."
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The body of the article.",
+                            "example": "This is the body of the article."
+                        },
+                        "author_id": {
+                            "type": "integer",
+                            "description": "The ID of the author of the article.",
+                            "example": "5017691"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "Whether the article is `published` or is a `draft` .",
+                            "enum": [
+                                "published",
+                                "draft"
+                            ],
+                            "example": "draft"
+                        },
+                        "created_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was created.",
+                            "example": 1663597223
+                        },
+                        "updated_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was last updated.",
+                            "example": 1663597260
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL of the article.",
+                            "example": "http://intercom.test/help/en/articles/3-default-language"
+                        }
+                    }
+                },
+                "de": {
+                    "description": "The content of the article in German",
+                    "title": "Article Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `article_content` .",
+                            "enum": [
+                                null,
+                                "article_content"
+                            ],
+                            "example": "article_content"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "The title of the article.",
+                            "example": "How to create a new article"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the article.",
+                            "example": "This article will show you how to create a new article."
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The body of the article.",
+                            "example": "This is the body of the article."
+                        },
+                        "author_id": {
+                            "type": "integer",
+                            "description": "The ID of the author of the article.",
+                            "example": "5017691"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "Whether the article is `published` or is a `draft` .",
+                            "enum": [
+                                "published",
+                                "draft"
+                            ],
+                            "example": "draft"
+                        },
+                        "created_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was created.",
+                            "example": 1663597223
+                        },
+                        "updated_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was last updated.",
+                            "example": 1663597260
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL of the article.",
+                            "example": "http://intercom.test/help/en/articles/3-default-language"
+                        }
+                    }
+                },
+                "el": {
+                    "description": "The content of the article in Greek",
+                    "title": "Article Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `article_content` .",
+                            "enum": [
+                                null,
+                                "article_content"
+                            ],
+                            "example": "article_content"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "The title of the article.",
+                            "example": "How to create a new article"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the article.",
+                            "example": "This article will show you how to create a new article."
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The body of the article.",
+                            "example": "This is the body of the article."
+                        },
+                        "author_id": {
+                            "type": "integer",
+                            "description": "The ID of the author of the article.",
+                            "example": "5017691"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "Whether the article is `published` or is a `draft` .",
+                            "enum": [
+                                "published",
+                                "draft"
+                            ],
+                            "example": "draft"
+                        },
+                        "created_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was created.",
+                            "example": 1663597223
+                        },
+                        "updated_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was last updated.",
+                            "example": 1663597260
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL of the article.",
+                            "example": "http://intercom.test/help/en/articles/3-default-language"
+                        }
+                    }
+                },
+                "en": {
+                    "description": "The content of the article in English",
+                    "title": "Article Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `article_content` .",
+                            "enum": [
+                                null,
+                                "article_content"
+                            ],
+                            "example": "article_content"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "The title of the article.",
+                            "example": "How to create a new article"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the article.",
+                            "example": "This article will show you how to create a new article."
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The body of the article.",
+                            "example": "This is the body of the article."
+                        },
+                        "author_id": {
+                            "type": "integer",
+                            "description": "The ID of the author of the article.",
+                            "example": "5017691"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "Whether the article is `published` or is a `draft` .",
+                            "enum": [
+                                "published",
+                                "draft"
+                            ],
+                            "example": "draft"
+                        },
+                        "created_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was created.",
+                            "example": 1663597223
+                        },
+                        "updated_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was last updated.",
+                            "example": 1663597260
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL of the article.",
+                            "example": "http://intercom.test/help/en/articles/3-default-language"
+                        }
+                    }
+                },
+                "es": {
+                    "description": "The content of the article in Spanish",
+                    "title": "Article Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `article_content` .",
+                            "enum": [
+                                null,
+                                "article_content"
+                            ],
+                            "example": "article_content"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "The title of the article.",
+                            "example": "How to create a new article"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the article.",
+                            "example": "This article will show you how to create a new article."
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The body of the article.",
+                            "example": "This is the body of the article."
+                        },
+                        "author_id": {
+                            "type": "integer",
+                            "description": "The ID of the author of the article.",
+                            "example": "5017691"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "Whether the article is `published` or is a `draft` .",
+                            "enum": [
+                                "published",
+                                "draft"
+                            ],
+                            "example": "draft"
+                        },
+                        "created_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was created.",
+                            "example": 1663597223
+                        },
+                        "updated_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was last updated.",
+                            "example": 1663597260
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL of the article.",
+                            "example": "http://intercom.test/help/en/articles/3-default-language"
+                        }
+                    }
+                },
+                "et": {
+                    "description": "The content of the article in Estonian",
+                    "title": "Article Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `article_content` .",
+                            "enum": [
+                                null,
+                                "article_content"
+                            ],
+                            "example": "article_content"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "The title of the article.",
+                            "example": "How to create a new article"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the article.",
+                            "example": "This article will show you how to create a new article."
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The body of the article.",
+                            "example": "This is the body of the article."
+                        },
+                        "author_id": {
+                            "type": "integer",
+                            "description": "The ID of the author of the article.",
+                            "example": "5017691"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "Whether the article is `published` or is a `draft` .",
+                            "enum": [
+                                "published",
+                                "draft"
+                            ],
+                            "example": "draft"
+                        },
+                        "created_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was created.",
+                            "example": 1663597223
+                        },
+                        "updated_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was last updated.",
+                            "example": 1663597260
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL of the article.",
+                            "example": "http://intercom.test/help/en/articles/3-default-language"
+                        }
+                    }
+                },
+                "fi": {
+                    "description": "The content of the article in Finnish",
+                    "title": "Article Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `article_content` .",
+                            "enum": [
+                                null,
+                                "article_content"
+                            ],
+                            "example": "article_content"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "The title of the article.",
+                            "example": "How to create a new article"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the article.",
+                            "example": "This article will show you how to create a new article."
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The body of the article.",
+                            "example": "This is the body of the article."
+                        },
+                        "author_id": {
+                            "type": "integer",
+                            "description": "The ID of the author of the article.",
+                            "example": "5017691"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "Whether the article is `published` or is a `draft` .",
+                            "enum": [
+                                "published",
+                                "draft"
+                            ],
+                            "example": "draft"
+                        },
+                        "created_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was created.",
+                            "example": 1663597223
+                        },
+                        "updated_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was last updated.",
+                            "example": 1663597260
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL of the article.",
+                            "example": "http://intercom.test/help/en/articles/3-default-language"
+                        }
+                    }
+                },
+                "fr": {
+                    "description": "The content of the article in French",
+                    "title": "Article Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `article_content` .",
+                            "enum": [
+                                null,
+                                "article_content"
+                            ],
+                            "example": "article_content"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "The title of the article.",
+                            "example": "How to create a new article"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the article.",
+                            "example": "This article will show you how to create a new article."
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The body of the article.",
+                            "example": "This is the body of the article."
+                        },
+                        "author_id": {
+                            "type": "integer",
+                            "description": "The ID of the author of the article.",
+                            "example": "5017691"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "Whether the article is `published` or is a `draft` .",
+                            "enum": [
+                                "published",
+                                "draft"
+                            ],
+                            "example": "draft"
+                        },
+                        "created_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was created.",
+                            "example": 1663597223
+                        },
+                        "updated_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was last updated.",
+                            "example": 1663597260
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL of the article.",
+                            "example": "http://intercom.test/help/en/articles/3-default-language"
+                        }
+                    }
+                },
+                "he": {
+                    "description": "The content of the article in Hebrew",
+                    "title": "Article Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `article_content` .",
+                            "enum": [
+                                null,
+                                "article_content"
+                            ],
+                            "example": "article_content"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "The title of the article.",
+                            "example": "How to create a new article"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the article.",
+                            "example": "This article will show you how to create a new article."
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The body of the article.",
+                            "example": "This is the body of the article."
+                        },
+                        "author_id": {
+                            "type": "integer",
+                            "description": "The ID of the author of the article.",
+                            "example": "5017691"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "Whether the article is `published` or is a `draft` .",
+                            "enum": [
+                                "published",
+                                "draft"
+                            ],
+                            "example": "draft"
+                        },
+                        "created_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was created.",
+                            "example": 1663597223
+                        },
+                        "updated_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was last updated.",
+                            "example": 1663597260
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL of the article.",
+                            "example": "http://intercom.test/help/en/articles/3-default-language"
+                        }
+                    }
+                },
+                "hr": {
+                    "description": "The content of the article in Croatian",
+                    "title": "Article Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `article_content` .",
+                            "enum": [
+                                null,
+                                "article_content"
+                            ],
+                            "example": "article_content"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "The title of the article.",
+                            "example": "How to create a new article"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the article.",
+                            "example": "This article will show you how to create a new article."
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The body of the article.",
+                            "example": "This is the body of the article."
+                        },
+                        "author_id": {
+                            "type": "integer",
+                            "description": "The ID of the author of the article.",
+                            "example": "5017691"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "Whether the article is `published` or is a `draft` .",
+                            "enum": [
+                                "published",
+                                "draft"
+                            ],
+                            "example": "draft"
+                        },
+                        "created_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was created.",
+                            "example": 1663597223
+                        },
+                        "updated_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was last updated.",
+                            "example": 1663597260
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL of the article.",
+                            "example": "http://intercom.test/help/en/articles/3-default-language"
+                        }
+                    }
+                },
+                "hu": {
+                    "description": "The content of the article in Hungarian",
+                    "title": "Article Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `article_content` .",
+                            "enum": [
+                                null,
+                                "article_content"
+                            ],
+                            "example": "article_content"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "The title of the article.",
+                            "example": "How to create a new article"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the article.",
+                            "example": "This article will show you how to create a new article."
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The body of the article.",
+                            "example": "This is the body of the article."
+                        },
+                        "author_id": {
+                            "type": "integer",
+                            "description": "The ID of the author of the article.",
+                            "example": "5017691"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "Whether the article is `published` or is a `draft` .",
+                            "enum": [
+                                "published",
+                                "draft"
+                            ],
+                            "example": "draft"
+                        },
+                        "created_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was created.",
+                            "example": 1663597223
+                        },
+                        "updated_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was last updated.",
+                            "example": 1663597260
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL of the article.",
+                            "example": "http://intercom.test/help/en/articles/3-default-language"
+                        }
+                    }
+                },
+                "id": {
+                    "description": "The content of the article in Indonesian",
+                    "title": "Article Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `article_content` .",
+                            "enum": [
+                                null,
+                                "article_content"
+                            ],
+                            "example": "article_content"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "The title of the article.",
+                            "example": "How to create a new article"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the article.",
+                            "example": "This article will show you how to create a new article."
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The body of the article.",
+                            "example": "This is the body of the article."
+                        },
+                        "author_id": {
+                            "type": "integer",
+                            "description": "The ID of the author of the article.",
+                            "example": "5017691"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "Whether the article is `published` or is a `draft` .",
+                            "enum": [
+                                "published",
+                                "draft"
+                            ],
+                            "example": "draft"
+                        },
+                        "created_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was created.",
+                            "example": 1663597223
+                        },
+                        "updated_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was last updated.",
+                            "example": 1663597260
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL of the article.",
+                            "example": "http://intercom.test/help/en/articles/3-default-language"
+                        }
+                    }
+                },
+                "it": {
+                    "description": "The content of the article in Italian",
+                    "title": "Article Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `article_content` .",
+                            "enum": [
+                                null,
+                                "article_content"
+                            ],
+                            "example": "article_content"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "The title of the article.",
+                            "example": "How to create a new article"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the article.",
+                            "example": "This article will show you how to create a new article."
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The body of the article.",
+                            "example": "This is the body of the article."
+                        },
+                        "author_id": {
+                            "type": "integer",
+                            "description": "The ID of the author of the article.",
+                            "example": "5017691"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "Whether the article is `published` or is a `draft` .",
+                            "enum": [
+                                "published",
+                                "draft"
+                            ],
+                            "example": "draft"
+                        },
+                        "created_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was created.",
+                            "example": 1663597223
+                        },
+                        "updated_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was last updated.",
+                            "example": 1663597260
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL of the article.",
+                            "example": "http://intercom.test/help/en/articles/3-default-language"
+                        }
+                    }
+                },
+                "ja": {
+                    "description": "The content of the article in Japanese",
+                    "title": "Article Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `article_content` .",
+                            "enum": [
+                                null,
+                                "article_content"
+                            ],
+                            "example": "article_content"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "The title of the article.",
+                            "example": "How to create a new article"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the article.",
+                            "example": "This article will show you how to create a new article."
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The body of the article.",
+                            "example": "This is the body of the article."
+                        },
+                        "author_id": {
+                            "type": "integer",
+                            "description": "The ID of the author of the article.",
+                            "example": "5017691"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "Whether the article is `published` or is a `draft` .",
+                            "enum": [
+                                "published",
+                                "draft"
+                            ],
+                            "example": "draft"
+                        },
+                        "created_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was created.",
+                            "example": 1663597223
+                        },
+                        "updated_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was last updated.",
+                            "example": 1663597260
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL of the article.",
+                            "example": "http://intercom.test/help/en/articles/3-default-language"
+                        }
+                    }
+                },
+                "ko": {
+                    "description": "The content of the article in Korean",
+                    "title": "Article Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `article_content` .",
+                            "enum": [
+                                null,
+                                "article_content"
+                            ],
+                            "example": "article_content"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "The title of the article.",
+                            "example": "How to create a new article"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the article.",
+                            "example": "This article will show you how to create a new article."
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The body of the article.",
+                            "example": "This is the body of the article."
+                        },
+                        "author_id": {
+                            "type": "integer",
+                            "description": "The ID of the author of the article.",
+                            "example": "5017691"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "Whether the article is `published` or is a `draft` .",
+                            "enum": [
+                                "published",
+                                "draft"
+                            ],
+                            "example": "draft"
+                        },
+                        "created_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was created.",
+                            "example": 1663597223
+                        },
+                        "updated_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was last updated.",
+                            "example": 1663597260
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL of the article.",
+                            "example": "http://intercom.test/help/en/articles/3-default-language"
+                        }
+                    }
+                },
+                "lt": {
+                    "description": "The content of the article in Lithuanian",
+                    "title": "Article Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `article_content` .",
+                            "enum": [
+                                null,
+                                "article_content"
+                            ],
+                            "example": "article_content"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "The title of the article.",
+                            "example": "How to create a new article"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the article.",
+                            "example": "This article will show you how to create a new article."
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The body of the article.",
+                            "example": "This is the body of the article."
+                        },
+                        "author_id": {
+                            "type": "integer",
+                            "description": "The ID of the author of the article.",
+                            "example": "5017691"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "Whether the article is `published` or is a `draft` .",
+                            "enum": [
+                                "published",
+                                "draft"
+                            ],
+                            "example": "draft"
+                        },
+                        "created_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was created.",
+                            "example": 1663597223
+                        },
+                        "updated_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was last updated.",
+                            "example": 1663597260
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL of the article.",
+                            "example": "http://intercom.test/help/en/articles/3-default-language"
+                        }
+                    }
+                },
+                "lv": {
+                    "description": "The content of the article in Latvian",
+                    "title": "Article Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `article_content` .",
+                            "enum": [
+                                null,
+                                "article_content"
+                            ],
+                            "example": "article_content"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "The title of the article.",
+                            "example": "How to create a new article"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the article.",
+                            "example": "This article will show you how to create a new article."
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The body of the article.",
+                            "example": "This is the body of the article."
+                        },
+                        "author_id": {
+                            "type": "integer",
+                            "description": "The ID of the author of the article.",
+                            "example": "5017691"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "Whether the article is `published` or is a `draft` .",
+                            "enum": [
+                                "published",
+                                "draft"
+                            ],
+                            "example": "draft"
+                        },
+                        "created_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was created.",
+                            "example": 1663597223
+                        },
+                        "updated_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was last updated.",
+                            "example": 1663597260
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL of the article.",
+                            "example": "http://intercom.test/help/en/articles/3-default-language"
+                        }
+                    }
+                },
+                "mn": {
+                    "description": "The content of the article in Mongolian",
+                    "title": "Article Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `article_content` .",
+                            "enum": [
+                                null,
+                                "article_content"
+                            ],
+                            "example": "article_content"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "The title of the article.",
+                            "example": "How to create a new article"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the article.",
+                            "example": "This article will show you how to create a new article."
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The body of the article.",
+                            "example": "This is the body of the article."
+                        },
+                        "author_id": {
+                            "type": "integer",
+                            "description": "The ID of the author of the article.",
+                            "example": "5017691"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "Whether the article is `published` or is a `draft` .",
+                            "enum": [
+                                "published",
+                                "draft"
+                            ],
+                            "example": "draft"
+                        },
+                        "created_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was created.",
+                            "example": 1663597223
+                        },
+                        "updated_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was last updated.",
+                            "example": 1663597260
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL of the article.",
+                            "example": "http://intercom.test/help/en/articles/3-default-language"
+                        }
+                    }
+                },
+                "nb": {
+                    "description": "The content of the article in Norwegian",
+                    "title": "Article Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `article_content` .",
+                            "enum": [
+                                null,
+                                "article_content"
+                            ],
+                            "example": "article_content"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "The title of the article.",
+                            "example": "How to create a new article"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the article.",
+                            "example": "This article will show you how to create a new article."
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The body of the article.",
+                            "example": "This is the body of the article."
+                        },
+                        "author_id": {
+                            "type": "integer",
+                            "description": "The ID of the author of the article.",
+                            "example": "5017691"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "Whether the article is `published` or is a `draft` .",
+                            "enum": [
+                                "published",
+                                "draft"
+                            ],
+                            "example": "draft"
+                        },
+                        "created_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was created.",
+                            "example": 1663597223
+                        },
+                        "updated_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was last updated.",
+                            "example": 1663597260
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL of the article.",
+                            "example": "http://intercom.test/help/en/articles/3-default-language"
+                        }
+                    }
+                },
+                "nl": {
+                    "description": "The content of the article in Dutch",
+                    "title": "Article Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `article_content` .",
+                            "enum": [
+                                null,
+                                "article_content"
+                            ],
+                            "example": "article_content"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "The title of the article.",
+                            "example": "How to create a new article"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the article.",
+                            "example": "This article will show you how to create a new article."
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The body of the article.",
+                            "example": "This is the body of the article."
+                        },
+                        "author_id": {
+                            "type": "integer",
+                            "description": "The ID of the author of the article.",
+                            "example": "5017691"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "Whether the article is `published` or is a `draft` .",
+                            "enum": [
+                                "published",
+                                "draft"
+                            ],
+                            "example": "draft"
+                        },
+                        "created_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was created.",
+                            "example": 1663597223
+                        },
+                        "updated_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was last updated.",
+                            "example": 1663597260
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL of the article.",
+                            "example": "http://intercom.test/help/en/articles/3-default-language"
+                        }
+                    }
+                },
+                "pl": {
+                    "description": "The content of the article in Polish",
+                    "title": "Article Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `article_content` .",
+                            "enum": [
+                                null,
+                                "article_content"
+                            ],
+                            "example": "article_content"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "The title of the article.",
+                            "example": "How to create a new article"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the article.",
+                            "example": "This article will show you how to create a new article."
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The body of the article.",
+                            "example": "This is the body of the article."
+                        },
+                        "author_id": {
+                            "type": "integer",
+                            "description": "The ID of the author of the article.",
+                            "example": "5017691"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "Whether the article is `published` or is a `draft` .",
+                            "enum": [
+                                "published",
+                                "draft"
+                            ],
+                            "example": "draft"
+                        },
+                        "created_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was created.",
+                            "example": 1663597223
+                        },
+                        "updated_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was last updated.",
+                            "example": 1663597260
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL of the article.",
+                            "example": "http://intercom.test/help/en/articles/3-default-language"
+                        }
+                    }
+                },
+                "pt": {
+                    "description": "The content of the article in Portuguese (Portugal)",
+                    "title": "Article Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `article_content` .",
+                            "enum": [
+                                null,
+                                "article_content"
+                            ],
+                            "example": "article_content"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "The title of the article.",
+                            "example": "How to create a new article"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the article.",
+                            "example": "This article will show you how to create a new article."
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The body of the article.",
+                            "example": "This is the body of the article."
+                        },
+                        "author_id": {
+                            "type": "integer",
+                            "description": "The ID of the author of the article.",
+                            "example": "5017691"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "Whether the article is `published` or is a `draft` .",
+                            "enum": [
+                                "published",
+                                "draft"
+                            ],
+                            "example": "draft"
+                        },
+                        "created_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was created.",
+                            "example": 1663597223
+                        },
+                        "updated_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was last updated.",
+                            "example": 1663597260
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL of the article.",
+                            "example": "http://intercom.test/help/en/articles/3-default-language"
+                        }
+                    }
+                },
+                "ro": {
+                    "description": "The content of the article in Romanian",
+                    "title": "Article Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `article_content` .",
+                            "enum": [
+                                null,
+                                "article_content"
+                            ],
+                            "example": "article_content"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "The title of the article.",
+                            "example": "How to create a new article"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the article.",
+                            "example": "This article will show you how to create a new article."
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The body of the article.",
+                            "example": "This is the body of the article."
+                        },
+                        "author_id": {
+                            "type": "integer",
+                            "description": "The ID of the author of the article.",
+                            "example": "5017691"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "Whether the article is `published` or is a `draft` .",
+                            "enum": [
+                                "published",
+                                "draft"
+                            ],
+                            "example": "draft"
+                        },
+                        "created_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was created.",
+                            "example": 1663597223
+                        },
+                        "updated_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was last updated.",
+                            "example": 1663597260
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL of the article.",
+                            "example": "http://intercom.test/help/en/articles/3-default-language"
+                        }
+                    }
+                },
+                "ru": {
+                    "description": "The content of the article in Russian",
+                    "title": "Article Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `article_content` .",
+                            "enum": [
+                                null,
+                                "article_content"
+                            ],
+                            "example": "article_content"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "The title of the article.",
+                            "example": "How to create a new article"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the article.",
+                            "example": "This article will show you how to create a new article."
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The body of the article.",
+                            "example": "This is the body of the article."
+                        },
+                        "author_id": {
+                            "type": "integer",
+                            "description": "The ID of the author of the article.",
+                            "example": "5017691"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "Whether the article is `published` or is a `draft` .",
+                            "enum": [
+                                "published",
+                                "draft"
+                            ],
+                            "example": "draft"
+                        },
+                        "created_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was created.",
+                            "example": 1663597223
+                        },
+                        "updated_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was last updated.",
+                            "example": 1663597260
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL of the article.",
+                            "example": "http://intercom.test/help/en/articles/3-default-language"
+                        }
+                    }
+                },
+                "sl": {
+                    "description": "The content of the article in Slovenian",
+                    "title": "Article Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `article_content` .",
+                            "enum": [
+                                null,
+                                "article_content"
+                            ],
+                            "example": "article_content"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "The title of the article.",
+                            "example": "How to create a new article"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the article.",
+                            "example": "This article will show you how to create a new article."
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The body of the article.",
+                            "example": "This is the body of the article."
+                        },
+                        "author_id": {
+                            "type": "integer",
+                            "description": "The ID of the author of the article.",
+                            "example": "5017691"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "Whether the article is `published` or is a `draft` .",
+                            "enum": [
+                                "published",
+                                "draft"
+                            ],
+                            "example": "draft"
+                        },
+                        "created_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was created.",
+                            "example": 1663597223
+                        },
+                        "updated_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was last updated.",
+                            "example": 1663597260
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL of the article.",
+                            "example": "http://intercom.test/help/en/articles/3-default-language"
+                        }
+                    }
+                },
+                "sr": {
+                    "description": "The content of the article in Serbian",
+                    "title": "Article Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `article_content` .",
+                            "enum": [
+                                null,
+                                "article_content"
+                            ],
+                            "example": "article_content"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "The title of the article.",
+                            "example": "How to create a new article"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the article.",
+                            "example": "This article will show you how to create a new article."
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The body of the article.",
+                            "example": "This is the body of the article."
+                        },
+                        "author_id": {
+                            "type": "integer",
+                            "description": "The ID of the author of the article.",
+                            "example": "5017691"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "Whether the article is `published` or is a `draft` .",
+                            "enum": [
+                                "published",
+                                "draft"
+                            ],
+                            "example": "draft"
+                        },
+                        "created_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was created.",
+                            "example": 1663597223
+                        },
+                        "updated_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was last updated.",
+                            "example": 1663597260
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL of the article.",
+                            "example": "http://intercom.test/help/en/articles/3-default-language"
+                        }
+                    }
+                },
+                "sv": {
+                    "description": "The content of the article in Swedish",
+                    "title": "Article Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `article_content` .",
+                            "enum": [
+                                null,
+                                "article_content"
+                            ],
+                            "example": "article_content"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "The title of the article.",
+                            "example": "How to create a new article"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the article.",
+                            "example": "This article will show you how to create a new article."
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The body of the article.",
+                            "example": "This is the body of the article."
+                        },
+                        "author_id": {
+                            "type": "integer",
+                            "description": "The ID of the author of the article.",
+                            "example": "5017691"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "Whether the article is `published` or is a `draft` .",
+                            "enum": [
+                                "published",
+                                "draft"
+                            ],
+                            "example": "draft"
+                        },
+                        "created_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was created.",
+                            "example": 1663597223
+                        },
+                        "updated_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was last updated.",
+                            "example": 1663597260
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL of the article.",
+                            "example": "http://intercom.test/help/en/articles/3-default-language"
+                        }
+                    }
+                },
+                "tr": {
+                    "description": "The content of the article in Turkish",
+                    "title": "Article Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `article_content` .",
+                            "enum": [
+                                null,
+                                "article_content"
+                            ],
+                            "example": "article_content"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "The title of the article.",
+                            "example": "How to create a new article"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the article.",
+                            "example": "This article will show you how to create a new article."
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The body of the article.",
+                            "example": "This is the body of the article."
+                        },
+                        "author_id": {
+                            "type": "integer",
+                            "description": "The ID of the author of the article.",
+                            "example": "5017691"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "Whether the article is `published` or is a `draft` .",
+                            "enum": [
+                                "published",
+                                "draft"
+                            ],
+                            "example": "draft"
+                        },
+                        "created_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was created.",
+                            "example": 1663597223
+                        },
+                        "updated_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was last updated.",
+                            "example": 1663597260
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL of the article.",
+                            "example": "http://intercom.test/help/en/articles/3-default-language"
+                        }
+                    }
+                },
+                "vi": {
+                    "description": "The content of the article in Vietnamese",
+                    "title": "Article Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `article_content` .",
+                            "enum": [
+                                null,
+                                "article_content"
+                            ],
+                            "example": "article_content"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "The title of the article.",
+                            "example": "How to create a new article"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the article.",
+                            "example": "This article will show you how to create a new article."
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The body of the article.",
+                            "example": "This is the body of the article."
+                        },
+                        "author_id": {
+                            "type": "integer",
+                            "description": "The ID of the author of the article.",
+                            "example": "5017691"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "Whether the article is `published` or is a `draft` .",
+                            "enum": [
+                                "published",
+                                "draft"
+                            ],
+                            "example": "draft"
+                        },
+                        "created_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was created.",
+                            "example": 1663597223
+                        },
+                        "updated_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was last updated.",
+                            "example": 1663597260
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL of the article.",
+                            "example": "http://intercom.test/help/en/articles/3-default-language"
+                        }
+                    }
+                },
+                "pt-BR": {
+                    "description": "The content of the article in Portuguese (Brazil)",
+                    "title": "Article Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `article_content` .",
+                            "enum": [
+                                null,
+                                "article_content"
+                            ],
+                            "example": "article_content"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "The title of the article.",
+                            "example": "How to create a new article"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the article.",
+                            "example": "This article will show you how to create a new article."
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The body of the article.",
+                            "example": "This is the body of the article."
+                        },
+                        "author_id": {
+                            "type": "integer",
+                            "description": "The ID of the author of the article.",
+                            "example": "5017691"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "Whether the article is `published` or is a `draft` .",
+                            "enum": [
+                                "published",
+                                "draft"
+                            ],
+                            "example": "draft"
+                        },
+                        "created_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was created.",
+                            "example": 1663597223
+                        },
+                        "updated_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was last updated.",
+                            "example": 1663597260
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL of the article.",
+                            "example": "http://intercom.test/help/en/articles/3-default-language"
+                        }
+                    }
+                },
+                "zh-CN": {
+                    "description": "The content of the article in Chinese (China)",
+                    "title": "Article Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `article_content` .",
+                            "enum": [
+                                null,
+                                "article_content"
+                            ],
+                            "example": "article_content"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "The title of the article.",
+                            "example": "How to create a new article"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the article.",
+                            "example": "This article will show you how to create a new article."
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The body of the article.",
+                            "example": "This is the body of the article."
+                        },
+                        "author_id": {
+                            "type": "integer",
+                            "description": "The ID of the author of the article.",
+                            "example": "5017691"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "Whether the article is `published` or is a `draft` .",
+                            "enum": [
+                                "published",
+                                "draft"
+                            ],
+                            "example": "draft"
+                        },
+                        "created_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was created.",
+                            "example": 1663597223
+                        },
+                        "updated_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was last updated.",
+                            "example": 1663597260
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL of the article.",
+                            "example": "http://intercom.test/help/en/articles/3-default-language"
+                        }
+                    }
+                },
+                "zh-TW": {
+                    "description": "The content of the article in Chinese (Taiwan)",
+                    "title": "Article Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `article_content` .",
+                            "enum": [
+                                null,
+                                "article_content"
+                            ],
+                            "example": "article_content"
+                        },
+                        "title": {
+                            "type": "string",
+                            "description": "The title of the article.",
+                            "example": "How to create a new article"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the article.",
+                            "example": "This article will show you how to create a new article."
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The body of the article.",
+                            "example": "This is the body of the article."
+                        },
+                        "author_id": {
+                            "type": "integer",
+                            "description": "The ID of the author of the article.",
+                            "example": "5017691"
+                        },
+                        "state": {
+                            "type": "string",
+                            "description": "Whether the article is `published` or is a `draft` .",
+                            "enum": [
+                                "published",
+                                "draft"
+                            ],
+                            "example": "draft"
+                        },
+                        "created_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was created.",
+                            "example": 1663597223
+                        },
+                        "updated_at": {
+                            "type": "integer",
+                            "format": "date-time",
+                            "description": "The time when the article was last updated.",
+                            "example": 1663597260
+                        },
+                        "url": {
+                            "type": "string",
+                            "description": "The URL of the article.",
+                            "example": "http://intercom.test/help/en/articles/3-default-language"
+                        }
+                    }
+                }
+            }
+        },
+        "statistics": {
+            "nullable": true,
+            "title": "Article Statistics",
+            "type": "object",
+            "description": "The statistics of an article.",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "The type of object - `article_statistics`.",
+                    "enum": [
+                        "article_statistics"
+                    ],
+                    "default": "article_statistics",
+                    "example": "article_statistics"
+                },
+                "views": {
+                    "type": "integer",
+                    "description": "The number of total views the article has received.",
+                    "example": 10
+                },
+                "conversions": {
+                    "type": "integer",
+                    "description": "The number of conversations started from the article.",
+                    "example": 0
+                },
+                "reactions": {
+                    "type": "integer",
+                    "description": "The number of total reactions the article has received.",
+                    "example": 10
+                },
+                "happy_reaction_precentage": {
+                    "type": "integer",
+                    "description": "The percentage of happy reactions the article has received against other types of reaction.",
+                    "example": 40
+                },
+                "netural_reaction_precentage": {
+                    "type": "integer",
+                    "description": "The percentage of neutral reactions the article has received against other types of reaction.",
+                    "example": 40
+                },
+                "sad_reaction_precentage": {
+                    "type": "integer",
+                    "description": "The percentage of sad reactions the article has received against other types of reaction.",
+                    "example": 20
+                }
+            }
+        }
+    }
+}

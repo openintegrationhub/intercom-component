@@ -1,0 +1,81 @@
+{
+    "title": "Team List",
+    "type": "object",
+    "description": "This will return a list of team objects for the App.",
+    "properties": {
+        "type": {
+            "type": "string",
+            "description": "The type of the object",
+            "enum": [
+                "team.list"
+            ],
+            "example": "team.list"
+        },
+        "teams": {
+            "type": "array",
+            "description": "A list of team objects",
+            "items": {
+                "title": "Team",
+                "type": "object",
+                "description": "Teams are groups of admins in Intercom.",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "description": "Value is always \"team\"",
+                        "example": "team"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The id of the team",
+                        "example": "814865"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the team",
+                        "example": "Example Team"
+                    },
+                    "admin_ids": {
+                        "type": "array",
+                        "description": "The list of admin IDs that are a part of the team.",
+                        "example": [
+                            493881
+                        ],
+                        "items": {
+                            "type": "integer"
+                        }
+                    },
+                    "admin_priority_level": {
+                        "title": "Admin Priority Level",
+                        "type": "object",
+                        "nullable": true,
+                        "description": "Admin priority levels for the team",
+                        "properties": {
+                            "primary_admin_ids": {
+                                "type": "array",
+                                "description": "The primary admin ids for the team",
+                                "nullable": true,
+                                "example": [
+                                    493881
+                                ],
+                                "items": {
+                                    "type": "integer"
+                                }
+                            },
+                            "secondary_admin_ids": {
+                                "type": "array",
+                                "description": "The secondary admin ids for the team",
+                                "nullable": true,
+                                "example": [
+                                    814865
+                                ],
+                                "items": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

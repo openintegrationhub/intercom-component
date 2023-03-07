@@ -1,0 +1,247 @@
+{
+    "title": "Company",
+    "type": "object",
+    "description": "Companies allow you to represent organizations using your product. Each company will have its own description and be associated with contacts. You can fetch, create, update and list companies.",
+    "properties": {
+        "type": {
+            "type": "string",
+            "description": "Value is `company`",
+            "enum": [
+                "company"
+            ],
+            "example": "company"
+        },
+        "id": {
+            "type": "string",
+            "description": "The Intercom defined id representing the company.",
+            "example": "531ee472cce572a6ec000006"
+        },
+        "name": {
+            "type": "string",
+            "description": "The name of the company.",
+            "example": "Blue Sun"
+        },
+        "app_id": {
+            "type": "string",
+            "description": "The Intercom defined code of the workspace the company is associated to.",
+            "example": "ecahpwf5"
+        },
+        "plan": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "Value is always \"plan\"",
+                    "example": "plan"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The id of the plan",
+                    "example": "269315"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the plan",
+                    "example": "Pro"
+                }
+            }
+        },
+        "company_id": {
+            "type": "string",
+            "description": "The company id you have defined for the company.",
+            "example": "6"
+        },
+        "remote_created_at": {
+            "type": "integer",
+            "description": "The time the company was created by you.",
+            "example": 1663597223
+        },
+        "created_at": {
+            "type": "integer",
+            "description": "The time the company was added in Intercom.",
+            "example": 1663597223
+        },
+        "updated_at": {
+            "type": "integer",
+            "description": "The last time the company was updated.",
+            "example": 1663597223
+        },
+        "last_request_at": {
+            "type": "integer",
+            "description": "The time the company last recorded making a request.",
+            "example": 1663597223
+        },
+        "size": {
+            "type": "integer",
+            "description": "The number of employees in the company.",
+            "example": 100
+        },
+        "website": {
+            "type": "string",
+            "description": "The URL for the company website.",
+            "example": "https://www.intercom.com"
+        },
+        "industry": {
+            "type": "string",
+            "description": "The industry that the company operates in.",
+            "example": "Software"
+        },
+        "monthly_spend": {
+            "type": "integer",
+            "description": "How much revenue the company generates for your business.",
+            "example": 100
+        },
+        "session_count": {
+            "type": "integer",
+            "description": "How many sessions the company has recorded.",
+            "example": 100
+        },
+        "user_count": {
+            "type": "integer",
+            "description": "The number of users in the company.",
+            "example": 100
+        },
+        "custom_attributes": {
+            "type": "object",
+            "description": "The custom attributes you have set on the company.",
+            "additionalProperties": {
+                "type": "string"
+            },
+            "example": {
+                "paid_subscriber": true,
+                "monthly_spend": 155.5,
+                "team_mates": 9
+            }
+        },
+        "tags": {
+            "type": "object",
+            "description": "The list of tags associated with the company",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "The type of the object",
+                    "enum": [
+                        "tag.list"
+                    ]
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "items": {
+                            "title": "Tag",
+                            "type": "object",
+                            "description": "A tag allows you to label your contacts, companies, and conversations and list them using that tag.",
+                            "properties": {
+                                "type": {
+                                    "type": "string",
+                                    "description": "value is \"tag\"",
+                                    "example": "tag"
+                                },
+                                "id": {
+                                    "type": "string",
+                                    "description": "The id of the tag",
+                                    "example": "123456"
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "description": "The name of the tag",
+                                    "example": "Test tag"
+                                },
+                                "applied_at": {
+                                    "type": "integer",
+                                    "format": "date-time",
+                                    "description": "The time when the tag was applied to the object",
+                                    "example": 1663597223
+                                },
+                                "applied_by": {
+                                    "title": "Reference",
+                                    "type": "object",
+                                    "description": "reference to another object",
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "description": "",
+                                            "example": "contact"
+                                        },
+                                        "id": {
+                                            "type": "string",
+                                            "nullable": true,
+                                            "description": "",
+                                            "example": "1a2b3c"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "segments": {
+            "type": "object",
+            "description": "The list of segments associated with the company",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "The type of the object",
+                    "enum": [
+                        "segment.list"
+                    ]
+                },
+                "segments": {
+                    "type": "array",
+                    "items": {
+                        "title": "Segment",
+                        "type": "object",
+                        "description": "A segment is a group of your contacts defined by the rules that you set.",
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "description": "The type of object.",
+                                "enum": [
+                                    "segment"
+                                ],
+                                "example": "segment"
+                            },
+                            "id": {
+                                "type": "string",
+                                "description": "The unique identifier representing the segment.",
+                                "example": "56203d253cba154d39010062"
+                            },
+                            "name": {
+                                "type": "string",
+                                "description": "The name of the segment.",
+                                "example": "Active"
+                            },
+                            "created_at": {
+                                "type": "integer",
+                                "description": "The time the segment was created.",
+                                "example": 1394621988
+                            },
+                            "updated_at": {
+                                "type": "integer",
+                                "description": "The time the segment was updated.",
+                                "example": 1394622004
+                            },
+                            "person_type": {
+                                "type": "string",
+                                "description": "Type of the contact: contact (lead) or user.",
+                                "enum": [
+                                    "contact",
+                                    "user"
+                                ],
+                                "example": "contact"
+                            },
+                            "count": {
+                                "type": "integer",
+                                "description": "The number of items in the user segment. It's returned when `include_count=true` is included in the request.",
+                                "example": 3,
+                                "nullable": true
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

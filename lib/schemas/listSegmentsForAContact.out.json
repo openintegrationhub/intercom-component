@@ -1,0 +1,69 @@
+{
+    "title": "Segments",
+    "type": "object",
+    "description": "A list of segments objects attached to a specific contact.",
+    "properties": {
+        "type": {
+            "type": "string",
+            "description": "The type of the object",
+            "enum": [
+                "list"
+            ],
+            "example": "list"
+        },
+        "data": {
+            "type": "array",
+            "description": "Segment objects associated with the contact.",
+            "items": {
+                "title": "Segment",
+                "type": "object",
+                "description": "A segment is a group of your contacts defined by the rules that you set.",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "description": "The type of object.",
+                        "enum": [
+                            "segment"
+                        ],
+                        "example": "segment"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The unique identifier representing the segment.",
+                        "example": "56203d253cba154d39010062"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the segment.",
+                        "example": "Active"
+                    },
+                    "created_at": {
+                        "type": "integer",
+                        "description": "The time the segment was created.",
+                        "example": 1394621988
+                    },
+                    "updated_at": {
+                        "type": "integer",
+                        "description": "The time the segment was updated.",
+                        "example": 1394622004
+                    },
+                    "person_type": {
+                        "type": "string",
+                        "description": "Type of the contact: contact (lead) or user.",
+                        "enum": [
+                            "contact",
+                            "user"
+                        ],
+                        "example": "contact"
+                    },
+                    "count": {
+                        "type": "integer",
+                        "description": "The number of items in the user segment. It's returned when `include_count=true` is included in the request.",
+                        "example": 3,
+                        "nullable": true
+                    }
+                }
+            }
+        }
+    }
+}

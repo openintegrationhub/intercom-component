@@ -1,0 +1,127 @@
+{
+    "title": "Admin",
+    "type": "object",
+    "description": "Admins are the teammate accounts that have access to a workspace",
+    "nullable": true,
+    "properties": {
+        "type": {
+            "type": "string",
+            "description": "String representing the object's type. Always has the value `admin`.",
+            "example": "admin"
+        },
+        "id": {
+            "type": "string",
+            "description": "The id representing the admin.",
+            "example": "1295"
+        },
+        "name": {
+            "type": "string",
+            "description": "The name of the admin.",
+            "example": "Hoban Washburne"
+        },
+        "email": {
+            "type": "string",
+            "description": "The email of the admin.",
+            "example": "wash@serenity.io"
+        },
+        "job_title": {
+            "type": "string",
+            "description": "The job title of the admin.",
+            "example": "Philosopher"
+        },
+        "away_mode_enabled": {
+            "type": "boolean",
+            "description": "Identifies if this admin is currently set in away mode.",
+            "example": false
+        },
+        "away_mode_reassign": {
+            "type": "boolean",
+            "description": "Identifies if this admin is set to automatically reassign new conversations to the apps default inbox.",
+            "example": false
+        },
+        "has_inbox_seat": {
+            "type": "boolean",
+            "description": "Identifies if this admin has a paid inbox seat to restrict/allow features that require them.",
+            "example": true
+        },
+        "team_ids": {
+            "type": "array",
+            "description": "This is a list of ids of the teams that this admin is part of.",
+            "example": [
+                814865
+            ],
+            "items": {
+                "type": "integer"
+            }
+        },
+        "avatar": {
+            "type": "object",
+            "description": "This object represents the avatar associated with the admin.",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "This is a string that identifies the type of the object. It will always have the value `avatar`.",
+                    "default": "avatar",
+                    "example": "avatar"
+                },
+                "image_url": {
+                    "type": "string",
+                    "format": "uri",
+                    "nullable": true,
+                    "description": "This object represents the avatar associated with the admin.",
+                    "example": "https://example.com/avatar.png"
+                }
+            }
+        },
+        "email_verified": {
+            "type": "boolean",
+            "description": "Identifies if this admin's email is verified.",
+            "nullable": true,
+            "example": true
+        },
+        "app": {
+            "nullable": true,
+            "description": "App that the admin belongs to.",
+            "title": "App",
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "",
+                    "default": "app",
+                    "example": "app"
+                },
+                "id_code": {
+                    "type": "string",
+                    "description": "The id of the app.",
+                    "example": "xyz789"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the app.",
+                    "example": "ACME"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The Intercom region the app is located in.",
+                    "example": "US"
+                },
+                "timezone": {
+                    "type": "string",
+                    "description": "The timezone of the region where the app is located.",
+                    "example": "America/Los_Angeles"
+                },
+                "created_at": {
+                    "type": "integer",
+                    "description": "When the app was created.",
+                    "example": 1671465577
+                },
+                "identity_verification": {
+                    "type": "boolean",
+                    "description": "Whether or not the app uses identity verification.",
+                    "example": false
+                }
+            }
+        }
+    }
+}

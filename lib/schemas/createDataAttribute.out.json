@@ -1,0 +1,110 @@
+{
+    "title": "Data Attribute",
+    "type": "object",
+    "description": "Data Attributes are metadata used to describe your contact, company and conversation models. These include standard and custom attributes. By using the data attributes endpoint, you can get the global list of attributes for your workspace, as well as create and archive custom attributes.",
+    "properties": {
+        "type": {
+            "type": "string",
+            "description": "Value is `data_attribute`.",
+            "enum": [
+                "data_attribute"
+            ],
+            "example": "data_attribute"
+        },
+        "id": {
+            "type": "integer",
+            "description": "The unique identifier for the data attribute which is given by Intercom. Only available for custom attributes.",
+            "example": 12878
+        },
+        "model": {
+            "type": "string",
+            "description": "Value is `contact` for user/lead attributes, `company` for company attributes and `conversation` for conversation attributes..",
+            "enum": [
+                "contact",
+                "company",
+                "conversation"
+            ],
+            "example": "contact"
+        },
+        "name": {
+            "type": "string",
+            "description": "Name of the attribute.",
+            "example": "paid_subscriber"
+        },
+        "full_name": {
+            "type": "string",
+            "description": "Full name of the attribute. Should match the name unless it's a nested attribute. We can split full_name on `.` to access nested user object values.",
+            "example": "custom_attributes.paid_subscriber"
+        },
+        "label": {
+            "type": "string",
+            "description": "Readable name of the attribute (i.e. name you see in the UI)",
+            "example": "Paid Subscriber"
+        },
+        "description": {
+            "type": "string",
+            "description": "Readable description of the attribute.",
+            "example": "Whether the user is a paid subscriber."
+        },
+        "data_type": {
+            "type": "string",
+            "description": "The data type of the attribute.",
+            "enum": [
+                "string",
+                "integer",
+                "float",
+                "boolean",
+                "date"
+            ],
+            "example": "boolean"
+        },
+        "options": {
+            "type": "array",
+            "description": "List of predefined options for attribute value.",
+            "items": {
+                "type": "string"
+            },
+            "example": [
+                "true",
+                "false"
+            ]
+        },
+        "api_writable": {
+            "type": "boolean",
+            "description": "Can this attribute be updated through API",
+            "example": true
+        },
+        "ui_writable": {
+            "type": "boolean",
+            "description": "Can this attribute be updated in the UI",
+            "example": true
+        },
+        "custom": {
+            "type": "boolean",
+            "description": "Set to true if this is a CDA",
+            "example": true
+        },
+        "archived": {
+            "type": "boolean",
+            "description": "Is this attribute archived. (Only applicable to CDAs)",
+            "example": false
+        },
+        "created_at": {
+            "type": "integer",
+            "format": "date-time",
+            "description": "The time the attribute was created as a UTC Unix timestamp",
+            "example": 1671028894
+        },
+        "updated_at": {
+            "type": "integer",
+            "format": "date-time",
+            "description": "The time the attribute was last updated as a UTC Unix timestamp",
+            "example": 1671028894
+        },
+        "admin_id": {
+            "type": "string",
+            "description": "Teammate who created the attribute. Only applicable to CDAs",
+            "example": "5712945"
+        }
+    }
+}

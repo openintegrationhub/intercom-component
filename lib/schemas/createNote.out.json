@@ -1,0 +1,139 @@
+{
+    "title": "Note",
+    "type": "object",
+    "description": "Notes allow you to annotate and comment on your contacts.",
+    "properties": {
+        "type": {
+            "type": "string",
+            "description": "String representing the object's type. Always has the value `note`.",
+            "example": "note"
+        },
+        "id": {
+            "type": "string",
+            "description": "The id of the note.",
+            "example": "17495962"
+        },
+        "created_at": {
+            "type": "integer",
+            "format": "timestamp",
+            "description": "The time the note was created.",
+            "example": 1674589321
+        },
+        "contact": {
+            "type": "object",
+            "description": "Represents the contact that the note was created about.",
+            "nullable": true,
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "String representing the object's type. Always has the value `contact`."
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The id of the contact.",
+                    "example": "214656d0c743eafcfde7f248"
+                }
+            }
+        },
+        "author": {
+            "description": "Optional. Represents the Admin that created the note.",
+            "title": "Admin",
+            "type": "object",
+            "nullable": true,
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "String representing the object's type. Always has the value `admin`.",
+                    "example": "admin"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The id representing the admin.",
+                    "example": "1295"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the admin.",
+                    "example": "Hoban Washburne"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "The email of the admin.",
+                    "example": "wash@serenity.io"
+                },
+                "job_title": {
+                    "type": "string",
+                    "description": "The job title of the admin.",
+                    "example": "Philosopher"
+                },
+                "away_mode_enabled": {
+                    "type": "boolean",
+                    "description": "Identifies if this admin is currently set in away mode.",
+                    "example": false
+                },
+                "away_mode_reassign": {
+                    "type": "boolean",
+                    "description": "Identifies if this admin is set to automatically reassign new conversations to the apps default inbox.",
+                    "example": false
+                },
+                "has_inbox_seat": {
+                    "type": "boolean",
+                    "description": "Identifies if this admin has a paid inbox seat to restrict/allow features that require them.",
+                    "example": true
+                },
+                "team_ids": {
+                    "type": "array",
+                    "description": "This object represents the avatar associated with the admin.",
+                    "example": [
+                        814865
+                    ],
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "avatar": {
+                    "type": "string",
+                    "format": "uri",
+                    "nullable": true,
+                    "description": "Image for the associated team or teammate",
+                    "example": "https://picsum.photos/200/300"
+                },
+                "team_priority_level": {
+                    "title": "Team Priority Level",
+                    "type": "object",
+                    "nullable": true,
+                    "description": "Admin priority levels for teams",
+                    "properties": {
+                        "primary_team_ids": {
+                            "type": "array",
+                            "description": "The primary team ids for the team",
+                            "nullable": true,
+                            "example": [
+                                814865
+                            ],
+                            "items": {
+                                "type": "integer"
+                            }
+                        },
+                        "secondary_team_ids": {
+                            "type": "array",
+                            "description": "The secondary team ids for the team",
+                            "nullable": true,
+                            "example": [
+                                493881
+                            ],
+                            "items": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "body": {
+            "type": "string",
+            "description": "The body text of the note.",
+            "example": "<p>Text for the note.</p>"
+        }
+    }
+}

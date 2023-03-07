@@ -1,0 +1,90 @@
+{
+    "type": "object",
+    "properties": {
+        "Intercom-Version": {
+            "description": "Intercom API version.</br>By default, it's equal to the version set in the app package.",
+            "type": "string",
+            "example": "Unstable",
+            "default": "2.8",
+            "enum": [
+                "1.0",
+                "1.1",
+                "1.2",
+                "1.3",
+                "1.4",
+                "2.0",
+                "2.1",
+                "2.2",
+                "2.3",
+                "2.4",
+                "2.5",
+                "2.6",
+                "2.7",
+                "2.8",
+                "Unstable"
+            ]
+        },
+        "id": {
+            "required": true,
+            "type": "integer"
+        },
+        "display_as": {
+            "required": false,
+            "type": "string"
+        },
+        "requestBody": {
+            "title": "Update Conversation Request",
+            "type": "object",
+            "description": "Payload of the request to update a conversation",
+            "properties": {
+                "read": {
+                    "type": "boolean",
+                    "description": "Mark a conversation as read within Intercom.",
+                    "example": true
+                },
+                "custom_attributes": {
+                    "title": "Custom Attributes",
+                    "type": "object",
+                    "description": "An object containing the different custom attributes associated to the conversation as key-value pairs. For relationship attributes the value will be a list of custom object instance models.",
+                    "additionalProperties": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "title": "Custom Object Instance",
+                                "type": "object",
+                                "nullable": true,
+                                "description": "An instance of a Custom Object Type.",
+                                "properties": {
+                                    "id": {
+                                        "type": "string",
+                                        "description": "The Intercom defined id representing the custom object instance.",
+                                        "example": "5a7a19e9f59ae20001d1c1e6"
+                                    },
+                                    "external_id": {
+                                        "type": "string",
+                                        "description": "The id you have defined for the custom object instance.",
+                                        "example": "0001d1c1e65a7a19e9f59ae2"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "description": "The identifier of the custom object type that defines the structure of the custom object instance.",
+                                        "example": "Order"
+                                    },
+                                    "custom_attributes": {
+                                        "type": "object",
+                                        "description": "The custom attributes you have set on the custom object instance.",
+                                        "additionalProperties": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}

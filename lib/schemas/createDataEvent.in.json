@@ -1,0 +1,97 @@
+{
+    "type": "object",
+    "properties": {
+        "Intercom-Version": {
+            "description": "Intercom API version.</br>By default, it's equal to the version set in the app package.",
+            "type": "string",
+            "example": "Unstable",
+            "default": "2.8",
+            "enum": [
+                "1.0",
+                "1.1",
+                "1.2",
+                "1.3",
+                "1.4",
+                "2.0",
+                "2.1",
+                "2.2",
+                "2.3",
+                "2.4",
+                "2.5",
+                "2.6",
+                "2.7",
+                "2.8",
+                "Unstable"
+            ]
+        },
+        "requestBody": {
+            "description": "",
+            "type": "object",
+            "title": "Create Data Event Request",
+            "properties": {
+                "event_name": {
+                    "type": "string",
+                    "description": "The name of the event that occurred. This is presented to your App's admins when filtering and creating segments - a good event name is typically a past tense 'verb-noun' combination, to improve readability, for example `updated-plan`.",
+                    "example": "invited-friend"
+                },
+                "created_at": {
+                    "type": "integer",
+                    "format": "date-time",
+                    "description": "The time the event occurred as a UTC Unix timestamp",
+                    "example": 1671028894
+                },
+                "user_id": {
+                    "type": "string",
+                    "description": "Your identifier for the user.",
+                    "example": "314159"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Your identifier for a lead or a user.",
+                    "example": "8a88a590-e1c3-41e2-a502-e0649dbf721c"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "An email address for your user. An email should only be used where your application uses email to uniquely identify users.",
+                    "example": "frodo.baggins@example.com"
+                },
+                "metadata": {
+                    "type": "object",
+                    "description": "Optional metadata about the event.",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "example": {
+                        "invite_code": "ADDAFRIEND"
+                    }
+                }
+            },
+            "anyOf": [
+                {
+                    "title": "id required",
+                    "required": [
+                        "event_name",
+                        "created_at",
+                        "id"
+                    ]
+                },
+                {
+                    "title": "user_id required",
+                    "required": [
+                        "event_name",
+                        "created_at",
+                        "user_id"
+                    ]
+                },
+                {
+                    "title": "email required",
+                    "required": [
+                        "event_name",
+                        "created_at",
+                        "email"
+                    ]
+                }
+            ]
+        }
+    }
+}

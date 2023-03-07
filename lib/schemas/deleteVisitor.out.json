@@ -1,0 +1,25 @@
+{
+    "title": "Visitor Deleted Object",
+    "type": "object",
+    "description": "Response returned when an object is deleted",
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "The unique identifier for the visitor which is given by Intercom.",
+            "example": "530370b477ad7120001d"
+        },
+        "type": {
+            "type": "string",
+            "description": "The type of object which was deleted",
+            "enum": [
+                "visitor"
+            ],
+            "example": "visitor"
+        },
+        "user_id": {
+            "type": "string",
+            "description": "Automatically generated identifier for the Visitor.",
+            "example": "8a88a590-e1c3-41e2-a502-e0649dbf721c"
+        }
+    }
+}

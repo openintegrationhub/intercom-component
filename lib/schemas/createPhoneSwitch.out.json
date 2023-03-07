@@ -1,0 +1,22 @@
+{
+    "title": "Phone Switch",
+    "type": "object",
+    "description": "Phone Switch Response",
+    "nullable": true,
+    "properties": {
+        "type": {
+            "type": "string",
+            "description": "",
+            "enum": [
+                "phone_call_redirect"
+            ],
+            "default": "phone_call_redirect",
+            "example": "phone_call_redirect"
+        },
+        "phone": {
+            "type": "string",
+            "description": "Phone number in E.164 format, that has received the SMS to continue the conversation in the Messenger.",
+            "example": "+1 1234567890"
+        }
+    }
+}

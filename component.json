@@ -1,0 +1,1349 @@
+{
+    "title": "Intercom API",
+    "description": "The intercom API reference.",
+    "docsUrl": "",
+    "url": "https://raw.githubusercontent.com/intercom/Intercom-OpenAPI/main/descriptions/2.8/api.intercom.io.yaml",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://api.intercom.io - The production API server",
+                    "https://api.eu.intercom.io - The european API server",
+                    "https://api.au.intercom.io - The australian API server",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "auth_bearerAuth": {
+                "label": "bearerAuth (undefined)",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "lookup": {
+            "main": "./lib/lookups/lookup.js",
+            "title": "Function to run a lookup",
+            "description": "Function to call an internal trigger or action"
+        }
+    },
+    "actions": {
+        "identifyAdmin": {
+            "main": "./lib/actions/action.js",
+            "title": "Identify an admin",
+            "description": "\nYou can view the currently authorised admin along with the embedded app object (a \"workspace\" in legacy terminology).\n\n>  Single Sign On\n>\n> If you are building a custom \"Log in with Intercom\" flow for your site, and you call the `/me` endpoint to identify the logged-in user, you should not accept any sign-ins from users with unverified email addresses as it poses a potential impersonation security risk.\n",
+            "callParams": {
+                "pathName": "/me",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/identifyAdmin.in.json",
+                "out": "./lib/schemas/identifyAdmin.out.json"
+            }
+        },
+        "listAdmins": {
+            "main": "./lib/actions/action.js",
+            "title": "List all admins",
+            "description": "You can fetch a list of admins for a given workspace.",
+            "callParams": {
+                "pathName": "/admins",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/listAdmins.in.json",
+                "out": "./lib/schemas/listAdmins.out.json"
+            }
+        },
+        "retrieveAdmin": {
+            "main": "./lib/actions/action.js",
+            "title": "Retrieve an admin",
+            "description": "You can retrieve the details of a single admin.",
+            "callParams": {
+                "pathName": "/admins/{id}",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/retrieveAdmin.in.json",
+                "out": "./lib/schemas/retrieveAdmin.out.json"
+            }
+        },
+        "listArticles": {
+            "main": "./lib/actions/action.js",
+            "title": "List all articles",
+            "description": "You can fetch a list of all articles by making a GET request to `https://api.intercom.io/articles`.\n\n>  How are the articles sorted and ordered?\n>\n> Articles will be returned in descending order on the `updated_at` attribute. This means if you need to iterate through results then we'll show the most recently updated articles first.\n",
+            "callParams": {
+                "pathName": "/articles",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/listArticles.in.json",
+                "out": "./lib/schemas/listArticles.out.json"
+            }
+        },
+        "setAwayAdmin": {
+            "main": "./lib/actions/action.js",
+            "title": "Set an admin to away",
+            "description": "You can set an Admin as away for the Inbox.",
+            "callParams": {
+                "pathName": "/admins/{id}/away",
+                "method": "put",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/setAwayAdmin.in.json",
+                "out": "./lib/schemas/setAwayAdmin.out.json"
+            }
+        },
+        "listAllCollections": {
+            "main": "./lib/actions/action.js",
+            "title": "List all collections",
+            "description": "You can fetch a list of all collections by making a GET request to `https://api.intercom.io/help_center/collections`.\n\n>  How are the collections sorted and ordered?\n>\n> Collections will be returned in descending order on the `updated_at` attribute. This means if you need to iterate through results then we'll show the most recently updated collections first.\n",
+            "callParams": {
+                "pathName": "/help_center/collections",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/listAllCollections.in.json",
+                "out": "./lib/schemas/listAllCollections.out.json"
+            }
+        },
+        "listActivityLogs": {
+            "main": "./lib/actions/action.js",
+            "title": "List all activity logs",
+            "description": "You can get a log of activities by all admins in an app.",
+            "callParams": {
+                "pathName": "/admins/activity_logs",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/listActivityLogs.in.json",
+                "out": "./lib/schemas/listActivityLogs.out.json"
+            }
+        },
+        "deleteCollection": {
+            "main": "./lib/actions/action.js",
+            "title": "Delete a collection",
+            "description": "You can delete a single collection by making a DELETE request to `https://api.intercom.io/collections/<id>`.",
+            "callParams": {
+                "pathName": "/help_center/collections/{id}",
+                "method": "delete"
+            },
+            "metadata": {
+                "in": "./lib/schemas/deleteCollection.in.json",
+                "out": "./lib/schemas/deleteCollection.out.json"
+            }
+        },
+        "deleteArticle": {
+            "main": "./lib/actions/action.js",
+            "title": "Delete an article",
+            "description": "You can delete a single article by making a DELETE request to `https://api.intercom.io/articles/<id>`.",
+            "callParams": {
+                "pathName": "/articles/{id}",
+                "method": "delete"
+            },
+            "metadata": {
+                "in": "./lib/schemas/deleteArticle.in.json",
+                "out": "./lib/schemas/deleteArticle.out.json"
+            }
+        },
+        "updateArticle": {
+            "main": "./lib/actions/action.js",
+            "title": "Update an article",
+            "description": "You can update the details of a single article by making a PUT request to `https://api.intercom.io/articles/<id>`.",
+            "callParams": {
+                "pathName": "/articles/{id}",
+                "method": "put",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateArticle.in.json",
+                "out": "./lib/schemas/updateArticle.out.json"
+            }
+        },
+        "createCollection": {
+            "main": "./lib/actions/action.js",
+            "title": "Create a collection",
+            "description": "You can create a new collection by making a POST request to `https://api.intercom.io/help_center/collections.`",
+            "callParams": {
+                "pathName": "/help_center/collections",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/createCollection.in.json",
+                "out": "./lib/schemas/createCollection.out.json"
+            }
+        },
+        "retrieveArticle": {
+            "main": "./lib/actions/action.js",
+            "title": "Retrieve an article",
+            "description": "You can fetch the details of a single article by making a GET request to `https://api.intercom.io/articles/<id>`.",
+            "callParams": {
+                "pathName": "/articles/{id}",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/retrieveArticle.in.json",
+                "out": "./lib/schemas/retrieveArticle.out.json"
+            }
+        },
+        "updateCollection": {
+            "main": "./lib/actions/action.js",
+            "title": "Update a collection",
+            "description": "You can update the details of a single collection by making a PUT request to `https://api.intercom.io/collections/<id>`.",
+            "callParams": {
+                "pathName": "/help_center/collections/{id}",
+                "method": "put",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateCollection.in.json",
+                "out": "./lib/schemas/updateCollection.out.json"
+            }
+        },
+        "retrieveCollection": {
+            "main": "./lib/actions/action.js",
+            "title": "Retrieve a collection",
+            "description": "You can fetch the details of a single collection by making a GET request to `https://api.intercom.io/help_center/collections/<id>`.",
+            "callParams": {
+                "pathName": "/help_center/collections/{id}",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/retrieveCollection.in.json",
+                "out": "./lib/schemas/retrieveCollection.out.json"
+            }
+        },
+        "listAllSections": {
+            "main": "./lib/actions/action.js",
+            "title": "List all sections",
+            "description": "You can fetch a list of all sections by making a GET request to `https://api.intercom.io/help_center/sections`.\n>  How are the sections sorted and ordered?\n>\n> Sections will be returned in descending order on the `updated_at` attribute. This means if you need to iterate through results then we'll show the most recently updated sections first.\n",
+            "callParams": {
+                "pathName": "/help_center/sections",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/listAllSections.in.json",
+                "out": "./lib/schemas/listAllSections.out.json"
+            }
+        },
+        "deleteSection": {
+            "main": "./lib/actions/action.js",
+            "title": "Delete a section",
+            "description": "You can delete a single section by making a DELETE request to `https://api.intercom.io/sections/<id>`.",
+            "callParams": {
+                "pathName": "/help_center/sections/{id}",
+                "method": "delete"
+            },
+            "metadata": {
+                "in": "./lib/schemas/deleteSection.in.json",
+                "out": "./lib/schemas/deleteSection.out.json"
+            }
+        },
+        "createArticle": {
+            "main": "./lib/actions/action.js",
+            "title": "Create an article",
+            "description": "You can create a new article by making a POST request to `https://api.intercom.io/articles`.",
+            "callParams": {
+                "pathName": "/articles",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/createArticle.in.json",
+                "out": "./lib/schemas/createArticle.out.json"
+            }
+        },
+        "updateSection": {
+            "main": "./lib/actions/action.js",
+            "title": "Update a section",
+            "description": "You can update the details of a single section by making a PUT request to `https://api.intercom.io/sections/<id>`.",
+            "callParams": {
+                "pathName": "/help_center/sections/{id}",
+                "method": "put",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateSection.in.json",
+                "out": "./lib/schemas/updateSection.out.json"
+            }
+        },
+        "createOrUpdateCompany": {
+            "main": "./lib/actions/action.js",
+            "title": "Create or Update a company",
+            "description": "You can create or update a company.\n\n>  Companies with no users\n>\n> Companies will be only visible in Intercom when there is at least one associated user.\n\nCompanies are looked up via `company_id` in a `POST` request, if not found via `company_id`, the new company will be created, if found, that company will be updated.\n",
+            "callParams": {
+                "pathName": "/companies",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/createOrUpdateCompany.in.json",
+                "out": "./lib/schemas/createOrUpdateCompany.out.json"
+            }
+        },
+        "deleteCompany": {
+            "main": "./lib/actions/action.js",
+            "title": "Delete a company",
+            "description": "You can delete a single company.",
+            "callParams": {
+                "pathName": "/companies/{id}",
+                "method": "delete"
+            },
+            "metadata": {
+                "in": "./lib/schemas/deleteCompany.in.json",
+                "out": "./lib/schemas/deleteCompany.out.json"
+            }
+        },
+        "retrieveSection": {
+            "main": "./lib/actions/action.js",
+            "title": "Retrieve a section",
+            "description": "You can fetch the details of a single section by making a GET request to `https://api.intercom.io/help_center/sections/<id>`.",
+            "callParams": {
+                "pathName": "/help_center/sections/{id}",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/retrieveSection.in.json",
+                "out": "./lib/schemas/retrieveSection.out.json"
+            }
+        },
+        "createSection": {
+            "main": "./lib/actions/action.js",
+            "title": "Create a section",
+            "description": "You can create a new section by making a POST request to `https://api.intercom.io/help_center/sections.`",
+            "callParams": {
+                "pathName": "/help_center/sections",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/createSection.in.json",
+                "out": "./lib/schemas/createSection.out.json"
+            }
+        },
+        "retrieveCompany": {
+            "main": "./lib/actions/action.js",
+            "title": "Retrieve a company",
+            "description": "You can fetch a company by either passing in `company_id` or `name` as a query parameter.\n\nA company can also be fetched by its name using a name or company_id parameter in the url, whose values are the ones you have defined for that company -\n  `https://api.intercom.io/companies?name={name}`\n  `https://api.intercom.io/companies?company_id={company_id}`\n",
+            "callParams": {
+                "pathName": "/companies",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/retrieveCompany.in.json",
+                "out": "./lib/schemas/retrieveCompany.out.json"
+            }
+        },
+        "UpdateCompany": {
+            "main": "./lib/actions/action.js",
+            "title": "Update a company",
+            "description": "You can update a single company",
+            "callParams": {
+                "pathName": "/companies/{id}",
+                "method": "put"
+            },
+            "metadata": {
+                "in": "./lib/schemas/UpdateCompany.in.json",
+                "out": "./lib/schemas/UpdateCompany.out.json"
+            }
+        },
+        "RetrieveACompanyById": {
+            "main": "./lib/actions/action.js",
+            "title": "Retrieve a company by ID",
+            "description": "You can fetch a single company.",
+            "callParams": {
+                "pathName": "/companies/{id}",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/RetrieveACompanyById.in.json",
+                "out": "./lib/schemas/RetrieveACompanyById.out.json"
+            }
+        },
+        "ListAttachedSegmentsForCompanies": {
+            "main": "./lib/actions/action.js",
+            "title": "List attached segments for companies",
+            "description": "You can fetch a list of all segments that belong to a company.",
+            "callParams": {
+                "pathName": "/companies/{id}/segments",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/ListAttachedSegmentsForCompanies.in.json",
+                "out": "./lib/schemas/ListAttachedSegmentsForCompanies.out.json"
+            }
+        },
+        "dettachContactFromACompany": {
+            "main": "./lib/actions/action.js",
+            "title": "Detach a contact from a company",
+            "description": "You can detach a company from a single contact.",
+            "callParams": {
+                "pathName": "/contacts/{contact_id}/companies/{id}",
+                "method": "delete"
+            },
+            "metadata": {
+                "in": "./lib/schemas/dettachContactFromACompany.in.json",
+                "out": "./lib/schemas/dettachContactFromACompany.out.json"
+            }
+        },
+        "listAllCompanies": {
+            "main": "./lib/actions/action.js",
+            "title": "List all companies",
+            "description": "You can list companies. The company list is sorted by the `last_request_at` field and by default is ordered descending, most recently requested first.\n\nNote that the API does not include companies who have no associated users in list responses.\n\n> \n>\n> When using the Companies endpoint and the pages object to iterate through the returned companies, there is a limit of 10,000 Companies that can be returned. If you need to list or iterate on more than 10,000 Companies, please use the [Scroll API](https://developers.intercom.com/reference#iterating-over-all-companies).\n",
+            "callParams": {
+                "pathName": "/companies/list",
+                "method": "post"
+            },
+            "metadata": {
+                "in": "./lib/schemas/listAllCompanies.in.json",
+                "out": "./lib/schemas/listAllCompanies.out.json"
+            }
+        },
+        "ListAttachedContacts": {
+            "main": "./lib/actions/action.js",
+            "title": "List attached contacts",
+            "description": "You can fetch a list of all contacts that belong to a company.",
+            "callParams": {
+                "pathName": "/companies/{id}/contacts",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/ListAttachedContacts.in.json",
+                "out": "./lib/schemas/ListAttachedContacts.out.json"
+            }
+        },
+        "listCompaniesForAContact": {
+            "main": "./lib/actions/action.js",
+            "title": "List attached companies for contact",
+            "description": "You can fetch a list of companies that are associated to a contact.",
+            "callParams": {
+                "pathName": "/contacts/{contact_id}/companies",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/listCompaniesForAContact.in.json",
+                "out": "./lib/schemas/listCompaniesForAContact.out.json"
+            }
+        },
+        "scrollOverAllCompanies": {
+            "main": "./lib/actions/action.js",
+            "title": "Scroll over all companies",
+            "description": "      The `list all companies` functionality does not work well for huge datasets, and can result in errors and performance problems when paging deeply. The Scroll API provides an efficient mechanism for iterating over all companies in a dataset.\n\n- Each app can only have 1 scroll open at a time. You'll get an error message if you try to have more than one open per app.\n- If the scroll isn't used for 1 minute, it expires and calls with that scroll param will fail\n- If the end of the scroll is reached, \"companies\" will be empty and the scroll parameter will expire\n\n>  Scroll Parameter\n>\n> You can get the first page of companies by simply sending a GET request to the scroll endpoint. For subsequent requests you will need to use the scroll parameter from the response.\n\n>  Scroll network timeouts\n>\n> Since scroll is often used on large datasets network errors such as timeouts can be encountered. When this occurs you will need to restart your scroll query as it is not possible to continue from a specific point when using scroll.\n>\n> When this occurs you will see a HTTP 500 error with the following message:\n> \"Request failed due to an internal network error. Please restart the scroll operation.\"\n",
+            "callParams": {
+                "pathName": "/companies/scroll",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/scrollOverAllCompanies.in.json",
+                "out": "./lib/schemas/scrollOverAllCompanies.out.json"
+            }
+        },
+        "attachContactToACompany": {
+            "main": "./lib/actions/action.js",
+            "title": "Attach a Contact to a Company",
+            "description": "You can attach a company to a single contact.",
+            "callParams": {
+                "pathName": "/contacts/{id}/companies",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/attachContactToACompany.in.json",
+                "out": "./lib/schemas/attachContactToACompany.out.json"
+            }
+        },
+        "createNote": {
+            "main": "./lib/actions/action.js",
+            "title": "Create a note",
+            "description": "You can add a note to a single contact.",
+            "callParams": {
+                "pathName": "/contacts/{id}/notes",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/createNote.in.json",
+                "out": "./lib/schemas/createNote.out.json"
+            }
+        },
+        "listNotes": {
+            "main": "./lib/actions/action.js",
+            "title": "List all notes",
+            "description": "You can fetch a list of notes that are associated to a contact.",
+            "callParams": {
+                "pathName": "/contacts/{id}/notes",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/listNotes.in.json",
+                "out": "./lib/schemas/listNotes.out.json"
+            }
+        },
+        "attachSubscriptionTypeToContact": {
+            "main": "./lib/actions/action.js",
+            "title": "Add subscription to a contact",
+            "description": "You can add a specific subscription to a contact. In Intercom, we have two different subscription types based on user consent - opt-out and opt-in:\n\n  1.Attaching a contact to an opt-out subscription type will opt that user out from receiving messages related to that subscription type.\n\n  2.Attaching a contact to an opt-in subscription type will opt that user in to receiving messages related to that subscription type.\n\nThis will return a subscription type model for the subscription type that was added to the contact.\n",
+            "callParams": {
+                "pathName": "/contacts/{contact_id}/subscriptions",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/attachSubscriptionTypeToContact.in.json",
+                "out": "./lib/schemas/attachSubscriptionTypeToContact.out.json"
+            }
+        },
+        "listSegmentsForAContact": {
+            "main": "./lib/actions/action.js",
+            "title": "List attached segments for contact",
+            "description": "You can fetch a list of segments that are associated to a contact.",
+            "callParams": {
+                "pathName": "/contacts/{contact_id}/segments",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/listSegmentsForAContact.in.json",
+                "out": "./lib/schemas/listSegmentsForAContact.out.json"
+            }
+        },
+        "listTagsForAContact": {
+            "main": "./lib/actions/action.js",
+            "title": "List tags attached to a contact",
+            "description": "You can fetch a list of all tags that are attached to a specific contact.",
+            "callParams": {
+                "pathName": "/contacts/{contact_id}/tags",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/listTagsForAContact.in.json",
+                "out": "./lib/schemas/listTagsForAContact.out.json"
+            }
+        },
+        "attachTagToContact": {
+            "main": "./lib/actions/action.js",
+            "title": "Add tag to a contact",
+            "description": "You can tag a specific contact. This will return a tag object for the tag that was added to the contact.",
+            "callParams": {
+                "pathName": "/contacts/{contact_id}/tags",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/attachTagToContact.in.json",
+                "out": "./lib/schemas/attachTagToContact.out.json"
+            }
+        },
+        "detachTagFromContact": {
+            "main": "./lib/actions/action.js",
+            "title": "Remove tag from a contact",
+            "description": "You can remove tag from a specific contact. This will return a tag object for the tag that was removed from the contact.",
+            "callParams": {
+                "pathName": "/contacts/{contact_id}/tags/{id}",
+                "method": "delete"
+            },
+            "metadata": {
+                "in": "./lib/schemas/detachTagFromContact.in.json",
+                "out": "./lib/schemas/detachTagFromContact.out.json"
+            }
+        },
+        "detachSubscriptionTypeToContact": {
+            "main": "./lib/actions/action.js",
+            "title": "Remove subscription from a contact",
+            "description": "You can remove a specific subscription from a contact. This will return a subscription type model for the subscription type that was removed from the contact.",
+            "callParams": {
+                "pathName": "/contacts/{contact_id}/subscriptions/{id}",
+                "method": "delete"
+            },
+            "metadata": {
+                "in": "./lib/schemas/detachSubscriptionTypeToContact.in.json",
+                "out": "./lib/schemas/detachSubscriptionTypeToContact.out.json"
+            }
+        },
+        "listSubscriptionsForAContact": {
+            "main": "./lib/actions/action.js",
+            "title": "List subscriptions for a contact",
+            "description": "You can fetch a list of subscription types that are attached to a contact. These can be subscriptions that a user has 'opted-in' to or has 'opted-out' from, depending on the subscription type.\nThis will return a list of Subscription Type objects that the contact is associated with.\n\nThe data property will show a combined list of:\n\n  1.Opt-out subscription types that the user has opted-out from.\n  2.Opt-in subscription types that the user has opted-in to receiving.\n",
+            "callParams": {
+                "pathName": "/contacts/{contact_id}/subscriptions",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/listSubscriptionsForAContact.in.json",
+                "out": "./lib/schemas/listSubscriptionsForAContact.out.json"
+            }
+        },
+        "UpdateContact": {
+            "main": "./lib/actions/action.js",
+            "title": "Update a contact",
+            "description": "You can update an existing contact (ie. user or lead).",
+            "callParams": {
+                "pathName": "/contacts/{id}",
+                "method": "put"
+            },
+            "metadata": {
+                "in": "./lib/schemas/UpdateContact.in.json",
+                "out": "./lib/schemas/UpdateContact.out.json"
+            }
+        },
+        "ShowContact": {
+            "main": "./lib/actions/action.js",
+            "title": "Get a contact",
+            "description": "You can fetch the details of a single contact.",
+            "callParams": {
+                "pathName": "/contacts/{id}",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/ShowContact.in.json",
+                "out": "./lib/schemas/ShowContact.out.json"
+            }
+        },
+        "DeleteContact": {
+            "main": "./lib/actions/action.js",
+            "title": "Delete a contact",
+            "description": "You can delete a single contact.",
+            "callParams": {
+                "pathName": "/contacts/{id}",
+                "method": "delete"
+            },
+            "metadata": {
+                "in": "./lib/schemas/DeleteContact.in.json",
+                "out": "./lib/schemas/DeleteContact.out.json"
+            }
+        },
+        "CreateContact": {
+            "main": "./lib/actions/action.js",
+            "title": "Create contact",
+            "description": "You can create a new contact (ie. user or lead).",
+            "callParams": {
+                "pathName": "/contacts",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/CreateContact.in.json",
+                "out": "./lib/schemas/CreateContact.out.json"
+            }
+        },
+        "MergeContact": {
+            "main": "./lib/actions/action.js",
+            "title": "Merge a lead and a user",
+            "description": "You can merge a contact with a `role` of `lead` into a contact with a `role` of `user`.",
+            "callParams": {
+                "pathName": "/contacts/merge",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/MergeContact.in.json",
+                "out": "./lib/schemas/MergeContact.out.json"
+            }
+        },
+        "SearchContacts": {
+            "main": "./lib/actions/action.js",
+            "title": "Search contacts",
+            "description": "You can search for multiple contacts by the value of their attributes in order to fetch exactly who you want.\n\nTo search for contacts, you need to send a POST request to `https://api.intercom.io/contacts/search`. This will accept a query object in the body which will define your filters in order to search for contacts.\n\n>  Why is there a delay when creating contacts and searching for them?\n>\n> If a contact has recently been created, there is a possibility that it will not yet be available when searching. This means that it may not appear in the response. This delay can take a few minutes. If you need to be instantly notified then you could use webhooks instead, which you'd currently have to iterate on to see if they match your search filters.\n\n>  Nesting & Limitations\n>\n> You can nest these filters in order to get even more granular insights that pinpoint exactly what you need. Example: (1 OR 2) AND (3 OR 4).\n> There are some limitations to the amount of multiple's there can be:\n> * There's a limit of max 2 nested filters\n> * There's a limit of max 15 filters for each AND or OR group\n\n>  Searching for Timestamp Fields\n\n> All timestamp fields (created_at, updated_at etc.) are indexed as Dates for Contact Search queries; Datetime queries are not currently supported. This means you can only query for timestamp fields by day - not hour, minute or second.\n> For example, if you search for all Contacts with a created_at value greater (>) than 1577869200 (the UNIX timestamp for January 1st, 2020 9:00 AM), that will be interpreted as 1577836800 (January 1st, 2020 12:00 AM). The search results will then include Contacts created from January 2nd, 2020 12:00 AM onwards.\n> If you'd like to get contacts created on January 1st, 2020 you should search with a created_at value equal (=) to 1577836800 (January 1st, 2020 12:00 AM).\n> This behaviour applies only to timestamps used in search queries. The search results will still contain the full UNIX timestamp and be sorted accordingly.\n\n### Accepted Fields\n\nMost key listed as part of the Contacts Model are searchable, whether writeable or not. The value you search for has to match the accepted type, otherwise the query will fail (ie. as `created_at` accepts a date, the `value` cannot be a string such as `\"foorbar\"`).\n\n| Field                              | Type                           |\n| ---------------------------------- | ------------------------------ |\n| id                                 | String                         |\n| role                               | String<br>Accepts user or lead |\n| name                               | String                         |\n| avatar                             | String                         |\n| owner_id                           | Integer                        |\n| email                              | String                         |\n| phone                              | String                         |\n| external_id                        | String                         |\n| created_at                         | Date (UNIX Timestamp)          |\n| signed_up_at                       | Date (UNIX Timestamp)          |\n| updated_at                         | Date (UNIX Timestamp)          |\n| last_seen_at                       | Date (UNIX Timestamp)          |\n| last_contacted_at                  | Date (UNIX Timestamp)          |\n| last_replied_at                    | Date (UNIX Timestamp)          |\n| last_email_opened_at               | Date (UNIX Timestamp)          |\n| last_email_clicked_at              | Date (UNIX Timestamp)          |\n| language_override                  | String                         |\n| browser                            | String                         |\n| browser_language                   | String                         |\n| os                                 | String                         |\n| location.country                   | String                         |\n| location.region                    | String                         |\n| location.city                      | String                         |\n| unsubscribed_from_emails           | Boolean                        |\n| marked_email_as_spam               | Boolean                        |\n| has_hard_bounced                   | Boolean                        |\n| ios_last_seen_at                   | Date (UNIX Timestamp)          |\n| ios_app_version                    | String                         |\n| ios_device                         | String                         |\n| ios_app_device                     | String                         |\n| ios_os_version                     | String                         |\n| ios_app_name                       | String                         |\n| ios_sdk_version                    | String                         |\n| android_last_seen_at               | Date (UNIX Timestamp)          |\n| android_app_version                | String                         |\n| android_device                     | String                         |\n| android_app_name                   | String                         |\n| andoid_sdk_version                 | String                         |\n| segment_id                         | String                         |\n| tag_id                             | String                         |\n| custom_attributes.{attribute_name} | String                         |\n\n",
+            "callParams": {
+                "pathName": "/contacts/search",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/SearchContacts.in.json",
+                "out": "./lib/schemas/SearchContacts.out.json"
+            }
+        },
+        "ListContacts": {
+            "main": "./lib/actions/action.js",
+            "title": "List all contacts",
+            "description": "You can fetch a list of all contacts.",
+            "callParams": {
+                "pathName": "/contacts",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/ListContacts.in.json",
+                "out": "./lib/schemas/ListContacts.out.json"
+            }
+        },
+        "ArchiveContact": {
+            "main": "./lib/actions/action.js",
+            "title": "Archive contact",
+            "description": "You can archive a single contact.",
+            "callParams": {
+                "pathName": "/contacts/{id}/archive",
+                "method": "post"
+            },
+            "metadata": {
+                "in": "./lib/schemas/ArchiveContact.in.json",
+                "out": "./lib/schemas/ArchiveContact.out.json"
+            }
+        },
+        "UnarchiveContact": {
+            "main": "./lib/actions/action.js",
+            "title": "Unarchive contact",
+            "description": "You can unarchive a single contact.",
+            "callParams": {
+                "pathName": "/contacts/{id}/unarchive",
+                "method": "post"
+            },
+            "metadata": {
+                "in": "./lib/schemas/UnarchiveContact.in.json",
+                "out": "./lib/schemas/UnarchiveContact.out.json"
+            }
+        },
+        "listConversations": {
+            "main": "./lib/actions/action.js",
+            "title": "List all conversations",
+            "description": "You can fetch a list of all conversations.\n\nYou can optionally request the result page size and the cursor to start after to fetch the result\n",
+            "callParams": {
+                "pathName": "/conversations",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/listConversations.in.json",
+                "out": "./lib/schemas/listConversations.out.json"
+            }
+        },
+        "detachTagFromConversation": {
+            "main": "./lib/actions/action.js",
+            "title": "Remove tag from a conversation",
+            "description": "You can remove tag from a specific conversation. This will return a tag object for the tag that was removed from the conversation.",
+            "callParams": {
+                "pathName": "/conversations/{conversation_id}/tags/{id}",
+                "method": "delete",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/detachTagFromConversation.in.json",
+                "out": "./lib/schemas/detachTagFromConversation.out.json"
+            }
+        },
+        "attachTagToConversation": {
+            "main": "./lib/actions/action.js",
+            "title": "Add tag to a conversation",
+            "description": "You can tag a specific conversation. This will return a tag object for the tag that was added to the conversation.",
+            "callParams": {
+                "pathName": "/conversations/{conversation_id}/tags",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/attachTagToConversation.in.json",
+                "out": "./lib/schemas/attachTagToConversation.out.json"
+            }
+        },
+        "replyConversation": {
+            "main": "./lib/actions/action.js",
+            "title": "Reply to a conversation",
+            "description": "You can reply to a conversation with a message from an admin or on behalf of a contact, or with a note for admins.",
+            "callParams": {
+                "pathName": "/conversations/{id}/reply",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/replyConversation.in.json",
+                "out": "./lib/schemas/replyConversation.out.json"
+            }
+        },
+        "updateConversation": {
+            "main": "./lib/actions/action.js",
+            "title": "Update a conversation",
+            "description": "\nYou can update an existing conversation.\n\n> \n>\n> If you want to update a conversation with either a reply (or actions such as assign, unassign, open, close or snooze) then take a look at their own sections respectively as they currently require different endpoints and parameters.\n\n",
+            "callParams": {
+                "pathName": "/conversations/{id}",
+                "method": "put",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateConversation.in.json",
+                "out": "./lib/schemas/updateConversation.out.json"
+            }
+        },
+        "createConversation": {
+            "main": "./lib/actions/action.js",
+            "title": "Creates a conversation",
+            "description": "You can create a conversation that has been initiated by a contact (ie. user or lead).\nThe conversation can be an in-app message only.\n\n>  Sending for visitors\n>\n> You can also send a message from a visitor by specifying their `user_id` or `id` value in the `from` field, along with a `type` field value of `contact`.\n> This visitor will be automatically converted to a contact with a lead role once the conversation is created.\n\nThis will return the Message model that has been created.\n\n",
+            "callParams": {
+                "pathName": "/conversations",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/createConversation.in.json",
+                "out": "./lib/schemas/createConversation.out.json"
+            }
+        },
+        "searchConversations": {
+            "main": "./lib/actions/action.js",
+            "title": "Search conversations",
+            "description": "You can search for multiple conversations by the value of their attributes in order to fetch exactly which ones you want.\n\nTo search for conversations, you need to send a POST request to https://api.intercom.io/conversations/search. This will accept a query object in the body which will define your filters in order to search for conversations.\n\n>  Nesting & Limitations\n>\n> You can nest these filters in order to get even more granular insights that pinpoint exactly what you need. Example: (1 OR 2) AND (3 OR 4).\n> There are some limitations to the amount of multiple's there can be:\n> - There's a limit of max 2 nested filters\n> - There's a limit of max 15 filters for each AND or OR group\n\n### Accepted Fields\n\nMost keys listed as part of the The conversation model is searchable, whether writeable or not. The value you search for has to match the accepted type, otherwise the query will fail (ie. as `created_at` accepts a date, the `value` cannot be a string such as `\"foorbar\"`).\n\n| Field                                     | Type                                                                                     |\n| :---------------------------------------- | :--------------------------------------------------------------------------------------- |\n| id                                        | String                                                                                   |\n| created_at                                | Date (UNIX timestamp)                                                                    |\n| updated_at                                | Date (UNIX timestamp)                                                                    |\n| source.type                               | String                                                                                   |\n| source.id                                 | String                                                                                   |\n| source.delivered_as                       | String                                                                                   |\n| source.subject                            | String                                                                                   |\n| source.body                               | String                                                                                   |\n| source.author.id                          | String                                                                                   |\n| source.author.type                        | String                                                                                   |\n| source.author.name                        | String                                                                                   |\n| source.author.email                       | String                                                                                   |\n| source.url                                | String                                                                                   |\n| contact_ids                               | String                                                                                   |\n| teammate_ids                              | String                                                                                   |\n| admin_assignee_id                         | String                                                                                   |\n| team_assignee_id                          | String                                                                                   |\n| channel_initiated                         | String<br>Accepted fields are `conversation`, `push`, `facebook`, `twitter` and `email`. |\n| open                                      | Boolean                                                                                  |\n| read                                      | Boolean                                                                                  |\n| state                                     | String                                                                                   |\n| waiting_since                             | Date (UNIX timestamp)                                                                    |\n| snoozed_until                             | Date (UNIX timestamp)                                                                    |\n| tag_ids                                   | String                                                                                   |\n| priority                                  | String                                                                                   |\n| statistics.time_to_assignment             | Integer                                                                                  |\n| statistics.time_to_admin_reply            | Integer                                                                                  |\n| statistics.time_to_first_close            | Integer                                                                                  |\n| statistics.time_to_last_close             | Integer                                                                                  |\n| statistics.median_time_to_reply           | Integer                                                                                  |\n| statistics.first_contact_reply_at         | Date (UNIX timestamp)                                                                    |\n| statistics.first_assignment_at            | Date (UNIX timestamp)                                                                    |\n| statistics.first_admin_reply_at           | Date (UNIX timestamp)                                                                    |\n| statistics.first_close_at                 | Date (UNIX timestamp)                                                                    |\n| statistics.last_assignment_at             | Date (UNIX timestamp)                                                                    |\n| statistics.last_assignment_admin_reply_at | Date (UNIX timestamp)                                                                    |\n| statistics.last_contact_reply_at          | Date (UNIX timestamp)                                                                    |\n| statistics.last_admin_reply_at            | Date (UNIX timestamp)                                                                    |\n| statistics.last_close_at                  | Date (UNIX timestamp)                                                                    |\n| statistics.last_closed_by_id              | String                                                                                   |\n| statistics.count_reopens                  | Integer                                                                                  |\n| statistics.count_assignments              | Integer                                                                                  |\n| statistics.count_conversation_parts       | Integer                                                                                  |\n| conversation_rating.requested_at          | Date (UNIX timestamp)                                                                    |\n| conversation_rating.replied_at            | Date (UNIX timestamp)                                                                    |\n| conversation_rating.score                 | Integer                                                                                  |\n| conversation_rating.remark                | String                                                                                   |\n| conversation_rating.contact_id            | String                                                                                   |\n| conversation_rating.admin_d               | String                                                                                   |\n\n",
+            "callParams": {
+                "pathName": "/conversations/search",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/searchConversations.in.json",
+                "out": "./lib/schemas/searchConversations.out.json"
+            }
+        },
+        "autoAssignConversation": {
+            "main": "./lib/actions/action.js",
+            "title": "Run Assignment Rules on a conversation",
+            "description": "You can let a conversation be automatically assigned following assignment rules.",
+            "callParams": {
+                "pathName": "/conversations/{id}/run_assignment_rules",
+                "method": "post"
+            },
+            "metadata": {
+                "in": "./lib/schemas/autoAssignConversation.in.json",
+                "out": "./lib/schemas/autoAssignConversation.out.json"
+            }
+        },
+        "redactConversation": {
+            "main": "./lib/actions/action.js",
+            "title": "Redact a conversation part",
+            "description": "You can redact a conversation part or the source message of a conversation (as seen in the source object).\n\n>  Which parts and source messages can I redact?\n>\n> If you are redacting a conversation part, it must have a `body`.\n> If you are redacting a source message, it must have been created by a contact.\n> We will return a `conversation_part_not_redactable` error if these criteria are not met.\n\n",
+            "callParams": {
+                "pathName": "/conversations/redact",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/redactConversation.in.json",
+                "out": "./lib/schemas/redactConversation.out.json"
+            }
+        },
+        "manageConversation": {
+            "main": "./lib/actions/action.js",
+            "title": "Manage a conversation",
+            "description": "You can close a conversation.\nYou can snooze a conversation to reopen on a future date.\nYou can open a conversation which is `snoozed` or `closed`.\nYou can assign a conversation to an admin and/or team.\n",
+            "callParams": {
+                "pathName": "/conversations/{id}/parts",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/manageConversation.in.json",
+                "out": "./lib/schemas/manageConversation.out.json"
+            }
+        },
+        "retrieveConversation": {
+            "main": "./lib/actions/action.js",
+            "title": "Retrieve a conversation",
+            "description": "\nYou can fetch the details of a single conversation.\n\nThis will return a single Conversation model with all its conversation parts.\n\n>  Hard limit of 500 parts\n>\n> The maximum number of conversation parts that can be returned via the API is 500. If you have more than that we will return the 500 most recent conversation parts.\n\n",
+            "callParams": {
+                "pathName": "/conversations/{id}",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/retrieveConversation.in.json",
+                "out": "./lib/schemas/retrieveConversation.out.json"
+            }
+        },
+        "lisDataAttributes": {
+            "main": "./lib/actions/action.js",
+            "title": "List all data attributes",
+            "description": "You can fetch a list of all data attributes belonging to a workspace for contacts, companies or conversations.",
+            "callParams": {
+                "pathName": "/data_attributes",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/lisDataAttributes.in.json",
+                "out": "./lib/schemas/lisDataAttributes.out.json"
+            }
+        },
+        "detachContactFromConversation": {
+            "main": "./lib/actions/action.js",
+            "title": "Detach a contact from a group conversation",
+            "description": "You can add participants who are contacts to a conversation, on behalf of either another contact or an admin.\n\n>  Note about contacts without an email\n>\n> If you add a contact via the email parameter and there is no user/lead found on that workspace with he given email, then we will create a new contact with `role` set to `lead`.\n\n",
+            "callParams": {
+                "pathName": "/conversations/{conversation_id}/customers/{contact_id}",
+                "method": "delete",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/detachContactFromConversation.in.json",
+                "out": "./lib/schemas/detachContactFromConversation.out.json"
+            }
+        },
+        "createDataAttribute": {
+            "main": "./lib/actions/action.js",
+            "title": "Create a data attribute",
+            "description": "You can create a data attributes for a `contact` or a `company`.",
+            "callParams": {
+                "pathName": "/data_attributes",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/createDataAttribute.in.json",
+                "out": "./lib/schemas/createDataAttribute.out.json"
+            }
+        },
+        "attachContactToConversation": {
+            "main": "./lib/actions/action.js",
+            "title": "Attach a contact to a conversation",
+            "description": "You can add participants who are contacts to a conversation, on behalf of either another contact or an admin.\n\n>  Note about contacts without an email\n>\n> If you add a contact via the email parameter and there is no user/lead found on that workspace with he given email, then we will create a new contact with `role` set to `lead`.\n\n",
+            "callParams": {
+                "pathName": "/conversations/{id}/customers",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/attachContactToConversation.in.json",
+                "out": "./lib/schemas/attachContactToConversation.out.json"
+            }
+        },
+        "createDataEvent": {
+            "main": "./lib/actions/action.js",
+            "title": "Submit a data event",
+            "description": "\nYou will need an Access Token that has write permissions to send Events. Once you have a key you can submit events via POST to the Events resource, which is located at https://api.intercom.io/events, or you can send events using one of the client libraries. When working with the HTTP API directly a client should send the event with a `Content-Type` of `application/json`.\n\nWhen using the JavaScript API, [adding the code to your app](http://docs.intercom.io/configuring-Intercom/tracking-user-events-in-your-app) makes the Events API available. Once added, you can submit an event using the `trackEvent` method. This will associate the event with the Lead or currently logged-in user or logged-out visitor/lead and send it to Intercom. The final parameter is a map that can be used to send optional metadata about the event.\n\nWith the Ruby client you pass a hash describing the event to `Intercom::Event.create`, or call the `track_user` method directly on the current user object (e.g. `user.track_event`).\n\n| Type            | Description                                                                                                                                                                                                     | Example                                                                           |\n| :-------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------- |\n| String          | The value is a JSON String                                                                                                                                                                                      | `\"source\":\"desktop\"`                                                              |\n| Number          | The value is a JSON Number                                                                                                                                                                                      | `\"load\": 3.67`                                                                    |\n| Date            | The key ends with the String `_date` and the value is a [Unix timestamp](http://en.wikipedia.org/wiki/Unix_time), assumed to be in the [UTC](http://en.wikipedia.org/wiki/Coordinated_Universal_Time) timezone. | `\"contact_date\": 1392036272`                                                      |\n| Link            | The value is a HTTP or HTTPS URI.                                                                                                                                                                               | `\"article\": \"https://example.org/ab1de.html\"`                                     |\n| Rich Link       | The value is a JSON object that contains `url` and `value` keys.                                                                                                                                                | `\"article\": {\"url\": \"https://example.org/ab1de.html\", \"value\":\"the dude abides\"}` |\n| Monetary Amount | The value is a JSON object that contains `amount` and `currency` keys. The `amount` key is a positive integer representing the amount in cents. The price in the example to the right denotes EU349.99.          | `\"price\": {\"amount\": 34999, \"currency\": \"eur\"}`                                   |\n\n**NB: For the JSON object types, please note that we do not currently support nested JSON structure.**\n\n>  Lead Events\n>\n> When submitting events for Leads, you will need to specify the Lead's `id`.\n\n>  Metadata behaviour\n>\n> - We currently limit the number of tracked metadata keys to 10 per event. Once the quota is reached, we ignore any further keys we receive. The first 10 metadata keys are determined by the order in which they are sent in with the event.\n> - It is not possible to change the metadata keys once the event has been sent. A new event will need to be created with the new keys and you can archive the old one.\n> - There might be up to 24 hrs delay when you send a new metadata for an existing event.\n\n>  Event de-duplication\n>\n> The API may detect and ignore duplicate events. Each event is uniquely identified as a combination of the following data - the Workspace identifier, the Contact external identifier, the Data Event name and the Data Event created time. As a result, it is **strongly recommended** to send a second granularity Unix timestamp in the `created_at` field.\n>\n> Duplicated events are responded to using the normal `202 Accepted` code - an error is not thrown, however repeat requests will be counted against any rate limit that is in place.\n\n### HTTP API Responses\n\n- Successful responses to submitted events return `202 Accepted` with an empty body.\n- Unauthorised access will be rejected with a `401 Unauthorized` or `403 Forbidden` response code.\n- Events sent about users that cannot be found will return a `404 Not Found`.\n- Event lists containing duplicate events will have those duplicates ignored.\n- Server errors will return a `500` response code and may contain an error message in the body.\n\n",
+            "callParams": {
+                "pathName": "/events",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/createDataEvent.in.json",
+                "out": "./lib/schemas/createDataEvent.out.json"
+            }
+        },
+        "updateDataAttribute": {
+            "main": "./lib/actions/action.js",
+            "title": "Update a data attribute",
+            "description": "\nYou can update a data attribute.\n\n>  Updating the data type is not possible\n>\n> It is currently a dangerous action to execute changing a data attribute's type via the API. You will need to update the type via the UI instead.\n",
+            "callParams": {
+                "pathName": "/data_attributes/{id}",
+                "method": "put",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateDataAttribute.in.json",
+                "out": "./lib/schemas/updateDataAttribute.out.json"
+            }
+        },
+        "create_data_export": {
+            "main": "./lib/actions/action.js",
+            "title": "Create content data export",
+            "description": "To create your export job, you need to send a `POST` request to the export endpoint `https://api.intercom.io/export/content/data`.\n\nThe only parameters you need to provide are the range of dates that you want exported.\n\n> Limit of one active job\n>\n> You can only have one active job per workspace. You will receive a HTTP status code of 429 with the message Exceeded rate limit of 1 pending message data export jobs if you attempt to create a second concurrent job.\n\n> Updated_at not included\n>\n> It should be noted that the timeframe only includes messages sent during the time period and not messages that were only updated during this period. For example, if a message was updated yesterday but sent two days ago, you would need to set the created_at_after date before the message was sent to include that in your retrieval job.\n\n> Date ranges are inclusive\n>\n> Requesting data for 2018-06-01 until 2018-06-30 will get all data for those days including those specified - e.g. 2018-06-01 00:00:00 until 2018-06-30 23:59:99.\n",
+            "callParams": {
+                "pathName": "/export/content/data",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/create_data_export.in.json",
+                "out": "./lib/schemas/create_data_export.out.json"
+            }
+        },
+        "dataEventSummaries": {
+            "main": "./lib/actions/action.js",
+            "title": "Create event summaries",
+            "description": "Create event summaries for a user. Event summaries are used to track the number of times an event has occurred, the first time it occurred and the last time it occurred.\n\n",
+            "callParams": {
+                "pathName": "/events/summaries",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/dataEventSummaries.in.json",
+                "out": "./lib/schemas/dataEventSummaries.out.json"
+            }
+        },
+        "lisDataEvents": {
+            "main": "./lib/actions/action.js",
+            "title": "List all data events",
+            "description": "\n> \n>\n> Please note that you can only 'list' events that are less than 90 days old. Event counts and summaries will still include your events older than 90 days but you cannot 'list' these events individually if they are older than 90 days\n\nThe events belonging to a customer can be listed by sending a GET request to `https://api.intercom.io/events` with a user or lead identifier along with a `type` parameter. The identifier parameter can be one of `user_id`, `email` or `intercom_user_id`. The `type` parameter value must be `user`.\n\n- `https://api.intercom.io/events?type=user&user_id={user_id}`\n- `https://api.intercom.io/events?type=user&email={email}`\n- `https://api.intercom.io/events?type=user&intercom_user_id={id}` (this call can be used to list leads)\n\nThe `email` parameter value should be [url encoded](http://en.wikipedia.org/wiki/Percent-encoding) when sending.\n\nYou can optionally define the result page size as well with the `per_page` parameter.\n",
+            "callParams": {
+                "pathName": "/events",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/lisDataEvents.in.json",
+                "out": "./lib/schemas/lisDataEvents.out.json"
+            }
+        },
+        "Cancel_data_export": {
+            "main": "./lib/actions/action.js",
+            "title": "Cancel content data export",
+            "description": "You can cancel your job",
+            "callParams": {
+                "pathName": "/export/cancel/{job_identifier}",
+                "method": "post"
+            },
+            "metadata": {
+                "in": "./lib/schemas/Cancel_data_export.in.json",
+                "out": "./lib/schemas/Cancel_data_export.out.json"
+            }
+        },
+        "Download_data_export": {
+            "main": "./lib/actions/action.js",
+            "title": "Download content data export",
+            "description": "When a job has a status of complete, and thus a filled download_url, you can download your data by hitting that provided URL, formatted like so: https://api.intercom.io/download/content/data/xyz1234.\n\nYour exported message data will be streamed continuously back down to you in a gzipped CSV format.\n\n>  Octet header required\n>\n> You will have to specify the header Accept: `application/octet-stream` when hitting this endpoint.\n",
+            "callParams": {
+                "pathName": "/download/content/data/{job_identifier}",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/Download_data_export.in.json",
+                "out": "./lib/schemas/Download_data_export.out.json"
+            }
+        },
+        "listLiveNewsfeedItems": {
+            "main": "./lib/actions/action.js",
+            "title": "List all live newsfeed items",
+            "description": "You can fetch a list of all news items that are live on a given newsfeed",
+            "callParams": {
+                "pathName": "/news/newsfeeds/{id}/items",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/listLiveNewsfeedItems.in.json",
+                "out": "./lib/schemas/listLiveNewsfeedItems.out.json"
+            }
+        },
+        "createMessage": {
+            "main": "./lib/actions/action.js",
+            "title": "Create a message",
+            "description": "You can create a message that has been initiated by an admin. The conversation can be either an in-app message or an email.\n\n>  Sending for visitors\n>\n> There can be a short delay between when a contact is created and when a contact becomes available to be messaged through the API. A 404 Not Found error will be returned in this case.\n\nThis will return the Message model that has been created.\n\n>  Retrieving Associated Conversations\n>\n> As this is a message, there will be no conversation present until the contact responds. Once they do, you will have to search for a contact's conversations with the id of the message.\n",
+            "callParams": {
+                "pathName": "/messages",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/createMessage.in.json",
+                "out": "./lib/schemas/createMessage.out.json"
+            }
+        },
+        "get_data_export": {
+            "main": "./lib/actions/action.js",
+            "title": "Show content data export",
+            "description": "You can view the status of your job by sending a `GET` request to the URL\n`https://api.intercom.io/export/content/data/{job_identifier}` - the `{job_identifier}` is the value returned in the response when you first created the export job. More on it can be seen in the Export Job Model.\n\n>  Jobs expire after two days\n> All jobs that have completed processing (and are thus available to download from the provided URL) will have an expiry limit of two days from when the export ob completed. After this, the data will no longer be available.\n",
+            "callParams": {
+                "pathName": "/export/content/data/{job_identifier}",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/get_data_export.in.json",
+                "out": "./lib/schemas/get_data_export.out.json"
+            }
+        },
+        "createNewsItem": {
+            "main": "./lib/actions/action.js",
+            "title": "Create a news item",
+            "description": "You can create a news item",
+            "callParams": {
+                "pathName": "/news/news_items",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/createNewsItem.in.json",
+                "out": "./lib/schemas/createNewsItem.out.json"
+            }
+        },
+        "retrieveNewsItem": {
+            "main": "./lib/actions/action.js",
+            "title": "Retrieve a news item",
+            "description": "You can fetch the details of a single news item.",
+            "callParams": {
+                "pathName": "/news/news_items/{id}",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/retrieveNewsItem.in.json",
+                "out": "./lib/schemas/retrieveNewsItem.out.json"
+            }
+        },
+        "deleteNewsItem": {
+            "main": "./lib/actions/action.js",
+            "title": "Delete a news item",
+            "description": "You can delete a single news item.",
+            "callParams": {
+                "pathName": "/news/news_items/{id}",
+                "method": "delete"
+            },
+            "metadata": {
+                "in": "./lib/schemas/deleteNewsItem.in.json",
+                "out": "./lib/schemas/deleteNewsItem.out.json"
+            }
+        },
+        "listNewsItems": {
+            "main": "./lib/actions/action.js",
+            "title": "List all news items",
+            "description": "You can fetch a list of all news items",
+            "callParams": {
+                "pathName": "/news/news_items",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/listNewsItems.in.json",
+                "out": "./lib/schemas/listNewsItems.out.json"
+            }
+        },
+        "retrieveNote": {
+            "main": "./lib/actions/action.js",
+            "title": "Retrieve a note",
+            "description": "You can fetch the details of a single note.",
+            "callParams": {
+                "pathName": "/notes/{id}",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/retrieveNote.in.json",
+                "out": "./lib/schemas/retrieveNote.out.json"
+            }
+        },
+        "listSegments": {
+            "main": "./lib/actions/action.js",
+            "title": "List all segments",
+            "description": "You can fetch a list of all segments.",
+            "callParams": {
+                "pathName": "/segments",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/listSegments.in.json",
+                "out": "./lib/schemas/listSegments.out.json"
+            }
+        },
+        "updateNewsItem": {
+            "main": "./lib/actions/action.js",
+            "title": "Update a news item",
+            "callParams": {
+                "pathName": "/news/news_items/{id}",
+                "method": "put",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateNewsItem.in.json",
+                "out": "./lib/schemas/updateNewsItem.out.json"
+            }
+        },
+        "retrieveSegment": {
+            "main": "./lib/actions/action.js",
+            "title": "Retrieve a segment",
+            "description": "You can fetch the details of a single segment.",
+            "callParams": {
+                "pathName": "/segments/{id}",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/retrieveSegment.in.json",
+                "out": "./lib/schemas/retrieveSegment.out.json"
+            }
+        },
+        "listNewsfeeds": {
+            "main": "./lib/actions/action.js",
+            "title": "List all newsfeeds",
+            "description": "You can fetch a list of all newsfeeds",
+            "callParams": {
+                "pathName": "/news/newsfeeds",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/listNewsfeeds.in.json",
+                "out": "./lib/schemas/listNewsfeeds.out.json"
+            }
+        },
+        "retrieveNewsfeed": {
+            "main": "./lib/actions/action.js",
+            "title": "Retrieve a newsfeed",
+            "description": "You can fetch the details of a single newsfeed",
+            "callParams": {
+                "pathName": "/news/newsfeeds/{id}",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/retrieveNewsfeed.in.json",
+                "out": "./lib/schemas/retrieveNewsfeed.out.json"
+            }
+        },
+        "createTag": {
+            "main": "./lib/actions/action.js",
+            "title": "Create or update a tag, Tag or untag companies, Tag contacts",
+            "description": "You can use this endpoint to perform the following operations:\n\n  **1. Create a new tag:** You can create a new tag by passing in the tag name as specified in \"Create or Update Tag Request Payload\" described below.\n\n  **2. Update an existing tag:** You can update an existing tag by passing the id of the tag as specified in \"Create or Update Tag Request Payload\" described below.\n\n  **3. Tag Companies:** You can tag single company or a list of companies. You can tag a company by passing in the tag name and the company details as specified in \"Tag Company Request Payload\" described below. Also, if the tag doesn't exist then a new one will be created automatically.\n\n  **4. Untag Companies:** You can untag a single company or a list of companies. You can untag a company by passing in the tag id and the company details as specified in \"Untag Company Request Payload\" described below.\n\n  **5. Tag Multiple Users:** You can tag a list of users. You can tag the users by passing in the tag name and the user details as specified in \"Tag Users Request Payload\" described below.\n\nEach operation will return a tag object.\n",
+            "callParams": {
+                "pathName": "/tags",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/createTag.in.json",
+                "out": "./lib/schemas/createTag.out.json"
+            }
+        },
+        "createPhoneSwitch": {
+            "main": "./lib/actions/action.js",
+            "title": "Create a phone Switch",
+            "description": "You can use the API to deflect phone calls to the Intercom Messenger.\nCalling this endpoint will send an SMS with a link to the Messenger to the phone number specified.\n\nIf custom attributes are specified, they will be added to the user or lead's custom data attributes.\n",
+            "callParams": {
+                "pathName": "/phone_call_redirects",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/createPhoneSwitch.in.json",
+                "out": "./lib/schemas/createPhoneSwitch.out.json"
+            }
+        },
+        "listTags": {
+            "main": "./lib/actions/action.js",
+            "title": "List all tags",
+            "description": "You can fetch a list of all tags for a given workspace.\n\n",
+            "callParams": {
+                "pathName": "/tags",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/listTags.in.json",
+                "out": "./lib/schemas/listTags.out.json"
+            }
+        },
+        "deleteTag": {
+            "main": "./lib/actions/action.js",
+            "title": "Delete tag",
+            "description": "You can delete the details of tags that are on the workspace by passing in the id.",
+            "callParams": {
+                "pathName": "/tags/{id}",
+                "method": "delete"
+            },
+            "metadata": {
+                "in": "./lib/schemas/deleteTag.in.json",
+                "out": "./lib/schemas/deleteTag.out.json"
+            }
+        },
+        "listSubscriptionTypes": {
+            "main": "./lib/actions/action.js",
+            "title": "List subscription types",
+            "description": "You can list all subscription types. A list of subscription type objects will be returned.",
+            "callParams": {
+                "pathName": "/subscription_types",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/listSubscriptionTypes.in.json",
+                "out": "./lib/schemas/listSubscriptionTypes.out.json"
+            }
+        },
+        "findTag": {
+            "main": "./lib/actions/action.js",
+            "title": "Find a specific tag",
+            "description": "You can fetch the details of tags that are on the workspace by their id.\nThis will return a tag object.\n",
+            "callParams": {
+                "pathName": "/tags/{id}",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/findTag.in.json",
+                "out": "./lib/schemas/findTag.out.json"
+            }
+        },
+        "listTeams": {
+            "main": "./lib/actions/action.js",
+            "title": "List all teams",
+            "description": "This will return a list of team objects for the App.",
+            "callParams": {
+                "pathName": "/teams",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/listTeams.in.json",
+                "out": "./lib/schemas/listTeams.out.json"
+            }
+        },
+        "retrieveTeam": {
+            "main": "./lib/actions/action.js",
+            "title": "Retrieve a team",
+            "description": "You can fetch the details of a single team, containing an array of admins that belong to this team.",
+            "callParams": {
+                "pathName": "/teams/{id}",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/retrieveTeam.in.json",
+                "out": "./lib/schemas/retrieveTeam.out.json"
+            }
+        },
+        "updateVisitor": {
+            "main": "./lib/actions/action.js",
+            "title": "Update a visitor",
+            "description": "Sending a PUT request to `/visitors` will result in an update of an existing Visitor.\n\n**Option 1.** You can update a visitor by passing in the `user_id` of the visitor in the Request body.\n\n**Option 2.** You can update a visitor by passing in the `id` of the visitor in the Request body.\n",
+            "callParams": {
+                "pathName": "/visitors",
+                "method": "put",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/updateVisitor.in.json",
+                "out": "./lib/schemas/updateVisitor.out.json"
+            }
+        },
+        "retrieveVisitorWithUserId": {
+            "main": "./lib/actions/action.js",
+            "title": "Retrieve a visitor with User ID",
+            "description": "You can fetch the details of a single visitor.",
+            "callParams": {
+                "pathName": "/visitors",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/retrieveVisitorWithUserId.in.json",
+                "out": "./lib/schemas/retrieveVisitorWithUserId.out.json"
+            }
+        },
+        "deleteVisitor": {
+            "main": "./lib/actions/action.js",
+            "title": "Delete a visitor",
+            "description": "You can delete a single visitor.",
+            "callParams": {
+                "pathName": "/visitors/{id}",
+                "method": "delete"
+            },
+            "metadata": {
+                "in": "./lib/schemas/deleteVisitor.in.json",
+                "out": "./lib/schemas/deleteVisitor.out.json"
+            }
+        },
+        "retrieveVisitor": {
+            "main": "./lib/actions/action.js",
+            "title": "Retrieve a visitor with ID",
+            "description": "You can fetch the details of a single visitor.",
+            "callParams": {
+                "pathName": "/visitors/{id}",
+                "method": "get"
+            },
+            "metadata": {
+                "in": "./lib/schemas/retrieveVisitor.in.json",
+                "out": "./lib/schemas/retrieveVisitor.out.json"
+            }
+        },
+        "convertVisitor": {
+            "main": "./lib/actions/action.js",
+            "title": "Convert a visitor",
+            "description": "You can merge a Visitor to a Contact of role type `lead` or `user`.\n\n>  What happens upon a visitor being converted?\n>\n> If the User exists, then the Visitor will be merged into it, the Visitor deleted and the User returned. If the User does not exist, the Visitor will be converted to a User, with the User identifiers replacing it's Visitor identifiers.\n",
+            "callParams": {
+                "pathName": "/visitors/convert",
+                "method": "post",
+                "requestContentType": "application/json"
+            },
+            "metadata": {
+                "in": "./lib/schemas/convertVisitor.in.json",
+                "out": "./lib/schemas/convertVisitor.out.json"
+            }
+        }
+    }
+}

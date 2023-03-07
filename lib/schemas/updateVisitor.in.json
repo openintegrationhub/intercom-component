@@ -1,0 +1,74 @@
+{
+    "type": "object",
+    "properties": {
+        "Intercom-Version": {
+            "description": "Intercom API version.</br>By default, it's equal to the version set in the app package.",
+            "type": "string",
+            "example": "Unstable",
+            "default": "2.8",
+            "enum": [
+                "1.0",
+                "1.1",
+                "1.2",
+                "1.3",
+                "1.4",
+                "2.0",
+                "2.1",
+                "2.2",
+                "2.3",
+                "2.4",
+                "2.5",
+                "2.6",
+                "2.7",
+                "2.8",
+                "Unstable"
+            ]
+        },
+        "requestBody": {
+            "description": "Update an existing visitor.",
+            "type": "object",
+            "title": "Update Visitor Request Payload",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "A unique identified for the visitor which is given by Intercom.",
+                    "example": "8a88a590-e"
+                },
+                "user_id": {
+                    "type": "string",
+                    "description": "A unique identified for the visitor which is given by you.",
+                    "example": "123"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The visitor's name.",
+                    "example": "Christian Bale"
+                },
+                "custom_attributes": {
+                    "type": "object",
+                    "description": "The custom attributes which are set for the visitor.",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "example": {
+                        "paid_subscriber": true,
+                        "monthly_spend": 155.5,
+                        "team_mates": 9
+                    }
+                }
+            },
+            "anyOf": [
+                {
+                    "required": [
+                        "id"
+                    ]
+                },
+                {
+                    "required": [
+                        "user_id"
+                    ]
+                }
+            ]
+        }
+    }
+}

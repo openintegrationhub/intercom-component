@@ -1,0 +1,1088 @@
+{
+    "title": "Collection",
+    "type": "object",
+    "description": "Collections are top level containers for Articles within the Help Center.",
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "The unique identifier for the collection which is given by Intercom.",
+            "example": "6871119"
+        },
+        "workspace_id": {
+            "type": "string",
+            "description": "The id of the workspace which the collection belongs to.",
+            "example": "hfi1bx4l"
+        },
+        "name": {
+            "type": "string",
+            "description": "The name of the collection. For multilingual collections, this will be the name of the default language's content.",
+            "example": "Default language name"
+        },
+        "description": {
+            "type": "string",
+            "nullable": true,
+            "description": "The description of the collection. For multilingual help centers, this will be the description of the collection for the default language.",
+            "example": "Default language description"
+        },
+        "created_at": {
+            "type": "integer",
+            "format": "date-time",
+            "description": "The time when the article was created. For multilingual articles, this will be the timestamp of creation of the default language's content.",
+            "example": 1672928359
+        },
+        "updated_at": {
+            "type": "integer",
+            "format": "date-time",
+            "description": "The time when the article was last updated. For multilingual articles, this will be the timestamp of last update of the default language's content.",
+            "example": 1672928610
+        },
+        "url": {
+            "type": "string",
+            "nullable": true,
+            "description": "The URL of the collection. For multilingual help centers, this will be the URL of the collection for the default language.",
+            "example": "http://intercom.test/help/collection/name"
+        },
+        "icon": {
+            "type": "string",
+            "nullable": true,
+            "description": "The icon of the collection.",
+            "example": "book-bookmark"
+        },
+        "order": {
+            "type": "integer",
+            "description": "The order of the section in relation to others sections within a collection. Values go from `0`` upwards. `0`` is the default if there's no order.",
+            "example": "1"
+        },
+        "default_locale": {
+            "type": "string",
+            "description": "The default locale of the help center. This field is only returned for multilingual help centers.",
+            "example": "en"
+        },
+        "translated_content": {
+            "nullable": true,
+            "title": "Group Translated Content",
+            "type": "object",
+            "description": "The Translated Content of an Group. The keys are the locale codes and the values are the translated content of the Group.",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "The type of object - group_translated_content.",
+                    "nullable": true,
+                    "enum": [
+                        null,
+                        "group_translated_content"
+                    ],
+                    "example": "group_translated_content"
+                },
+                "ar": {
+                    "description": "The content of the group in Arabic",
+                    "title": "Group Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `group_content` .",
+                            "enum": [
+                                null,
+                                "group_content"
+                            ],
+                            "example": "group_content"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the collection or section.",
+                            "example": "Collection name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the collection. Only available for collections.",
+                            "example": " Collection description"
+                        }
+                    }
+                },
+                "bg": {
+                    "description": "The content of the group in Bulgarian",
+                    "title": "Group Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `group_content` .",
+                            "enum": [
+                                null,
+                                "group_content"
+                            ],
+                            "example": "group_content"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the collection or section.",
+                            "example": "Collection name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the collection. Only available for collections.",
+                            "example": " Collection description"
+                        }
+                    }
+                },
+                "bs": {
+                    "description": "The content of the group in Bosnian",
+                    "title": "Group Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `group_content` .",
+                            "enum": [
+                                null,
+                                "group_content"
+                            ],
+                            "example": "group_content"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the collection or section.",
+                            "example": "Collection name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the collection. Only available for collections.",
+                            "example": " Collection description"
+                        }
+                    }
+                },
+                "ca": {
+                    "description": "The content of the group in Catalan",
+                    "title": "Group Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `group_content` .",
+                            "enum": [
+                                null,
+                                "group_content"
+                            ],
+                            "example": "group_content"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the collection or section.",
+                            "example": "Collection name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the collection. Only available for collections.",
+                            "example": " Collection description"
+                        }
+                    }
+                },
+                "cs": {
+                    "description": "The content of the group in Czech",
+                    "title": "Group Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `group_content` .",
+                            "enum": [
+                                null,
+                                "group_content"
+                            ],
+                            "example": "group_content"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the collection or section.",
+                            "example": "Collection name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the collection. Only available for collections.",
+                            "example": " Collection description"
+                        }
+                    }
+                },
+                "da": {
+                    "description": "The content of the group in Danish",
+                    "title": "Group Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `group_content` .",
+                            "enum": [
+                                null,
+                                "group_content"
+                            ],
+                            "example": "group_content"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the collection or section.",
+                            "example": "Collection name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the collection. Only available for collections.",
+                            "example": " Collection description"
+                        }
+                    }
+                },
+                "de": {
+                    "description": "The content of the group in German",
+                    "title": "Group Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `group_content` .",
+                            "enum": [
+                                null,
+                                "group_content"
+                            ],
+                            "example": "group_content"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the collection or section.",
+                            "example": "Collection name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the collection. Only available for collections.",
+                            "example": " Collection description"
+                        }
+                    }
+                },
+                "el": {
+                    "description": "The content of the group in Greek",
+                    "title": "Group Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `group_content` .",
+                            "enum": [
+                                null,
+                                "group_content"
+                            ],
+                            "example": "group_content"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the collection or section.",
+                            "example": "Collection name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the collection. Only available for collections.",
+                            "example": " Collection description"
+                        }
+                    }
+                },
+                "en": {
+                    "description": "The content of the group in English",
+                    "title": "Group Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `group_content` .",
+                            "enum": [
+                                null,
+                                "group_content"
+                            ],
+                            "example": "group_content"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the collection or section.",
+                            "example": "Collection name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the collection. Only available for collections.",
+                            "example": " Collection description"
+                        }
+                    }
+                },
+                "es": {
+                    "description": "The content of the group in Spanish",
+                    "title": "Group Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `group_content` .",
+                            "enum": [
+                                null,
+                                "group_content"
+                            ],
+                            "example": "group_content"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the collection or section.",
+                            "example": "Collection name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the collection. Only available for collections.",
+                            "example": " Collection description"
+                        }
+                    }
+                },
+                "et": {
+                    "description": "The content of the group in Estonian",
+                    "title": "Group Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `group_content` .",
+                            "enum": [
+                                null,
+                                "group_content"
+                            ],
+                            "example": "group_content"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the collection or section.",
+                            "example": "Collection name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the collection. Only available for collections.",
+                            "example": " Collection description"
+                        }
+                    }
+                },
+                "fi": {
+                    "description": "The content of the group in Finnish",
+                    "title": "Group Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `group_content` .",
+                            "enum": [
+                                null,
+                                "group_content"
+                            ],
+                            "example": "group_content"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the collection or section.",
+                            "example": "Collection name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the collection. Only available for collections.",
+                            "example": " Collection description"
+                        }
+                    }
+                },
+                "fr": {
+                    "description": "The content of the group in French",
+                    "title": "Group Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `group_content` .",
+                            "enum": [
+                                null,
+                                "group_content"
+                            ],
+                            "example": "group_content"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the collection or section.",
+                            "example": "Collection name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the collection. Only available for collections.",
+                            "example": " Collection description"
+                        }
+                    }
+                },
+                "he": {
+                    "description": "The content of the group in Hebrew",
+                    "title": "Group Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `group_content` .",
+                            "enum": [
+                                null,
+                                "group_content"
+                            ],
+                            "example": "group_content"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the collection or section.",
+                            "example": "Collection name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the collection. Only available for collections.",
+                            "example": " Collection description"
+                        }
+                    }
+                },
+                "hr": {
+                    "description": "The content of the group in Croatian",
+                    "title": "Group Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `group_content` .",
+                            "enum": [
+                                null,
+                                "group_content"
+                            ],
+                            "example": "group_content"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the collection or section.",
+                            "example": "Collection name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the collection. Only available for collections.",
+                            "example": " Collection description"
+                        }
+                    }
+                },
+                "hu": {
+                    "description": "The content of the group in Hungarian",
+                    "title": "Group Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `group_content` .",
+                            "enum": [
+                                null,
+                                "group_content"
+                            ],
+                            "example": "group_content"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the collection or section.",
+                            "example": "Collection name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the collection. Only available for collections.",
+                            "example": " Collection description"
+                        }
+                    }
+                },
+                "id": {
+                    "description": "The content of the group in Indonesian",
+                    "title": "Group Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `group_content` .",
+                            "enum": [
+                                null,
+                                "group_content"
+                            ],
+                            "example": "group_content"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the collection or section.",
+                            "example": "Collection name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the collection. Only available for collections.",
+                            "example": " Collection description"
+                        }
+                    }
+                },
+                "it": {
+                    "description": "The content of the group in Italian",
+                    "title": "Group Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `group_content` .",
+                            "enum": [
+                                null,
+                                "group_content"
+                            ],
+                            "example": "group_content"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the collection or section.",
+                            "example": "Collection name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the collection. Only available for collections.",
+                            "example": " Collection description"
+                        }
+                    }
+                },
+                "ja": {
+                    "description": "The content of the group in Japanese",
+                    "title": "Group Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `group_content` .",
+                            "enum": [
+                                null,
+                                "group_content"
+                            ],
+                            "example": "group_content"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the collection or section.",
+                            "example": "Collection name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the collection. Only available for collections.",
+                            "example": " Collection description"
+                        }
+                    }
+                },
+                "ko": {
+                    "description": "The content of the group in Korean",
+                    "title": "Group Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `group_content` .",
+                            "enum": [
+                                null,
+                                "group_content"
+                            ],
+                            "example": "group_content"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the collection or section.",
+                            "example": "Collection name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the collection. Only available for collections.",
+                            "example": " Collection description"
+                        }
+                    }
+                },
+                "lt": {
+                    "description": "The content of the group in Lithuanian",
+                    "title": "Group Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `group_content` .",
+                            "enum": [
+                                null,
+                                "group_content"
+                            ],
+                            "example": "group_content"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the collection or section.",
+                            "example": "Collection name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the collection. Only available for collections.",
+                            "example": " Collection description"
+                        }
+                    }
+                },
+                "lv": {
+                    "description": "The content of the group in Latvian",
+                    "title": "Group Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `group_content` .",
+                            "enum": [
+                                null,
+                                "group_content"
+                            ],
+                            "example": "group_content"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the collection or section.",
+                            "example": "Collection name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the collection. Only available for collections.",
+                            "example": " Collection description"
+                        }
+                    }
+                },
+                "mn": {
+                    "description": "The content of the group in Mongolian",
+                    "title": "Group Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `group_content` .",
+                            "enum": [
+                                null,
+                                "group_content"
+                            ],
+                            "example": "group_content"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the collection or section.",
+                            "example": "Collection name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the collection. Only available for collections.",
+                            "example": " Collection description"
+                        }
+                    }
+                },
+                "nb": {
+                    "description": "The content of the group in Norwegian",
+                    "title": "Group Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `group_content` .",
+                            "enum": [
+                                null,
+                                "group_content"
+                            ],
+                            "example": "group_content"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the collection or section.",
+                            "example": "Collection name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the collection. Only available for collections.",
+                            "example": " Collection description"
+                        }
+                    }
+                },
+                "nl": {
+                    "description": "The content of the group in Dutch",
+                    "title": "Group Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `group_content` .",
+                            "enum": [
+                                null,
+                                "group_content"
+                            ],
+                            "example": "group_content"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the collection or section.",
+                            "example": "Collection name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the collection. Only available for collections.",
+                            "example": " Collection description"
+                        }
+                    }
+                },
+                "pl": {
+                    "description": "The content of the group in Polish",
+                    "title": "Group Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `group_content` .",
+                            "enum": [
+                                null,
+                                "group_content"
+                            ],
+                            "example": "group_content"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the collection or section.",
+                            "example": "Collection name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the collection. Only available for collections.",
+                            "example": " Collection description"
+                        }
+                    }
+                },
+                "pt": {
+                    "description": "The content of the group in Portuguese (Portugal)",
+                    "title": "Group Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `group_content` .",
+                            "enum": [
+                                null,
+                                "group_content"
+                            ],
+                            "example": "group_content"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the collection or section.",
+                            "example": "Collection name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the collection. Only available for collections.",
+                            "example": " Collection description"
+                        }
+                    }
+                },
+                "ro": {
+                    "description": "The content of the group in Romanian",
+                    "title": "Group Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `group_content` .",
+                            "enum": [
+                                null,
+                                "group_content"
+                            ],
+                            "example": "group_content"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the collection or section.",
+                            "example": "Collection name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the collection. Only available for collections.",
+                            "example": " Collection description"
+                        }
+                    }
+                },
+                "ru": {
+                    "description": "The content of the group in Russian",
+                    "title": "Group Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `group_content` .",
+                            "enum": [
+                                null,
+                                "group_content"
+                            ],
+                            "example": "group_content"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the collection or section.",
+                            "example": "Collection name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the collection. Only available for collections.",
+                            "example": " Collection description"
+                        }
+                    }
+                },
+                "sl": {
+                    "description": "The content of the group in Slovenian",
+                    "title": "Group Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `group_content` .",
+                            "enum": [
+                                null,
+                                "group_content"
+                            ],
+                            "example": "group_content"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the collection or section.",
+                            "example": "Collection name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the collection. Only available for collections.",
+                            "example": " Collection description"
+                        }
+                    }
+                },
+                "sr": {
+                    "description": "The content of the group in Serbian",
+                    "title": "Group Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `group_content` .",
+                            "enum": [
+                                null,
+                                "group_content"
+                            ],
+                            "example": "group_content"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the collection or section.",
+                            "example": "Collection name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the collection. Only available for collections.",
+                            "example": " Collection description"
+                        }
+                    }
+                },
+                "sv": {
+                    "description": "The content of the group in Swedish",
+                    "title": "Group Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `group_content` .",
+                            "enum": [
+                                null,
+                                "group_content"
+                            ],
+                            "example": "group_content"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the collection or section.",
+                            "example": "Collection name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the collection. Only available for collections.",
+                            "example": " Collection description"
+                        }
+                    }
+                },
+                "tr": {
+                    "description": "The content of the group in Turkish",
+                    "title": "Group Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `group_content` .",
+                            "enum": [
+                                null,
+                                "group_content"
+                            ],
+                            "example": "group_content"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the collection or section.",
+                            "example": "Collection name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the collection. Only available for collections.",
+                            "example": " Collection description"
+                        }
+                    }
+                },
+                "vi": {
+                    "description": "The content of the group in Vietnamese",
+                    "title": "Group Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `group_content` .",
+                            "enum": [
+                                null,
+                                "group_content"
+                            ],
+                            "example": "group_content"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the collection or section.",
+                            "example": "Collection name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the collection. Only available for collections.",
+                            "example": " Collection description"
+                        }
+                    }
+                },
+                "pt-BR": {
+                    "description": "The content of the group in Portuguese (Brazil)",
+                    "title": "Group Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `group_content` .",
+                            "enum": [
+                                null,
+                                "group_content"
+                            ],
+                            "example": "group_content"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the collection or section.",
+                            "example": "Collection name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the collection. Only available for collections.",
+                            "example": " Collection description"
+                        }
+                    }
+                },
+                "zh-CN": {
+                    "description": "The content of the group in Chinese (China)",
+                    "title": "Group Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `group_content` .",
+                            "enum": [
+                                null,
+                                "group_content"
+                            ],
+                            "example": "group_content"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the collection or section.",
+                            "example": "Collection name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the collection. Only available for collections.",
+                            "example": " Collection description"
+                        }
+                    }
+                },
+                "zh-TW": {
+                    "description": "The content of the group in Chinese (Taiwan)",
+                    "title": "Group Content",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "description": "The type of object - `group_content` .",
+                            "enum": [
+                                null,
+                                "group_content"
+                            ],
+                            "example": "group_content"
+                        },
+                        "name": {
+                            "type": "string",
+                            "description": "The name of the collection or section.",
+                            "example": "Collection name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "The description of the collection. Only available for collections.",
+                            "example": " Collection description"
+                        }
+                    }
+                }
+            }
+        },
+        "type": {
+            "type": "string",
+            "description": "The type of object - `collection`.",
+            "enum": [
+                "collection"
+            ],
+            "default": "collection",
+            "example": "collection"
+        }
+    }
+}

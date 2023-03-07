@@ -1,0 +1,227 @@
+{
+    "title": "Paginated Response",
+    "type": "object",
+    "description": "Paginated Response",
+    "properties": {
+        "type": {
+            "type": "string",
+            "description": "The type of object",
+            "enum": [
+                "list",
+                "conversation.list"
+            ],
+            "example": "list"
+        },
+        "pages": {
+            "title": "Cursor based pages",
+            "type": "object",
+            "description": "Cursor-based pagination is a technique used in the Intercom API to navigate through large amounts of data.\nA \"cursor\" or pointer is used to keep track of the current position in the result set, allowing the API to return the data in small chunks or \"pages\" as needed.\n",
+            "nullable": true,
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "the type of object `pages`.",
+                    "example": "pages",
+                    "enum": [
+                        "pages"
+                    ]
+                },
+                "page": {
+                    "type": "integer",
+                    "description": "The current page",
+                    "example": 1
+                },
+                "next": {
+                    "title": "StartingAfterPaging",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "page": {
+                            "type": "integer",
+                            "example": 2
+                        },
+                        "starting_after": {
+                            "type": "string",
+                            "example": "1HaSB+xrOyyMXAkS/c1RteCL7BzOzTvYjmjakgTergIH31eoe2v4/sbLsJWP\\nIncfQLD3ouPkZlCwJ86F\\n"
+                        }
+                    }
+                },
+                "per_page": {
+                    "type": "integer",
+                    "description": "Number of results per page",
+                    "example": 2
+                },
+                "total_pages": {
+                    "type": "integer",
+                    "description": "Total number of pages",
+                    "example": 13
+                }
+            }
+        },
+        "total_count": {
+            "type": "integer",
+            "description": "A count of the total number of objects.",
+            "example": 1
+        },
+        "data": {
+            "type": "array",
+            "description": "An array of Objects",
+            "items": {
+                "anyOf": [
+                    {
+                        "title": "News Item",
+                        "type": "object",
+                        "description": "A News Item is a content type in Intercom enabling you to announce product updates, company news, promotions, events and more with your customers.",
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "description": "The type of object.",
+                                "enum": [
+                                    "news-item"
+                                ],
+                                "example": "news-item"
+                            },
+                            "id": {
+                                "type": "string",
+                                "description": "The unique identifier for the news item which is given by Intercom.",
+                                "example": "141"
+                            },
+                            "workspace_id": {
+                                "type": "string",
+                                "description": "The id of the workspace which the news item belongs to.",
+                                "example": "t74hdn32"
+                            },
+                            "title": {
+                                "type": "string",
+                                "description": "The title of the news item.",
+                                "example": "New feature: News Items"
+                            },
+                            "body": {
+                                "type": "string",
+                                "description": "The news item body, which may contain HTML.",
+                                "example": "We are excited to announce the launch of News Items, a new content type in Intercom enabling you to announce product updates, company news, promotions, events and more with your customers."
+                            },
+                            "sender_id": {
+                                "type": "integer",
+                                "description": "The id of the sender of the news item. Must be a teammate on the workspace.",
+                                "example": 123
+                            },
+                            "state": {
+                                "type": "string",
+                                "description": "News items will not be visible to your users in the assigned newsfeeds until they are set live.",
+                                "enum": [
+                                    "draft",
+                                    "live"
+                                ],
+                                "example": "live"
+                            },
+                            "newsfeed_assignments": {
+                                "type": "array",
+                                "description": "A list of newsfeed_assignments to assign to the specified newsfeed.",
+                                "items": {
+                                    "title": "Newsfeed Assignment",
+                                    "type": "object",
+                                    "description": "Assigns a news item to a newsfeed.",
+                                    "properties": {
+                                        "newsfeed_id": {
+                                            "type": "integer",
+                                            "description": "The unique identifier for the newsfeed which is given by Intercom. Publish dates cannot be in the future, to schedule news items use the dedicated feature in app (see this article).",
+                                            "example": 198313
+                                        },
+                                        "published_at": {
+                                            "type": "integer",
+                                            "format": "timestamp",
+                                            "description": "Publish date of the news item on the newsfeed, use this field if you want to set a publish date in the past (e.g. when importing existing news items). On write, this field will be ignored if the news item state is \"draft\".",
+                                            "example": 1674917488
+                                        }
+                                    }
+                                }
+                            },
+                            "labels": {
+                                "type": "array",
+                                "description": "Label names displayed to users to categorize the news item.",
+                                "items": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "description": "The label name.",
+                                    "example": "Product Update"
+                                }
+                            },
+                            "cover_image_url": {
+                                "type": "string",
+                                "format": "uri",
+                                "nullable": true,
+                                "description": "URL of the image used as cover. Must have .jpg or .png extension.",
+                                "example": "https://example.com/cover.jpg"
+                            },
+                            "reactions": {
+                                "type": "array",
+                                "description": "Ordered list of emoji reactions to the news item. When empty, reactions are disabled.",
+                                "items": {
+                                    "type": "string",
+                                    "nullable": true,
+                                    "description": "The emoji reaction to the news item.",
+                                    "example": "👍"
+                                }
+                            },
+                            "deliver_silently": {
+                                "type": "boolean",
+                                "description": "When set to true, the news item will appear in the messenger newsfeed without showing a notification badge.",
+                                "example": true
+                            },
+                            "created_at": {
+                                "type": "integer",
+                                "format": "timestamp",
+                                "description": "Timestamp for when the news item was created.",
+                                "example": 1610589632
+                            },
+                            "updated_at": {
+                                "type": "integer",
+                                "format": "timestamp",
+                                "description": "Timestamp for when the news item was last updated.",
+                                "example": 1610589632
+                            }
+                        }
+                    },
+                    {
+                        "title": "Newsfeed",
+                        "type": "object",
+                        "description": "A newsfeed is a collection of news items, targeted to a specific audience.\n\nNewsfeeds currently cannot be edited through the API, please refer to [this article](https://www.intercom.com/help/en/articles/6362267-getting-started-with-news) to set up your newsfeeds in Intercom.\n",
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "description": "The unique identifier for the newsfeed which is given by Intercom.",
+                                "example": "12312"
+                            },
+                            "type": {
+                                "type": "string",
+                                "description": "The type of object.",
+                                "enum": [
+                                    "newsfeed"
+                                ],
+                                "example": "newsfeed"
+                            },
+                            "name": {
+                                "type": "string",
+                                "description": "The name of the newsfeed. This name will never be visible to your users.",
+                                "example": "My Newsfeed"
+                            },
+                            "created_at": {
+                                "type": "integer",
+                                "format": "timestamp",
+                                "description": "Timestamp for when the newsfeed was created.",
+                                "example": 1674917488
+                            },
+                            "updated_at": {
+                                "type": "integer",
+                                "format": "timestamp",
+                                "description": "Timestamp for when the newsfeed was last updated.",
+                                "example": 1674917488
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

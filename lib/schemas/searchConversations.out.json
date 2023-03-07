@@ -1,0 +1,858 @@
+{
+    "title": "Conversation List",
+    "type": "object",
+    "description": "Conversations are how you can communicate with users in Intercom. They are created when a contact replies to an outbound message, or when one admin directly sends a message to a single contact.",
+    "properties": {
+        "type": {
+            "type": "string",
+            "description": "Always conversation.list",
+            "enum": [
+                "conversation.list"
+            ],
+            "example": "conversation.list"
+        },
+        "conversations": {
+            "type": "array",
+            "description": "The list of conversation objects",
+            "items": {
+                "title": "Conversation",
+                "type": "object",
+                "description": "Conversations are how you can communicate with users in Intercom. They are created when a contact replies to an outbound message, or when one admin directly sends a message to a single contact.",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "description": "Always conversation.",
+                        "example": "conversation"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The id representing the conversation.",
+                        "example": "1295"
+                    },
+                    "title": {
+                        "type": "string",
+                        "nullable": true,
+                        "description": "The title given to the conversation.",
+                        "example": "Conversation Title"
+                    },
+                    "created_at": {
+                        "type": "integer",
+                        "format": "date-time",
+                        "description": "The time the conversation was created.",
+                        "example": 1663597223
+                    },
+                    "updated_at": {
+                        "type": "integer",
+                        "format": "date-time",
+                        "description": "The last time the conversation was updated.",
+                        "example": 1663597260
+                    },
+                    "waiting_since": {
+                        "type": "integer",
+                        "format": "date-time",
+                        "nullable": true,
+                        "description": "The last time a Contact responded to an Admin. In other words, the time a customer started waiting for a response. Set to null if last reply is from an Admin.",
+                        "example": 1663597260
+                    },
+                    "snoozed_until": {
+                        "type": "integer",
+                        "format": "date-time",
+                        "nullable": true,
+                        "description": "If set this is the time in the future when this conversation will be marked as open. i.e. it will be in a snoozed state until this time. i.e. it will be in a snoozed state until this time.",
+                        "example": 1663597260
+                    },
+                    "open": {
+                        "type": "boolean",
+                        "description": "Indicates whether a conversation is open (true) or closed (false).",
+                        "example": true
+                    },
+                    "state": {
+                        "type": "string",
+                        "enum": [
+                            "open",
+                            "closed",
+                            "snoozed"
+                        ],
+                        "description": "Can be set to \"open\", \"closed\" or \"snoozed\".",
+                        "example": "open"
+                    },
+                    "read": {
+                        "type": "boolean",
+                        "description": "Indicates whether a conversation has been read.",
+                        "example": true
+                    },
+                    "priority": {
+                        "type": "string",
+                        "enum": [
+                            "priority",
+                            "not_priority"
+                        ],
+                        "description": "If marked as priority, it will return priority or else not_priority.",
+                        "example": "priority"
+                    },
+                    "admin_assignee_id": {
+                        "type": "integer",
+                        "nullable": true,
+                        "description": "The id of the admin assigned to the conversation. If it's not assigned to an admin it will return null.",
+                        "example": 0
+                    },
+                    "team_assignee_id": {
+                        "type": "string",
+                        "nullable": true,
+                        "description": "The id of the team assigned to the conversation. If it's not assigned to a team it will return null.",
+                        "example": "5017691"
+                    },
+                    "tags": {
+                        "title": "Tags",
+                        "type": "object",
+                        "description": "A list of tags objects associated with a conversation",
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "description": "The type of the object",
+                                "enum": [
+                                    "tag.list"
+                                ],
+                                "example": "tag.list"
+                            },
+                            "tags": {
+                                "type": "array",
+                                "description": "A list of tags objects associated with the conversation.",
+                                "items": {
+                                    "title": "Tag",
+                                    "type": "object",
+                                    "description": "A tag allows you to label your contacts, companies, and conversations and list them using that tag.",
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "description": "value is \"tag\"",
+                                            "example": "tag"
+                                        },
+                                        "id": {
+                                            "type": "string",
+                                            "description": "The id of the tag",
+                                            "example": "123456"
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "description": "The name of the tag",
+                                            "example": "Test tag"
+                                        },
+                                        "applied_at": {
+                                            "type": "integer",
+                                            "format": "date-time",
+                                            "description": "The time when the tag was applied to the object",
+                                            "example": 1663597223
+                                        },
+                                        "applied_by": {
+                                            "title": "Reference",
+                                            "type": "object",
+                                            "description": "reference to another object",
+                                            "properties": {
+                                                "type": {
+                                                    "type": "string",
+                                                    "description": "",
+                                                    "example": "contact"
+                                                },
+                                                "id": {
+                                                    "type": "string",
+                                                    "nullable": true,
+                                                    "description": "",
+                                                    "example": "1a2b3c"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "conversation_rating": {
+                        "title": "Conversation Rating",
+                        "type": "object",
+                        "nullable": true,
+                        "description": "The Conversation Rating object which contains information on the rating and/or remark added by a Contact and the Admin assigned to the conversation.",
+                        "properties": {
+                            "rating": {
+                                "type": "integer",
+                                "description": "The rating, between 1 and 5, for the conversation.",
+                                "example": 5
+                            },
+                            "remark": {
+                                "type": "string",
+                                "description": "An optional field to add a remark to correspond to the number rating",
+                                "example": ""
+                            },
+                            "created_at": {
+                                "type": "integer",
+                                "format": "date-time",
+                                "description": "The time the rating was requested in the conversation being rated.",
+                                "example": 1671028894
+                            },
+                            "contact": {
+                                "title": "Reference",
+                                "type": "object",
+                                "description": "reference to another object",
+                                "properties": {
+                                    "type": {
+                                        "type": "string",
+                                        "description": "",
+                                        "example": "contact"
+                                    },
+                                    "id": {
+                                        "type": "string",
+                                        "nullable": true,
+                                        "description": "",
+                                        "example": "1a2b3c"
+                                    }
+                                }
+                            },
+                            "teammate": {
+                                "title": "Reference",
+                                "type": "object",
+                                "description": "reference to another object",
+                                "properties": {
+                                    "type": {
+                                        "type": "string",
+                                        "description": "",
+                                        "example": "contact"
+                                    },
+                                    "id": {
+                                        "type": "string",
+                                        "nullable": true,
+                                        "description": "",
+                                        "example": "1a2b3c"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "source": {
+                        "title": "Conversation source",
+                        "type": "object",
+                        "description": "The Conversation Part that originated this conversation, which can be Contact, Admin, Campaign, Automated or Operator initiated.",
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "description": "This includes conversation, push, facebook, twitter and email.",
+                                "example": "conversation"
+                            },
+                            "id": {
+                                "type": "string",
+                                "description": "The id representing the message.",
+                                "example": "3"
+                            },
+                            "delivered_as": {
+                                "type": "string",
+                                "description": "The conversation's initiation type. Possible values are customer_initiated, campaigns_initiated (legacy campaigns), operator_initiated (Custom bot), automated (Series and other outbounds with dynamic audience message) and admin_initiated (fixed audience message, ticket initiated by an admin, group email).",
+                                "example": "operator_initiated"
+                            },
+                            "subject": {
+                                "type": "string",
+                                "description": "Optional. The message subject. For Twitter, this will show a generic message regarding why the subject is obscured.",
+                                "example": ""
+                            },
+                            "body": {
+                                "type": "string",
+                                "description": "The message body, which may contain HTML. For Twitter, this will show a generic message regarding why the body is obscured.",
+                                "example": "<p>Hey there!</p>"
+                            },
+                            "author": {
+                                "title": "Conversation part author",
+                                "type": "object",
+                                "description": "The object who initiated the conversation, which can be a Contact, Admin or Team. Bots and campaigns send messages on behalf of Admins or Teams. For Twitter, this will be blank.",
+                                "properties": {
+                                    "type": {
+                                        "type": "string",
+                                        "description": "The type of the author",
+                                        "example": "admin"
+                                    },
+                                    "id": {
+                                        "type": "string",
+                                        "description": "The id of the author",
+                                        "example": "274"
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "description": "The name of the author",
+                                        "example": "Operator"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "description": "The email of the author",
+                                        "example": "operator+abcd1234@intercom.io"
+                                    }
+                                }
+                            },
+                            "attachments": {
+                                "type": "array",
+                                "description": "A list of attachments for the part.",
+                                "items": {
+                                    "title": "Part attachment",
+                                    "type": "object",
+                                    "description": "The file attached to a part",
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "description": "The type of attachment",
+                                            "example": "upload"
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "description": "The name of the attachment",
+                                            "example": "example.png"
+                                        },
+                                        "url": {
+                                            "type": "string",
+                                            "description": "The URL of the attachment",
+                                            "example": "https://picsum.photos/200/300"
+                                        },
+                                        "content_type": {
+                                            "type": "string",
+                                            "description": "The content type of the attachment",
+                                            "example": "image/png"
+                                        },
+                                        "filesize": {
+                                            "type": "integer",
+                                            "description": "The size of the attachment",
+                                            "example": 100
+                                        },
+                                        "width": {
+                                            "type": "integer",
+                                            "description": "The width of the attachment",
+                                            "example": 100
+                                        },
+                                        "height": {
+                                            "type": "integer",
+                                            "description": "The height of the attachment",
+                                            "example": 100
+                                        }
+                                    }
+                                }
+                            },
+                            "url": {
+                                "type": "string",
+                                "nullable": true,
+                                "description": "The URL where the conversation was started. For Twitter, Email, and Bots, this will be blank.",
+                                "example": null
+                            },
+                            "redacted": {
+                                "type": "boolean",
+                                "description": "Whether or not the source message has been redacted. Only applicable for contact initiated messages.",
+                                "example": false
+                            }
+                        }
+                    },
+                    "contacts": {
+                        "title": "Contacts",
+                        "type": "object",
+                        "description": "The list of contacts (users or leads) involved in this conversation. This will only contain one customer unless more were added via the group conversation feature.",
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "description": "",
+                                "enum": [
+                                    "contact.list"
+                                ],
+                                "example": "contact.list"
+                            },
+                            "contacts": {
+                                "type": "array",
+                                "description": "The list of contacts (users or leads) involved in this conversation. This will only contain one customer unless more were added via the group conversation feature.",
+                                "items": {
+                                    "title": "Reference",
+                                    "type": "object",
+                                    "description": "reference to another object",
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "description": "",
+                                            "example": "contact"
+                                        },
+                                        "id": {
+                                            "type": "string",
+                                            "nullable": true,
+                                            "description": "",
+                                            "example": "1a2b3c"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "teammates": {
+                        "title": "Conversation teammates",
+                        "type": "object",
+                        "nullable": true,
+                        "description": "The list of teammates who participated in the conversation (wrote at least one conversation part).",
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "description": "The type of the object - `admin.list`.",
+                                "example": "admin.list"
+                            },
+                            "teammates": {
+                                "type": "array",
+                                "description": "The list of teammates who participated in the conversation (wrote at least one conversation part).",
+                                "items": {
+                                    "title": "Reference",
+                                    "type": "object",
+                                    "description": "reference to another object",
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "description": "",
+                                            "example": "contact"
+                                        },
+                                        "id": {
+                                            "type": "string",
+                                            "nullable": true,
+                                            "description": "",
+                                            "example": "1a2b3c"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "custom_attributes": {
+                        "title": "Custom Attributes",
+                        "type": "object",
+                        "description": "An object containing the different custom attributes associated to the conversation as key-value pairs. For relationship attributes the value will be a list of custom object instance models.",
+                        "additionalProperties": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "title": "Custom Object Instance",
+                                    "type": "object",
+                                    "nullable": true,
+                                    "description": "An instance of a Custom Object Type.",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string",
+                                            "description": "The Intercom defined id representing the custom object instance.",
+                                            "example": "5a7a19e9f59ae20001d1c1e6"
+                                        },
+                                        "external_id": {
+                                            "type": "string",
+                                            "description": "The id you have defined for the custom object instance.",
+                                            "example": "0001d1c1e65a7a19e9f59ae2"
+                                        },
+                                        "type": {
+                                            "type": "string",
+                                            "description": "The identifier of the custom object type that defines the structure of the custom object instance.",
+                                            "example": "Order"
+                                        },
+                                        "custom_attributes": {
+                                            "type": "object",
+                                            "description": "The custom attributes you have set on the custom object instance.",
+                                            "additionalProperties": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "first_contact_reply": {
+                        "title": "First contact reply",
+                        "type": "object",
+                        "nullable": true,
+                        "description": "An object containing information on the first users message. For a contact initiated message this will represent the users original message.",
+                        "properties": {
+                            "created_at": {
+                                "type": "integer",
+                                "format": "date-time",
+                                "description": "",
+                                "example": 1663597223
+                            },
+                            "type": {
+                                "type": "string",
+                                "description": "",
+                                "example": "conversation"
+                            },
+                            "url": {
+                                "type": "string",
+                                "nullable": true,
+                                "description": "",
+                                "example": "https://developers.intercom.com/"
+                            }
+                        }
+                    },
+                    "sla_applied": {
+                        "title": "Applied SLA",
+                        "type": "object",
+                        "nullable": true,
+                        "description": "The SLA Applied object contains the details for which SLA has been applied to this conversation.\nImportant: if there are any canceled sla_events for the conversation - meaning an SLA has been manually removed from a conversation, the sla_status will always be returned as null.\n",
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "description": "object type",
+                                "example": "conversation_sla_summary"
+                            },
+                            "sla_name": {
+                                "type": "string",
+                                "description": "The name of the SLA as given by the teammate when it was created.",
+                                "example": ""
+                            },
+                            "sla_status": {
+                                "type": "string",
+                                "enum": [
+                                    "hit",
+                                    "missed",
+                                    "cancelled",
+                                    "active"
+                                ],
+                                "description": "SLA statuses:\n            - `hit`: If there’s at least one hit event in the underlying sla_events table, and no “missed” or “canceled” events for the conversation.\n            - `missed`: If there are any missed sla_events for the conversation and no canceled events. If there’s even a single missed sla event, the status will always be missed. A missed status is not applied when the SLA expires, only the next time a teammate replies.\n            - `active`: An SLA has been applied to a conversation, but has not yet been fulfilled. SLA status is active only if there are no “hit, “missed”, or “canceled” events.",
+                                "example": "hit"
+                            }
+                        }
+                    },
+                    "statistics": {
+                        "title": "Conversation statistics",
+                        "type": "object",
+                        "nullable": true,
+                        "description": "A Statistics object containing all information required for reporting, with timestamps and calculated metrics.",
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "description": "",
+                                "example": "conversation_statistics"
+                            },
+                            "time_to_assignment": {
+                                "type": "integer",
+                                "description": "Duration until last assignment before first admin reply. In seconds.",
+                                "example": 2310
+                            },
+                            "time_to_admin_reply": {
+                                "type": "integer",
+                                "description": "Duration until first admin reply. Subtracts out of business hours. In seconds.",
+                                "example": 2310
+                            },
+                            "time_to_first_close": {
+                                "type": "integer",
+                                "description": "Duration until conversation was closed first time. Subtracts out of business hours. In seconds.",
+                                "example": 2310
+                            },
+                            "time_to_last_close": {
+                                "type": "integer",
+                                "description": "Duration until conversation was closed last time. Subtracts out of business hours. In seconds.",
+                                "example": 2310
+                            },
+                            "median_time_to_reply": {
+                                "type": "integer",
+                                "description": "Median based on all admin replies after a contact reply. Subtracts out of business hours. In seconds.",
+                                "example": 2310
+                            },
+                            "first_contact_reply_at": {
+                                "type": "integer",
+                                "format": "date-time",
+                                "description": "Time of first text conversation part from a contact.",
+                                "example": 1663597233
+                            },
+                            "first_assignment_at": {
+                                "type": "integer",
+                                "format": "date-time",
+                                "description": "Time of first assignment after first_contact_reply_at.",
+                                "example": 1663597233
+                            },
+                            "first_admin_reply_at": {
+                                "type": "integer",
+                                "format": "date-time",
+                                "description": "Time of first admin reply after first_contact_reply_at.",
+                                "example": 1663597233
+                            },
+                            "first_close_at": {
+                                "type": "integer",
+                                "format": "date-time",
+                                "description": "Time of first close after first_contact_reply_at.",
+                                "example": 1663597233
+                            },
+                            "last_assignment_at": {
+                                "type": "integer",
+                                "format": "date-time",
+                                "description": "Time of last assignment after first_contact_reply_at.",
+                                "example": 1663597233
+                            },
+                            "last_assignment_admin_reply_at": {
+                                "type": "integer",
+                                "format": "date-time",
+                                "description": "Time of first admin reply since most recent assignment.",
+                                "example": 1663597233
+                            },
+                            "last_contact_reply_at": {
+                                "type": "integer",
+                                "format": "date-time",
+                                "description": "Time of the last conversation part from a contact.",
+                                "example": 1663597233
+                            },
+                            "last_admin_reply_at": {
+                                "type": "integer",
+                                "format": "date-time",
+                                "description": "Time of the last conversation part from an admin.",
+                                "example": 1663597233
+                            },
+                            "last_close_at": {
+                                "type": "integer",
+                                "format": "date-time",
+                                "description": "Time of the last conversation close.",
+                                "example": 1663597233
+                            },
+                            "last_closed_by_id": {
+                                "type": "string",
+                                "description": "The last admin who closed the conversation. Returns a reference to an Admin object.",
+                                "example": "c3po"
+                            },
+                            "count_reopens": {
+                                "type": "integer",
+                                "description": "Number of reopens after first_contact_reply_at.",
+                                "example": 1
+                            },
+                            "count_assignments": {
+                                "type": "integer",
+                                "description": "Number of assignments after first_contact_reply_at.",
+                                "example": 1
+                            },
+                            "count_conversation_parts": {
+                                "type": "integer",
+                                "description": "Total number of conversation parts.",
+                                "example": 1
+                            }
+                        }
+                    },
+                    "conversation_parts": {
+                        "title": "Conversation Parts",
+                        "type": "object",
+                        "description": "A list of Conversation Part objects for each part message in the conversation. This is only returned when Retrieving a Conversation, and ignored when Listing all Conversations. There is a limit of 500 parts.",
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "description": "",
+                                "enum": [
+                                    "conversation_part.list"
+                                ],
+                                "example": "conversation_part.list"
+                            },
+                            "conversation_parts": {
+                                "title": "Conversation Parts",
+                                "type": "array",
+                                "description": "A list of Conversation Part objects for each part message in the conversation. This is only returned when Retrieving a Conversation, and ignored when Listing all Conversations. There is a limit of 500 parts.",
+                                "items": {
+                                    "title": "Conversation Part",
+                                    "type": "object",
+                                    "description": "A Conversation Part represents a message in the conversation.",
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "description": "Always conversation_part",
+                                            "example": "conversation_part"
+                                        },
+                                        "id": {
+                                            "type": "string",
+                                            "description": "The id representing the conversation part.",
+                                            "example": "3"
+                                        },
+                                        "part_type": {
+                                            "type": "string",
+                                            "description": "The type of conversation part.",
+                                            "example": "comment"
+                                        },
+                                        "body": {
+                                            "type": "string",
+                                            "nullable": true,
+                                            "description": "The message body, which may contain HTML. For Twitter, this will show a generic message regarding why the body is obscured.",
+                                            "example": "<p>Okay!</p>"
+                                        },
+                                        "created_at": {
+                                            "type": "integer",
+                                            "format": "date-time",
+                                            "description": "The time the conversation part was created.",
+                                            "example": 1663597223
+                                        },
+                                        "updated_at": {
+                                            "type": "integer",
+                                            "format": "date-time",
+                                            "description": "The last time the conversation part was updated.",
+                                            "example": 1663597260
+                                        },
+                                        "notified_at": {
+                                            "type": "integer",
+                                            "format": "date-time",
+                                            "description": "The time the user was notified with the conversation part.",
+                                            "example": 1663597260
+                                        },
+                                        "assigned_to": {
+                                            "nullable": true,
+                                            "description": "The id of the admin that was assigned the conversation by this conversation_part (null if there has been no change in assignment.)",
+                                            "title": "Reference",
+                                            "type": "object",
+                                            "properties": {
+                                                "type": {
+                                                    "type": "string",
+                                                    "description": "",
+                                                    "example": "contact"
+                                                },
+                                                "id": {
+                                                    "type": "string",
+                                                    "nullable": true,
+                                                    "description": "",
+                                                    "example": "1a2b3c"
+                                                }
+                                            }
+                                        },
+                                        "author": {
+                                            "title": "Conversation part author",
+                                            "type": "object",
+                                            "description": "The object who initiated the conversation, which can be a Contact, Admin or Team. Bots and campaigns send messages on behalf of Admins or Teams. For Twitter, this will be blank.",
+                                            "properties": {
+                                                "type": {
+                                                    "type": "string",
+                                                    "description": "The type of the author",
+                                                    "example": "admin"
+                                                },
+                                                "id": {
+                                                    "type": "string",
+                                                    "description": "The id of the author",
+                                                    "example": "274"
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "description": "The name of the author",
+                                                    "example": "Operator"
+                                                },
+                                                "email": {
+                                                    "type": "string",
+                                                    "format": "email",
+                                                    "description": "The email of the author",
+                                                    "example": "operator+abcd1234@intercom.io"
+                                                }
+                                            }
+                                        },
+                                        "attachments": {
+                                            "title": "Conversation part attachments",
+                                            "type": "array",
+                                            "description": "A list of attachments for the part.",
+                                            "items": {
+                                                "title": "Part attachment",
+                                                "type": "object",
+                                                "description": "The file attached to a part",
+                                                "properties": {
+                                                    "type": {
+                                                        "type": "string",
+                                                        "description": "The type of attachment",
+                                                        "example": "upload"
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "description": "The name of the attachment",
+                                                        "example": "example.png"
+                                                    },
+                                                    "url": {
+                                                        "type": "string",
+                                                        "description": "The URL of the attachment",
+                                                        "example": "https://picsum.photos/200/300"
+                                                    },
+                                                    "content_type": {
+                                                        "type": "string",
+                                                        "description": "The content type of the attachment",
+                                                        "example": "image/png"
+                                                    },
+                                                    "filesize": {
+                                                        "type": "integer",
+                                                        "description": "The size of the attachment",
+                                                        "example": 100
+                                                    },
+                                                    "width": {
+                                                        "type": "integer",
+                                                        "description": "The width of the attachment",
+                                                        "example": 100
+                                                    },
+                                                    "height": {
+                                                        "type": "integer",
+                                                        "description": "The height of the attachment",
+                                                        "example": 100
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "external_id": {
+                                            "type": "string",
+                                            "nullable": true,
+                                            "description": "The external id of the conversation part",
+                                            "example": "abcd1234"
+                                        },
+                                        "redacted": {
+                                            "type": "boolean",
+                                            "description": "Whether or not the conversation part has been redacted.",
+                                            "example": false
+                                        }
+                                    }
+                                }
+                            },
+                            "total_count": {
+                                "type": "integer",
+                                "description": "",
+                                "example": 2
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "total_count": {
+            "type": "integer",
+            "description": "A count of the total number of objects.",
+            "example": 12345
+        },
+        "pages": {
+            "title": "Cursor based pages",
+            "type": "object",
+            "description": "Cursor-based pagination is a technique used in the Intercom API to navigate through large amounts of data.\nA \"cursor\" or pointer is used to keep track of the current position in the result set, allowing the API to return the data in small chunks or \"pages\" as needed.\n",
+            "nullable": true,
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "the type of object `pages`.",
+                    "example": "pages",
+                    "enum": [
+                        "pages"
+                    ]
+                },
+                "page": {
+                    "type": "integer",
+                    "description": "The current page",
+                    "example": 1
+                },
+                "next": {
+                    "title": "StartingAfterPaging",
+                    "type": "object",
+                    "nullable": true,
+                    "properties": {
+                        "page": {
+                            "type": "integer",
+                            "example": 2
+                        },
+                        "starting_after": {
+                            "type": "string",
+                            "example": "1HaSB+xrOyyMXAkS/c1RteCL7BzOzTvYjmjakgTergIH31eoe2v4/sbLsJWP\\nIncfQLD3ouPkZlCwJ86F\\n"
+                        }
+                    }
+                },
+                "per_page": {
+                    "type": "integer",
+                    "description": "Number of results per page",
+                    "example": 2
+                },
+                "total_pages": {
+                    "type": "integer",
+                    "description": "Total number of pages",
+                    "example": 13
+                }
+            }
+        }
+    }
+}

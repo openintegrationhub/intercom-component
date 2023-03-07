@@ -1,0 +1,114 @@
+{
+    "type": "object",
+    "properties": {
+        "Intercom-Version": {
+            "description": "Intercom API version.</br>By default, it's equal to the version set in the app package.",
+            "type": "string",
+            "example": "Unstable",
+            "default": "2.8",
+            "enum": [
+                "1.0",
+                "1.1",
+                "1.2",
+                "1.3",
+                "1.4",
+                "2.0",
+                "2.1",
+                "2.2",
+                "2.3",
+                "2.4",
+                "2.5",
+                "2.6",
+                "2.7",
+                "2.8",
+                "Unstable"
+            ]
+        },
+        "requestBody": {
+            "description": "A News Item is a content type in Intercom enabling you to announce product updates, company news, promotions, events and more with your customers.",
+            "type": "object",
+            "title": "Create News Item Request",
+            "properties": {
+                "title": {
+                    "type": "string",
+                    "description": "The title of the news item.",
+                    "example": "Halloween is here!"
+                },
+                "body": {
+                    "type": "string",
+                    "description": "The news item body, which may contain HTML.",
+                    "example": "<p>New costumes in store for this spooky season</p>"
+                },
+                "sender_id": {
+                    "type": "integer",
+                    "description": "The id of the sender of the news item. Must be a teammate on the workspace.",
+                    "example": 123
+                },
+                "state": {
+                    "type": "string",
+                    "description": "News items will not be visible to your users in the assigned newsfeeds until they are set live.",
+                    "enum": [
+                        "draft",
+                        "live"
+                    ],
+                    "example": "live"
+                },
+                "deliver_silently": {
+                    "type": "boolean",
+                    "description": "When set to `true`, the news item will appear in the messenger newsfeed without showing a notification badge.",
+                    "example": true
+                },
+                "labels": {
+                    "type": "array",
+                    "description": "Label names displayed to users to categorize the news item.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "Product",
+                        "Update",
+                        "New"
+                    ]
+                },
+                "reactions": {
+                    "type": "array",
+                    "description": "Ordered list of emoji reactions to the news item. When empty, reactions are disabled.",
+                    "items": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "example": [
+                        "😆",
+                        "😅"
+                    ]
+                },
+                "newsfeed_assignments": {
+                    "type": "array",
+                    "description": "A list of newsfeed_assignments to assign to the specified newsfeed.",
+                    "items": {
+                        "title": "Newsfeed Assignment",
+                        "type": "object",
+                        "description": "Assigns a news item to a newsfeed.",
+                        "properties": {
+                            "newsfeed_id": {
+                                "type": "integer",
+                                "description": "The unique identifier for the newsfeed which is given by Intercom. Publish dates cannot be in the future, to schedule news items use the dedicated feature in app (see this article).",
+                                "example": 198313
+                            },
+                            "published_at": {
+                                "type": "integer",
+                                "format": "timestamp",
+                                "description": "Publish date of the news item on the newsfeed, use this field if you want to set a publish date in the past (e.g. when importing existing news items). On write, this field will be ignored if the news item state is \"draft\".",
+                                "example": 1674917488
+                            }
+                        }
+                    }
+                }
+            },
+            "required": [
+                "title",
+                "sender_id"
+            ]
+        }
+    }
+}

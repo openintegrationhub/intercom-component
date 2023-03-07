@@ -1,0 +1,228 @@
+{
+    "type": "object",
+    "properties": {
+        "Intercom-Version": {
+            "description": "Intercom API version.</br>By default, it's equal to the version set in the app package.",
+            "type": "string",
+            "example": "Unstable",
+            "default": "2.8",
+            "enum": [
+                "1.0",
+                "1.1",
+                "1.2",
+                "1.3",
+                "1.4",
+                "2.0",
+                "2.1",
+                "2.2",
+                "2.3",
+                "2.4",
+                "2.5",
+                "2.6",
+                "2.7",
+                "2.8",
+                "Unstable"
+            ]
+        },
+        "id": {
+            "required": true,
+            "oneOf": [
+                {
+                    "title": "Conversation ID",
+                    "type": "string",
+                    "description": "The id of the conversation to target.",
+                    "example": "123"
+                },
+                {
+                    "title": "The most recent conversation",
+                    "type": "string",
+                    "enum": [
+                        "last"
+                    ],
+                    "description": "You can also reply to the most recent conversation on a workspace by specifying `last` as the string.",
+                    "example": "last"
+                }
+            ]
+        },
+        "requestBody": {
+            "oneOf": [
+                {
+                    "title": "Contact Reply",
+                    "oneOf": [
+                        {
+                            "title": "Intercom User ID",
+                            "type": "object",
+                            "description": "Payload of the request to reply on behalf of a contact using their `intercom_user_id`",
+                            "properties": {
+                                "message_type": {
+                                    "type": "string",
+                                    "enum": [
+                                        "comment"
+                                    ]
+                                },
+                                "type": {
+                                    "type": "string",
+                                    "enum": [
+                                        "user"
+                                    ]
+                                },
+                                "body": {
+                                    "type": "string",
+                                    "description": "The text body of the comment."
+                                },
+                                "intercom_user_id": {
+                                    "type": "string",
+                                    "description": "The identifier for the contact as given by Intercom."
+                                },
+                                "attachment_urls": {
+                                    "type": "array",
+                                    "description": "A list of image URLs that will be added as attachments. You can include up to 5 URLs.",
+                                    "items": {
+                                        "type": "string",
+                                        "format": "uri"
+                                    },
+                                    "maxItems": 5
+                                }
+                            },
+                            "required": [
+                                "message_type",
+                                "type",
+                                "body",
+                                "intercom_user_id"
+                            ]
+                        },
+                        {
+                            "title": "User ID",
+                            "type": "object",
+                            "description": "Payload of the request to reply on behalf of a contact using their `user_id`",
+                            "properties": {
+                                "message_type": {
+                                    "type": "string",
+                                    "enum": [
+                                        "comment"
+                                    ]
+                                },
+                                "type": {
+                                    "type": "string",
+                                    "enum": [
+                                        "user"
+                                    ]
+                                },
+                                "body": {
+                                    "type": "string",
+                                    "description": "The text body of the comment."
+                                },
+                                "user_id": {
+                                    "type": "string",
+                                    "description": "The external_id you have defined for the contact."
+                                },
+                                "attachment_urls": {
+                                    "type": "array",
+                                    "description": "A list of image URLs that will be added as attachments. You can include up to 5 URLs.",
+                                    "items": {
+                                        "type": "string",
+                                        "format": "uri"
+                                    },
+                                    "maxItems": 5
+                                }
+                            },
+                            "required": [
+                                "message_type",
+                                "type",
+                                "body",
+                                "user_id"
+                            ]
+                        },
+                        {
+                            "title": "Email",
+                            "type": "object",
+                            "description": "Payload of the request to reply on behalf of a contact using their `email`",
+                            "properties": {
+                                "message_type": {
+                                    "type": "string",
+                                    "enum": [
+                                        "comment"
+                                    ]
+                                },
+                                "type": {
+                                    "type": "string",
+                                    "enum": [
+                                        "user"
+                                    ]
+                                },
+                                "body": {
+                                    "type": "string",
+                                    "description": "The text body of the comment."
+                                },
+                                "email": {
+                                    "type": "string",
+                                    "description": "The email you have defined for the user."
+                                },
+                                "attachment_urls": {
+                                    "type": "array",
+                                    "description": "A list of image URLs that will be added as attachments. You can include up to 5 URLs.",
+                                    "items": {
+                                        "type": "string",
+                                        "format": "uri"
+                                    },
+                                    "maxItems": 5
+                                }
+                            },
+                            "required": [
+                                "message_type",
+                                "type",
+                                "body",
+                                "email"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "title": "Admin Reply",
+                    "type": "object",
+                    "description": "Payload of the request to reply on behalf of an admin",
+                    "properties": {
+                        "message_type": {
+                            "type": "string",
+                            "enum": [
+                                "comment",
+                                "note"
+                            ]
+                        },
+                        "type": {
+                            "type": "string",
+                            "enum": [
+                                "admin"
+                            ],
+                            "example": "admin"
+                        },
+                        "body": {
+                            "type": "string",
+                            "description": "The text body of the reply.\\nNotes accept some HTML formatting.\\nMust be present for comment and note message types.",
+                            "example": "Hello there!"
+                        },
+                        "admin_id": {
+                            "type": "string",
+                            "description": "The id of the admin who is authoring the comment.",
+                            "example": "3156780"
+                        },
+                        "attachment_urls": {
+                            "type": "array",
+                            "description": "A list of image URLs that will be added as attachments. You can include up to 5 URLs.",
+                            "items": {
+                                "type": "string",
+                                "format": "uri"
+                            },
+                            "maxItems": 5
+                        }
+                    },
+                    "required": [
+                        "message_type",
+                        "type",
+                        "admin_id"
+                    ]
+                }
+            ]
+        }
+    }
+}

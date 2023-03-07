@@ -1,0 +1,71 @@
+{
+    "type": "object",
+    "properties": {
+        "Intercom-Version": {
+            "description": "Intercom API version.</br>By default, it's equal to the version set in the app package.",
+            "type": "string",
+            "example": "Unstable",
+            "default": "2.8",
+            "enum": [
+                "1.0",
+                "1.1",
+                "1.2",
+                "1.3",
+                "1.4",
+                "2.0",
+                "2.1",
+                "2.2",
+                "2.3",
+                "2.4",
+                "2.5",
+                "2.6",
+                "2.7",
+                "2.8",
+                "Unstable"
+            ]
+        },
+        "requestBody": {
+            "description": "Conversations are how you can communicate with users in Intercom. They are created when a contact replies to an outbound message, or when one admin directly sends a message to a single contact.",
+            "type": "object",
+            "title": "Create Conversation Request Payload",
+            "properties": {
+                "from": {
+                    "type": "object",
+                    "properties": {
+                        "type": {
+                            "type": "string",
+                            "enum": [
+                                "lead",
+                                "user",
+                                "contact"
+                            ],
+                            "description": "The role associated to the contact - user or lead.",
+                            "example": "user"
+                        },
+                        "id": {
+                            "type": "string",
+                            "description": "The identifier for the contact which is given by Intercom.",
+                            "format": "uuid",
+                            "minLength": 24,
+                            "maxLength": 24,
+                            "example": "536e564f316c83104c000020"
+                        }
+                    },
+                    "required": [
+                        "type",
+                        "id"
+                    ]
+                },
+                "body": {
+                    "type": "string",
+                    "description": "The content of the message. HTML is not supported.",
+                    "example": "Hello"
+                }
+            },
+            "required": [
+                "from",
+                "body"
+            ]
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "title": "Deleted Company Object",
+    "type": "object",
+    "description": "Response returned when an object is deleted",
+    "properties": {
+        "id": {
+            "type": "string",
+            "description": "The unique identifier for the company which is given by Intercom.",
+            "example": "5b7e8b2f-7a1a-4e6c-8e1b-4f9d4f4c4d4f"
+        },
+        "object": {
+            "type": "string",
+            "description": "The type of object which was deleted. - `company`",
+            "enum": [
+                "company"
+            ],
+            "example": "company"
+        },
+        "deleted": {
+            "type": "boolean",
+            "description": "Whether the company was deleted successfully or not.",
+            "example": true
+        }
+    }
+}
